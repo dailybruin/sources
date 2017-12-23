@@ -3,22 +3,32 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import './style.scss';
 
 const SourceTable = props => {
   const sourcesToRender = props.allSourcesQuery.allSources;
+  const columns = [
+    { Header: 'Name', accessor: 'name' },
+    { Header: 'Organization', accessor: 'org', minWidth: 200 },
+    {
+      Header: 'Phone',
+      accessor: 'phone',
+      Cell: props => <a href={`tel:+1-${props.value}`}>{props.value}</a>,
+    },
+    {
+      Header: 'Email',
+      accessor: 'email',
+      Cell: props => <a href={`mailto:${props.value}`}>{props.value}</a>,
+    },
+    { Header: 'Notes', accessor: 'notes', minWidth: 200 },
+  ];
 
   return (
     <div>
       <ReactTable
         data={sourcesToRender}
-        columns={[
-          { Header: 'Name', accessor: 'name' },
-          { Header: 'Organization', accessor: 'org' },
-          { Header: 'Phone', accessor: 'phone' },
-          { Header: 'Email', accessor: 'email' },
-          { Header: 'Notes', accessor: 'notes' },
-        ]}
-        defaultPageSize={100}
+        columns={columns}
+        defaultPageSize={50}
         className="-striped -highlight"
       />
     </div>
