@@ -1,0 +1,75 @@
+{
+  "_class": "group",
+  "do_objectID": "64B9B7F6-BDDE-481D-A135-6FCCA4D09420",
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 380,
+    "width": 223,
+    "x": 383,
+    "y": 836
+  },
+  "hasClickThrough": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "layers": [
+    {
+      "class": "symbolInstance",
+      "id": "FAB5DD35-DE2D-4F82-A36D-53FA141B1DB8"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "BA9AF543-42D6-46E7-879C-B779DD0B3481"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "CD3F2151-5396-495F-AA47-9E6F040C08AC"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "2610E45B-B19E-4824-AC08-4A27BB03B6E9"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "6A63B88A-85DE-4746-BE7B-0DA9FD82C0B1"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "A39AB71C-2A7A-4255-874F-C68EA9F9795C"
+    },
+    {
+      "class": "symbolInstance",
+      "id": "446172BE-C4AE-483C-80B5-2B5CEA9BA012"
+    }
+  ],
+  "name": "TILES ",
+  "nameIsFixed": true,
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "_class": "style",
+    "endDecorationType": 0,
+    "miterLimit": 10,
+    "startDecorationType": 0
+  },
+  "userInfo": {
+    "com.animaapp.stc-sketch-plugin": {
+      "kModelPropertiesKey": {
+      }
+    }
+  }
+}

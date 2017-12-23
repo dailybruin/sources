@@ -1,0 +1,48 @@
+{
+  "_class": "text",
+  "attributedString": {
+    "_class": "MSAttributedString",
+    "archivedAttributedString": {
+      "_archive": "YnBsaXN0MDDUAQIDBAUGUlNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QFQcIDxAcHR4fJSsxNDhAQUJDREhMTlUkbnVsbNMJCgsMDQ5YTlNTdHJpbmdWJGNsYXNzXE5TQXR0cmlidXRlc4ACgBSAA18QFklucHV0IHZhbHVlIChEaXNhYmxlZCnTERIKExcbV05TLmtleXNaTlMub2JqZWN0c6MUFRaABIAFgAajGBkagAeACYALgBNXTlNDb2xvcl8QEE5TUGFyYWdyYXBoU3R5bGVfEB9NU0F0dHJpYnV0ZWRTdHJpbmdGb250QXR0cmlidXRl0yAhCiIjJFVOU1JHQlxOU0NvbG9yU3BhY2VPECcwLjczMzMzMzMzMzMgMC43MzMzMzMzMzMzIDAuNzMzMzMzMzMzMwAQAYAI0iYnKClaJGNsYXNzbmFtZVgkY2xhc3Nlc1dOU0NvbG9yoigqWE5TT2JqZWN00ywKLS4vMFpOU1RhYlN0b3BzW05TQWxpZ25tZW50gACAChAE0iYnMjNfEBBOU1BhcmFncmFwaFN0eWxlojIq0go1NjdfEBpOU0ZvbnREZXNjcmlwdG9yQXR0cmlidXRlc4ASgAzTERIKOTw/ojo7gA2ADqI9PoAPgBCAEV8QE05TRm9udFNpemVBdHRyaWJ1dGVfEBNOU0ZvbnROYW1lQXR0cmlidXRlI0AsAAAAAAAAXxASQXZlbmlyTmV4dC1SZWd1bGFy0iYnRUZfEBNOU011dGFibGVEaWN0aW9uYXJ5o0VHKlxOU0RpY3Rpb25hcnnSJidJSl8QEE5TRm9udERlc2NyaXB0b3KiSypfEBBOU0ZvbnREZXNjcmlwdG9y0iYnR02iRyrSJidPUF8QEk5TQXR0cmlidXRlZFN0cmluZ6JRKl8QEk5TQXR0cmlidXRlZFN0cmluZ18QD05TS2V5ZWRBcmNoaXZlctFUVVRyb290gAEACAARABoAIwAtADIANwBPAFUAXABlAGwAeQB7AH0AfwCYAJ8ApwCyALYAuAC6ALwAwADCAMQAxgDIANAA4wEFAQwBEgEfAUkBSwFNAVIBXQFmAW4BcQF6AYEBjAGYAZoBnAGeAaMBtgG5Ab4B2wHdAd8B5gHpAesB7QHwAfIB9AH2AgwCIgIrAkACRQJbAl8CbAJxAoQChwKaAp8CogKnArwCvwLUAuYC6QLuAAAAAAAAAgEAAAAAAAAAVgAAAAAAAAAAAAAAAAAAAvA="
+    }
+  },
+  "automaticallyDrawOnUnderlyingPath": false,
+  "do_objectID": "6C05BED9-19AF-49A7-88EB-C4AE1A5EF78F",
+  "dontSynchroniseWithSymbol": true,
+  "exportOptions": {
+    "_class": "exportOptions",
+    "exportFormats": [
+    ],
+    "includedLayerIds": [
+    ],
+    "layerOptions": 0,
+    "shouldTrim": false
+  },
+  "frame": {
+    "_class": "rect",
+    "constrainProportions": false,
+    "height": 19,
+    "width": 140,
+    "x": 11,
+    "y": 8
+  },
+  "glyphBounds": "{{0, 0}, {140, 19.12396240234375}}",
+  "heightIsClipped": false,
+  "isFlippedHorizontal": false,
+  "isFlippedVertical": false,
+  "isLocked": false,
+  "isVisible": true,
+  "layerListExpandedType": 0,
+  "lineSpacingBehaviour": 0,
+  "name": "Input value (Disable",
+  "nameIsFixed": false,
+  "originalObjectID": "6C05BED9-19AF-49A7-88EB-C4AE1A5EF78F",
+  "resizingConstraint": 63,
+  "resizingType": 0,
+  "rotation": 0,
+  "shouldBreakMaskChain": false,
+  "style": {
+    "sharedObjectID": "D6205E2D-54D4-4A5C-A7E4-E1E62615B61D"
+  },
+  "textBehaviour": 0
+}

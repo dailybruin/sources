@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-panel {
+  font-family: Futura-Medium;
+  text-align: center;
+  color: #000;
+}
+
+.login-panel h1 {
+  font-size: 72px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.login-panel .login-note {
+  font-size: 14px;
+  color: #4a4a4a;
+}
