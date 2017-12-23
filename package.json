@@ -4,13 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "concurrently \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir src/views/static --public-url ./\"",
+    "dev":
+      "concurrently \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir src/views/static --public-url ./\" \"cpx \"src/views/login.{html,css}\" src/views/static --watch\"",
     "createData": "node ./scripts/createData.js"
   },
   "nodemonConfig": {
-    "ignore": [
-      "src/views/*"
-    ],
+    "ignore": ["src/views/*"],
     "delay": "2500"
   },
   "eslintConfig": {
@@ -38,6 +37,7 @@
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "cookie-parser": "~1.4.3",
+    "cpx": "^1.5.0",
     "debug": "~2.6.9",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
