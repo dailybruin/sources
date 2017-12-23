@@ -4,34 +4,7 @@ import gql from 'graphql-tag';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
-// import Source from './Source';
-
-// class SourceList extends React.Component {
-//   render() {
-//     // 1
-//     if (this.props.allSourcesQuery && this.props.allSourcesQuery.loading) {
-//       return <div>Loading</div>;
-//     }
-
-//     // 2
-//     if (this.props.allSourcesQuery && this.props.allSourcesQuery.error) {
-//       return <div>Error</div>;
-//     }
-
-//     // 3
-//     const sourcesToRender = this.props.allSourcesQuery.allSources;
-
-//     return (
-//       <div>
-//         {sourcesToRender.map(source => (
-//           <Source key={source.id} name={source.name} />
-//         ))}
-//       </div>
-//     );
-//   }
-// }
-
-const SourceList = props => {
+const SourceTable = props => {
   const sourcesToRender = props.allSourcesQuery.allSources;
 
   return (
@@ -66,5 +39,5 @@ const ALL_SOURCES_QUERY = gql`
 
 // 3
 export default graphql(ALL_SOURCES_QUERY, { name: 'allSourcesQuery' })(
-  SourceList
+  SourceTable
 );
