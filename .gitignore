@@ -31,8 +31,7 @@ npm-debug.log
 
 public/stylesheets/*.css
 /public/stylesheets/style.css.map
-/src/views/static/*.js
-/src/views/static/*.js.map
+src/views/static/*
 /.cache
 
 

@@ -4,8 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "concurrently \"nodemon ./bin/www\" \"webpack\"",
+    "dev": "concurrently \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir src/views/static --public-url ./\"",
     "createData": "node ./scripts/createData.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/views/*"
+    ],
+    "delay": "2500"
   },
   "eslintConfig": {
     "extends": "uclaradio"
@@ -53,6 +59,9 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.11.0",
     "eslint-config-uclaradio": "^1.0.17",
@@ -60,6 +69,7 @@
     "husky": "^0.14.3",
     "lint-staged": "^5.0.0",
     "nodemon": "^1.12.1",
+    "parcel-bundler": "~1.2.1",
     "prettier": "^1.8.2",
     "style-loader": "^0.19.1",
     "stylelint": "^8.2.0",
