@@ -22,6 +22,7 @@ const SourceTable = props => {
       minWidth: 200,
       filterMethod,
       filterAll: true,
+      filterable: false,
     },
     {
       Header: 'Phone',
@@ -29,6 +30,7 @@ const SourceTable = props => {
       Cell: props => <a href={`tel:+1-${props.value}`}>{props.value}</a>,
       filterMethod,
       filterAll: true,
+      filterable: false,
     },
     {
       Header: 'Email',
@@ -36,8 +38,15 @@ const SourceTable = props => {
       Cell: props => <a href={`mailto:${props.value}`}>{props.value}</a>,
       filterMethod,
       filterAll: true,
+      filterable: false,
     },
-    { Header: 'Notes', accessor: 'notes', minWidth: 200, filterAll: true },
+    {
+      Header: 'Notes',
+      accessor: 'notes',
+      minWidth: 200,
+      filterAll: true,
+      filterable: false,
+    },
   ];
 
   return (
