@@ -14,7 +14,7 @@
     "delay": "2500"
   },
   "eslintConfig": {
-    "extends": "uclaradio",
+    "extends": "react-app",
     "rules": {
       "no-debugger": 0
     }
@@ -73,9 +73,11 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^3.1.0",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.11.0",
+    "eslint-config-react-app": "^2.0.1",
     "eslint-config-uclaradio": "^1.0.17",
     "faker": "^4.1.0",
     "husky": "^0.14.3",
