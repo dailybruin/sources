@@ -4,10 +4,10 @@ const { Source } = require('../src/models');
 
 const sequelize = new Sequelize(
   'sources',
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,
   {
-    host: process.env.DB_HOST,
+    host: process.env.DATABASE_HOST,
     dialect: 'mysql',
     operatorsAliases: false,
   }
