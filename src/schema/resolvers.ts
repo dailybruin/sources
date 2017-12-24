@@ -1,6 +1,7 @@
-const { Source } = require('../models');
+import { Source } from '../models/Source';
+import { resolve } from 'url';
 
-module.exports = {
+export const resolvers = {
   Query: {
     allSources: async () => {
       const sources = await Source.all();
@@ -15,3 +16,5 @@ module.exports = {
     },
   },
 };
+
+export default resolvers;

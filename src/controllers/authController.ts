@@ -1,5 +1,9 @@
-const google = require('googleapis');
-const url = require('url');
+import * as google from 'googleapis';
+import * as url from 'url';
+import * as dotenv from 'dotenv';
+import { Request, Response, NextFunction } from 'express';
+
+dotenv.config();
 
 const { OAuth2 } = google.auth;
 const oauth2Client = new OAuth2(
@@ -9,12 +13,16 @@ const oauth2Client = new OAuth2(
 );
 const Profile = google.oauth2('v2'); // to obtain profile details
 
-exports.redirectToAuthURL = (req, res, next) => {
+export function redirectToAuthURL(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const authURL = oauth2Client.generateAuthUrl({ scope: 'email' });
   res.redirect(authURL);
-};
+}
 
-exports.authCallback = (req, res, next) => {
+export function authCallback(req: Request, res: Response, next: NextFunction) {
   const response = url.parse(req.url, true).query; // get authentication code
 
   if (response.error) {
@@ -29,7 +37,7 @@ exports.authCallback = (req, res, next) => {
       }
     });
   }
-};
+}
 
 /**
  * Express middleware function that verifies a user is authenticated (i.e., has an @media.ucla.edu account).
@@ -38,7 +46,11 @@ exports.authCallback = (req, res, next) => {
  * @param {*} res
  * @param {*} next
  */
-exports.ensureAuthenticated = (req, res, next) => {
+export function ensureAuthenticated(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   Profile.userinfo.v2.me.get(
     {
       auth: oauth2Client,
@@ -51,4 +63,4 @@ exports.ensureAuthenticated = (req, res, next) => {
       }
     }
   );
-};
+}

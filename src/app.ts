@@ -1,12 +1,15 @@
-const express = require('express');
-const path = require('path');
+import * as express from 'express';
+// const path = require('path');
 // const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+import * as logger from 'morgan';
+import * as cookieParser from 'cookie-parser';
+import * as bodyParser from 'body-parser';
 
-const index = require('./routes/index');
+import router from './routes';
+import { Request, Response, NextFunction } from 'express';
+import { sequelize } from './models';
 
+sequelize.sync({ force: true });
 const app = express();
 
 app.use(logger('dev'));
@@ -14,19 +17,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', index);
+app.use('/', router);
 
 app.use(express.static('src/views/static'));
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-  const err = new Error('Not Found');
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const err: any = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use((err, req, res) => {
+app.use((err: any, req: Request, res: Response) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
