@@ -1,12 +1,13 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Table
-class Source extends Model<Source> {
-  @Column name: string;
-  @Column org: string;
-  @Column phone: string;
-  @Column email: string;
-  @Column notes: string;
+@Entity()
+export class Source {
+  @PrimaryGeneratedColumn() id: number;
+  @Column() name: string;
+  @Column() org: string;
+  @Column() phone: string;
+  @Column() email: string;
+  @Column() notes: string;
 }
 
 // export default function defineSource(sequelize: Sequelize.Sequelize) {

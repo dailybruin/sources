@@ -8,19 +8,19 @@
       "type": "node",
       "request": "attach",
       "name": "Attach",
-      "port": 9229
+      "port": 9229,
+      "protocol": "inspector"
     },
     {
       "type": "node",
       "request": "launch",
       "name": "Debug",
-      "program": "${workspaceRoot}/dist/server.js",
+      "program": "${workspaceRoot}/bin/www",
       "smartStep": true,
       "outFiles": [
         "../dist/**/*.js"
       ],
       "preLaunchTask": "npm: build",
-      "protocol": "inspector"
     }
   ]
 }

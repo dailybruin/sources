@@ -1,15 +1,12 @@
 import * as express from 'express';
-// const path = require('path');
 // const favicon = require('serve-favicon');
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
-
-import router from './routes';
+import 'reflect-metadata';
+import './models';
 import { Request, Response, NextFunction } from 'express';
-import { sequelize } from './models';
 
-sequelize.sync({ force: true });
 const app = express();
 
 app.use(logger('dev'));
@@ -17,6 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+import router from './routes';
 app.use('/', router);
 
 app.use(express.static('src/views/static'));
