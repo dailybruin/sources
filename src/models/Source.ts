@@ -1,13 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity('Sources')
 export class Source {
-  @PrimaryGeneratedColumn() id: number;
-  @Column() name: string;
-  @Column() org: string;
-  @Column() phone: string;
-  @Column() email: string;
-  @Column() notes: string;
+  @PrimaryGeneratedColumn() public id: number;
+  @Column() public name: string;
+  @Column() public org: string;
+  @Column() public phone: string;
+  @Column() public email: string;
+  @Column() public notes: string;
 }
 
 // export default function defineSource(sequelize: Sequelize.Sequelize) {

@@ -5,13 +5,12 @@
   "scripts": {
     "start": "node ./bin/www",
     "build": "tsc",
-    "dev": "concurrently \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir dist/views/static --public-url ./\" \"cpx \"src/views/login.{html,css}\" dist/views/static --watch\"",
+    "dev":
+      "concurrently \"tsc -w\" \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir dist/views/static --public-url ./\" \"cpx \"src/views/login.{html,css}\" dist/views/static --watch\"",
     "createData": "node ./scripts/createData.js"
   },
   "nodemonConfig": {
-    "ignore": [
-      "src/views/*"
-    ],
+    "ignore": ["src/*"],
     "delay": "2500"
   },
   "eslintConfig": {
