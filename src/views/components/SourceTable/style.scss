@@ -1,8 +1,5 @@
 // Overwrites React-Table style
 .source-table {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   margin-bottom: 2rem;
 
   .ReactTable .rt-td {
@@ -12,10 +9,21 @@
   a {
     text-decoration: none;
   }
+}
+
+.source-table__input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 1.2rem 1.2rem;
 
   input[name="filter"] {
-    margin: 1.2rem;
     padding: 1rem 0.6rem;
     font-size: 1.6rem;
   }
+}
+
+.source-table__input__add {
+  flex-basis: 0;
+  align-self: flex-end;
 }
