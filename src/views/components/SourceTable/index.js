@@ -94,8 +94,12 @@ class SourceTable extends React.Component {
           className="-striped -highlight"
         />
         <SourceTableContextMenu />
-        <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal}>
-          Hello
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          contentLabel="Add a Source"
+        >
+          <h1>Add a Source</h1>
         </Modal>
       </div>
     );
