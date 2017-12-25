@@ -26,7 +26,6 @@ export function authCallback(req: Request, res: Response, next: NextFunction) {
   const response = url.parse(req.url, true).query; // get authentication code
 
   if (response.error) {
-    console.log(response.error); // print to terminal
     res.redirect('/login'); // send user back to login to try again
   } else {
     oauth2Client.getToken(response.code, (err, tokens) => {
@@ -38,14 +37,6 @@ export function authCallback(req: Request, res: Response, next: NextFunction) {
     });
   }
 }
-
-/**
- * Express middleware function that verifies a user is authenticated (i.e., has an @media.ucla.edu account).
- *
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
 export function ensureAuthenticated(
   req: Request,
   res: Response,

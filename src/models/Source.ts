@@ -9,15 +9,3 @@ export class Source {
   @Column() public email: string;
   @Column() public notes: string;
 }
-
-// export default function defineSource(sequelize: Sequelize.Sequelize) {
-//   const Source = sequelize.define('Source', {
-//     name: Sequelize.STRING,
-//     org: Sequelize.STRING,
-//     phone: Sequelize.STRING,
-//     email: Sequelize.STRING,
-//     notes: Sequelize.STRING,
-//   });
-
-//   return Source;
-// }
