@@ -6,3 +6,5 @@ services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE sources;'
+before_script:
+  - yarn build
