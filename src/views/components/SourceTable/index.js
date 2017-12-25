@@ -4,6 +4,7 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuProvider } from 'react-contexify';
 import 'react-contexify/dist/ReactContexify.min.css';
+import Modal from 'react-modal';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
@@ -47,7 +48,7 @@ class SourceTable extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = { value: '', modalIsOpen: false };
   }
 
   handleChange = event => {
@@ -58,6 +59,14 @@ class SourceTable extends React.Component {
     );
   };
 
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
+  };
+
   render() {
     return (
       <div className="source-table">
@@ -66,7 +75,9 @@ class SourceTable extends React.Component {
           <div>Context Menu</div>
         </ContextMenuProvider>
         <div className="source-table__input">
-          <div className="source-table__input__add">Add a Source</div>
+          <div className="source-table__input__add" onClick={this.openModal}>
+            Add a Source
+          </div>
           <input
             type="text"
             name="filter"
@@ -83,6 +94,9 @@ class SourceTable extends React.Component {
           className="-striped -highlight"
         />
         <SourceTableContextMenu />
+        <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal}>
+          Hello
+        </Modal>
       </div>
     );
   }
