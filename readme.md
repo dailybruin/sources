@@ -1,6 +1,7 @@
 # Sources
 
 ![](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)
+[![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
 ![](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)
 ![](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
