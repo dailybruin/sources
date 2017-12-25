@@ -33,6 +33,7 @@ public/stylesheets/*.css
 /public/stylesheets/style.css.map
 src/views/static/*
 /.cache
+dist/
 
 
 # Ignore sketch files
