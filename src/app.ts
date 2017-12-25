@@ -1,11 +1,12 @@
 import * as express from 'express';
+import { Request, Response, NextFunction } from 'express';
 // const favicon = require('serve-favicon');
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
-import 'reflect-metadata';
+
 import './models';
-import { Request, Response, NextFunction } from 'express';
+import router from './routes';
 
 const app = express();
 
@@ -14,10 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-import router from './routes';
 app.use('/', router);
-
-app.use(express.static('src/views/static'));
+app.use(express.static('dist/views/static'));
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
