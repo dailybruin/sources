@@ -50,7 +50,7 @@
     },
     "moduleFileExtensions": ["js", "ts"],
     "transform": {
-      "^.+\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testMatch": ["**/src/**/*.test.(js|ts)"],
     "testEnvironment": "node"
