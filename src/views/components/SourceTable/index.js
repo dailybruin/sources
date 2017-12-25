@@ -8,6 +8,7 @@ import Modal from 'react-modal';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
+import SourceTableModal from './SourceTableModal';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -52,11 +53,9 @@ class SourceTable extends React.Component {
   }
 
   handleChange = event => {
-    this.setState({ value: event.target.value });
-    return this.refs.reactTable.filterColumn(
-      this.columns[0],
-      event.target.value
-    );
+    const newValue = event.target.value;
+    this.setState({ value: newValue });
+    return this.refs.reactTable.filterColumn(this.columns[0], newValue);
   };
 
   openModal = () => {
@@ -94,13 +93,11 @@ class SourceTable extends React.Component {
           className="-striped -highlight"
         />
         <SourceTableContextMenu />
-        <Modal
+        <SourceTableModal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="Add a Source"
-        >
-          <h1>Add a Source</h1>
-        </Modal>
+        />
       </div>
     );
   }
