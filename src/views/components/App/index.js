@@ -3,7 +3,6 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import Header from '../Header';
-import AddSourceButton from '../AddSourceButton';
 import SourceTable from '../SourceTable';
 import './style.scss';
 
