@@ -34,6 +34,7 @@ public/stylesheets/*.css
 src/views/static/*
 /.cache
 dist/
+coverage/
 
 
 # Ignore sketch files

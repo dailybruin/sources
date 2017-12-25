@@ -4,22 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build-client":
-      "parcel build src/views/index.html --out-dir src/views/static --public-url ./",
-    "build-client:watch":
-      "parcel watch src/views/index.html --out-dir src/views/static --public-url ./",
+    "build-client": "parcel build src/views/index.html --out-dir src/views/static --public-url ./",
+    "build-client:watch": "parcel watch src/views/index.html --out-dir src/views/static --public-url ./",
     "build-server": "tsc",
     "build-server:watch": "tsc -w",
     "copy-static-files:": "cpx \"src/views/login.{html,css}\" src/views/static",
-    "copy-static-files:watch":
-      "cpx \"src/views/login.{html,css}\" src/views/static --watch",
-    "dev":
-      "concurrently \"yarn build:watch\" \"yarn start:watch\" \"yarn frontend:watch\" \"yarn copy-static-files:watch\"",
+    "copy-static-files:watch": "cpx \"src/views/login.{html,css}\" src/views/static --watch",
+    "dev": "concurrently \"yarn build:watch\" \"yarn start:watch\" \"yarn frontend:watch\" \"yarn copy-static-files:watch\"",
     "build": "yarn build-client && yarn build-server && yarn copy-static-files",
     "test": "jest --forceExit"
   },
   "nodemonConfig": {
-    "ignore": ["src/*"],
+    "ignore": [
+      "src/*"
+    ],
     "delay": "2500"
   },
   "eslintConfig": {
@@ -48,11 +46,16 @@
         "tsConfigFile": "tsconfig.json"
       }
     },
-    "moduleFileExtensions": ["js", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": ["**/src/**/*.test.(js|ts)"],
+    "testMatch": [
+      "**/src/**/*.test.(js|ts)"
+    ],
     "testEnvironment": "node"
   },
   "dependencies": {
@@ -99,6 +102,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-app": "^3.1.0",
     "babel-preset-stage-2": "^6.24.1",
+    "codecov": "^3.0.0",
     "css-loader": "^0.28.7",
     "eslint": "^4.11.0",
     "eslint-config-react-app": "^2.0.1",
