@@ -5,13 +5,13 @@
   "scripts": {
     "start": "node ./bin/www",
     "build": "tsc",
-    "dev": "concurrently \"tsc -w\" \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir dist/views/static --public-url ./\" \"cpx \"src/views/login.{html,css}\" dist/views/static --watch\"",
-    "createData": "node ./scripts/createData.js"
+    "dev":
+      "concurrently \"tsc -w\" \"nodemon ./bin/www\" \"parcel watch src/views/index.html --out-dir dist/views/static --public-url ./\" \"cpx \"src/views/login.{html,css}\" dist/views/static --watch\"",
+    "createData": "node ./scripts/createData.js",
+    "test": "jest --forceExit"
   },
   "nodemonConfig": {
-    "ignore": [
-      "src/*"
-    ],
+    "ignore": ["src/*"],
     "delay": "2500"
   },
   "eslintConfig": {
@@ -33,6 +33,19 @@
         }
       }
     ]
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "moduleFileExtensions": ["js", "ts"],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": ["**/src/**/*.test.(js|ts)"],
+    "testEnvironment": "node"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.4",
@@ -70,6 +83,7 @@
     "@types/jest": "^21.1.9",
     "@types/morgan": "^1.7.35",
     "@types/sequelize": "^4.0.80",
+    "@types/supertest": "^2.0.4",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
