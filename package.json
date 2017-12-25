@@ -12,7 +12,8 @@
     "copy-static-files:watch": "cpx \"src/views/login.{html,css}\" src/views/static --watch",
     "dev": "concurrently \"yarn build:watch\" \"yarn start:watch\" \"yarn frontend:watch\" \"yarn copy-static-files:watch\"",
     "build": "yarn build-client && yarn build-server && yarn copy-static-files",
-    "test": "jest --forceExit"
+    "test": "jest --forceExit",
+    "posttest": "codecov -f coverage/*.json"
   },
   "nodemonConfig": {
     "ignore": [
@@ -56,7 +57,11 @@
     "testMatch": [
       "**/src/**/*.test.(js|ts)"
     ],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json"
+    ]
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.4",
@@ -120,6 +125,7 @@
     "stylelint": "^8.2.0",
     "stylelint-config-uclaradio": "^1.0.2",
     "supertest": "^3.0.0",
+    "ts-jest": "^22.0.0",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
     "tslint-eslint-rules": "^4.1.1",
