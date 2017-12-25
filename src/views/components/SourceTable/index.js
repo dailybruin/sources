@@ -58,13 +58,16 @@ class SourceTable extends React.Component {
   render() {
     return (
       <div className="source-table">
-        <input
-          type="text"
-          name="filter"
-          placeholder="Search"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
+        <div className="source-table__input">
+          <div className="source-table__input__add">Add a Source</div>
+          <input
+            type="text"
+            name="filter"
+            placeholder="Search"
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+        </div>
         <ReactTable
           ref="reactTable"
           data={this.props.sources}
