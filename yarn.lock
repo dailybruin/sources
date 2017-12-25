@@ -6273,7 +6273,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -6407,6 +6407,13 @@ react-apollo@^2.0.4:
     lodash.flowright "^3.5.0"
     lodash.pick "^4.4.0"
     prop-types "^15.5.8"
+
+react-contexify@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/react-contexify/-/react-contexify-2.1.4.tgz#747a77e28dd378707eff18dac5a1a35197a362c1"
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.5.9"
 
 react-dom@^16.2.0:
   version "16.2.0"

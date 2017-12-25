@@ -26,6 +26,7 @@ const App = props => (
   <div className="container">
     <Header />
     <SourceTable sources={props.allSourcesQuery.allSources} />
+    <div>Test hi</div>
   </div>
 );
 

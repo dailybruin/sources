@@ -2,8 +2,11 @@ import React from 'react';
 import matchSorter from 'match-sorter';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import { ContextMenuProvider } from 'react-contexify';
+import 'react-contexify/dist/ReactContexify.min.css';
 
 import './style.scss';
+import SourceTableContextMenu from './SourceTableContextMenu';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -58,6 +61,10 @@ class SourceTable extends React.Component {
   render() {
     return (
       <div className="source-table">
+        <div>Test</div>
+        <ContextMenuProvider id="menu_id" event="onClick">
+          <div>Context Menu</div>
+        </ContextMenuProvider>
         <div className="source-table__input">
           <div className="source-table__input__add">Add a Source</div>
           <input
@@ -75,6 +82,7 @@ class SourceTable extends React.Component {
           defaultPageSize={50}
           className="-striped -highlight"
         />
+        <SourceTableContextMenu />
       </div>
     );
   }
