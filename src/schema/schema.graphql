@@ -1,0 +1,22 @@
+type Source {
+  id: ID!
+  name: String!
+  organization: String
+  phone: String
+  email: String
+  notes: String
+}
+
+type Query {
+  allSources: [Source!]!
+}
+
+type Mutation {
+  addSource(
+    name: String!
+    organization: String
+    phone: String
+    email: String
+    notes: String
+  ): Source
+}

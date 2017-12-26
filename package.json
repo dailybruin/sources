@@ -15,6 +15,8 @@
       "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static",
     "copy-static-files:watch":
       "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static --watch",
+    "copy-graphql-schema:watch":
+      "cpx src/schema/schema.graphql dist/schema --watch",
     "dev":
       "concurrently \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn start:watch\" \"yarn copy-static-files:watch\"",
     "build": "yarn build-client && yarn build-server && yarn copy-static-files",
