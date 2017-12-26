@@ -16,6 +16,8 @@ function filterMethod(filter, rows) {
 }
 
 class SourceTable extends React.Component {
+  state = { value: '', modalIsOpen: false };
+
   columns = [
     {
       Header: 'Name',
@@ -45,11 +47,6 @@ class SourceTable extends React.Component {
       minWidth: 200,
     },
   ];
-
-  constructor(props) {
-    super(props);
-    this.state = { value: '', modalIsOpen: false };
-  }
 
   handleChange = event => {
     const newValue = event.target.value;
