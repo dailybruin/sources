@@ -3,8 +3,8 @@ node_js:
   - "node"
   - "lts/*"
 services:
-  - mysql
+  - postgresql
 before_install:
-  - mysql -e 'CREATE DATABASE sources;'
+  - psql -c 'create database sources;' -U postgres
 before_script:
   - yarn build
