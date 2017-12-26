@@ -5,21 +5,26 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:watch": "nodemon ./bin/www",
-    "build-client": "parcel build src/views/index.html --out-dir dist/views/static --public-url ./",
-    "build-client:watch": "parcel watch src/views/index.html --out-dir dist/views/static --public-url ./",
-    "build-server": "tsc -p tsconfig.server.json",
-    "build-server:watch": "tsc -w -p tsconfig.server.json",
-    "copy-static-files": "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static",
-    "copy-static-files:watch": "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static --watch",
-    "dev": "concurrently \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn start:watch\" \"yarn copy-static-files:watch\"",
+    "build-client":
+      "parcel build src/views/index.html --out-dir dist/views/static --public-url ./",
+    "build-client:watch":
+      "parcel watch src/views/index.html --out-dir dist/views/static --public-url ./",
+   "build-server": "tsc -p tsconfig.server.json",
+  "build-server:watch": "tsc -w -p tsconfig.server.json",
+    "copy-static-files":
+      "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static",
+    "copy-static-files:watch":
+      "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static --watch",
+    "copy-graphql-schema:watch":
+      "cpx src/routes/schema.graphql dist/routes --watch",
+    "dev":
+      "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn start:watch\" \"yarn copy-static-files:watch\"",
     "build": "yarn build-client && yarn build-server && yarn copy-static-files",
-    "test": "jest --forceExit && codecov"
+    "test": "jest --forceExit && codecov",
+    "create-data": "ts-node ./scripts/create-data.ts"
   },
   "nodemonConfig": {
-    "ignore": [
-      "src/*",
-      "dist/views/"
-    ],
+    "ignore": ["src/*", "dist/views/"],
     "delay": "2500"
   },
   "eslintConfig": {
@@ -48,21 +53,14 @@
         "tsConfigFile": "tsconfig.json"
       }
     },
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ],
+    "moduleFileExtensions": ["js", "ts"],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": [
-      "**/src/**/*.test.(js|ts)"
-    ],
+    "testMatch": ["**/src/**/*.test.(js|ts)"],
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coverageReporters": [
-      "json"
-    ]
+    "coverageReporters": ["json"]
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.4",
@@ -84,6 +82,7 @@
     "match-sorter": "^2.2.0",
     "morgan": "~1.9.0",
     "mysql2": "^1.5.0",
+    "pg": "^7.4.0",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
@@ -99,6 +98,7 @@
     "@types/cookie-parser": "^1.4.1",
     "@types/dotenv": "^4.0.2",
     "@types/express": "^4.11.0",
+    "@types/faker": "^4.1.2",
     "@types/graphql": "^0.11.7",
     "@types/jest": "^21.1.9",
     "@types/morgan": "^1.7.35",
@@ -133,6 +133,7 @@
     "stylelint-config-uclaradio": "^1.0.2",
     "supertest": "^3.0.0",
     "ts-jest": "^22.0.0",
+    "ts-node": "^4.1.0",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.6.0",
     "tslint-eslint-rules": "^4.1.1",

@@ -1,17 +1,5 @@
-const faker = require('faker');
-const Sequelize = require('sequelize');
-const { Source } = require('../src/models');
-
-const sequelize = new Sequelize(
-  'sources',
-  process.env.DATABASE_USER,
-  process.env.DATABASE_PASSWORD,
-  {
-    host: process.env.DATABASE_HOST,
-    dialect: 'mysql',
-    operatorsAliases: false,
-  }
-);
+import * as faker from 'faker';
+import { sequelize, Source } from '../src/models';
 
 function createSources(n) {
   const promises = [];
@@ -19,7 +7,7 @@ function createSources(n) {
     promises.push(
       Source.create({
         name: faker.name.findName(),
-        org: faker.company.catchPhrase(),
+        organization: faker.company.catchPhrase(),
         phone: faker.phone.phoneNumberFormat(),
         email: faker.internet.email(),
         notes: faker.lorem.sentence(),

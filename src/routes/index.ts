@@ -8,16 +8,16 @@ import {
   authCallback,
   ensureAuthenticated,
 } from '../controllers/authController';
-import { schema } from '../schema';
+import schema from './schema';
 
 dotenv.config();
 const router = Router();
 
-/* Authentication */
+/** Authentication */
 router.get('/auth/google', redirectToAuthURL);
 router.get('/auth/google/callback', authCallback);
 
-/* GraphQL */
+/** GraphQL */
 router.use(
   '/graphql',
   ensureAuthenticated,
@@ -34,12 +34,13 @@ router.use(
 );
 // }
 
-// GET login page
+/** Main Pages */
+// Login Page
 router.get('/login', (req: Request, res: Response) => {
   res.sendFile(`login.html`, { root: './dist/views/static/' });
 });
 
-// GET sources if logged in; if not, send to login.
+// Sources Page; ensure authentication; if not, send to login.
 router.get('/', ensureAuthenticated, (req: Request, res: Response) => {
   res.sendFile('index.html', { root: './dist/views/static/' });
 });

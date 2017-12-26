@@ -13,7 +13,7 @@ const ALL_SOURCES_QUERY = gql`
   query AllSourcesQuery {
     allSources {
       name
-      org
+      organization
       phone
       email
       notes

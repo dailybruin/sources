@@ -1,38 +1,27 @@
 import * as express from 'express';
-import { Request, Response, NextFunction } from 'express';
-// const favicon = require('serve-favicon');
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 
-import './models';
 import router from './routes';
+import { notFoundHandler, errorHandler } from './errorHandling';
 
+/** Create Express server */
 const app = express();
 
+/** Logging */
 app.use(logger('dev'));
+
+/** Parse incoming request bodies */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
+/** Routing */
 app.use('/', router);
 app.use(express.static('dist/views/static'));
 
-// catch 404 and forward to error handler
-app.use((req: Request, res: Response, next: NextFunction) => {
-  const err: any = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use((err: any, req: Request, res: Response) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-});
+/** Error Handling */
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 module.exports = app;
