@@ -16,6 +16,9 @@ Check out the [design specification](designs/spec.md) for more info!
 
 ## Technologies Used
 
+* React
+* Sequelize
+
 ## Contributing to Sources
 
 ### Prerequisites

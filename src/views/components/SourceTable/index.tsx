@@ -1,5 +1,5 @@
-import React from 'react';
-import matchSorter from 'match-sorter';
+import * as React from 'react';
+import * as matchSorter from 'match-sorter';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuProvider } from 'react-contexify';
@@ -15,10 +15,10 @@ function filterMethod(filter, rows) {
   });
 }
 
-class SourceTable extends React.Component {
-  state = { value: '', modalIsOpen: false };
+class SourceTable extends React.Component<any, any> {
+  public state = { value: '', modalIsOpen: false };
 
-  columns = [
+  public columns = [
     {
       Header: 'Name',
       id: 'name',
@@ -48,21 +48,21 @@ class SourceTable extends React.Component {
     },
   ];
 
-  handleChange = event => {
+  public handleChange = event => {
     const newValue = event.target.value;
     this.setState({ value: newValue });
     return this.refs.reactTable.filterColumn(this.columns[0], newValue);
   };
 
-  openModal = () => {
+  public openModal = () => {
     this.setState({ modalIsOpen: true });
   };
 
-  closeModal = () => {
+  public closeModal = () => {
     this.setState({ modalIsOpen: false });
   };
 
-  render() {
+  public render() {
     return (
       <div className="source-table">
         <div>Test</div>
