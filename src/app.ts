@@ -1,4 +1,5 @@
 import * as express from 'express';
+import { Express } from 'express-serve-static-core';
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
@@ -7,7 +8,7 @@ import router from './routes';
 import { notFoundHandler, errorHandler } from './errorHandling';
 
 /** Create Express server */
-const app = express();
+const app: Express = express();
 
 /** Logging */
 app.use(logger('dev'));

@@ -3,9 +3,12 @@
     "tslint:latest",
     "tslint-react",
     "tslint-eslint-rules",
+    "tslint-microsoft-contrib",
     "tslint-config-prettier"
   ],
   "rules": {
-    "ordered-imports": false
+    "ordered-imports": false,
+    "missing-jsdoc": false,
+    "no-single-line-block-comment": false
   }
 }
