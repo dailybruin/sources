@@ -1,16 +1,16 @@
 # Sources
 
-![](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)
+[![Travis CI](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)](https://travis-ci.org/daily-bruin/sources)
 [![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
-![](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)
-![](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)
+[![](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
+[![](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?style=flat)](https://github.com/facebook/jest)
 [![license](https://img.shields.io/github/license/daily-bruin/sources.svg)]()
 
 A small little website the Daily Bruin uses to keep track of all of our sources.
-It's powered by an Express server with a MySQL backend and a GraphQL endpoint,
-and uses React on the frontend.
+It's powered by an Express server with a PostgreSQL backend and a GraphQL
+endpoint, and uses React on the frontend.
 
 Check out the [design specification](designs/spec.md) for more info!
 
@@ -31,8 +31,16 @@ have installed to run it locally.
    source text editor built by Microsoft and has amazing tooling support for
    TypeScript projects (as well as a lot of other awesome features!). You can
    use any text editor you want, but VS Code will give you a nice experience :).
-3. PostgreSQL – Postgres is the database we use.
-4. A `.env` file –
+3. PostgreSQL – Postgres is the database we use. Installing it locally can be a
+   little daunting, so check out our guide below if you're unfamiliar with it!
+4. A `.env` file – It's [good practice](https://12factor.net/config) to store
+   things like API keys and database information with environment variables so
+   that they can easily be changed for different environments without code
+   changes. This is cool, but when you have a lot of configuration variables it
+   can become hard to manage, so we use a package called
+   [dotenv](https://www.npmjs.com/package/dotenv) that reads configuration data
+   from a file called `.env` and puts them into `process.env`. Check out our
+   guide below for an example `.env`.
 
 #### Installing PostgreSQL
 
@@ -56,13 +64,16 @@ Awesome! Now you'll want to create a database. We call ours `sources`.
 createdb sources
 ```
 
+Note that by default, the Postgres user is your computer's username and there is
+no password.
+
 ##### Windows
 
 We're working on this! If you know how to install Postgres on Windows, please
 make a pull request!
 
-Soures uses dotenv. If you're in Daily Bruin, you'll want to
-[download our .env file](https://drive.google.com/a/media.ucla.edu/file/d/1la9NABZ5NalqPjhJQsofZM3Y9p8iMGC5/view?usp=sharing).
+#### Example .env File
+
 If you're making your own, the values you'll want are:
 
 ```
