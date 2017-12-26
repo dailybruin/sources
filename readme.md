@@ -14,7 +14,46 @@ and uses React on the frontend.
 
 Check out the [design specification](designs/spec.md) for more info!
 
-## Development
+## Technologies Used
+
+## Contributing to Sources
+
+### Prerequisites
+
+There are a couple of programs and files Sources depends on that you'll need to
+have installed to run it locally.
+
+1. [Yarn](https://yarnpkg.com/lang/en/docs/install/) – Yarn is a JavaScript
+   package manager, and an alternative to npm. We prefer it to npm because it
+   has a couple of nice features such as caching, lockfiles, and faster
+   downloads.
+2. [Visual Studio Code](https://code.visualstudio.com) – VS Code is an open
+   source text editor built by Microsoft and has amazing tooling support for
+   TypeScript projects (as well as a lot of other awesome features!). You can
+   use any text editor you want, but VS Code will give you a nice experience :).
+3. PostgreSQL – Postgres is the database we use.
+4. A `.env` file –
+
+#### Installing PostgreSQL
+
+##### Mac
+
+You want to install Postgres through [Homebrew](https://brew.sh).
+
+```shell
+brew install postgres
+```
+
+Then start Postgres with the command:
+
+```shell
+brew services start postgresql
+```
+
+##### Windows
+
+We're working on this! If you know how to install Postgres on Windows, please
+make a pull request!
 
 Soures uses dotenv. If you're in Daily Bruin, you'll want to
 [download our .env file](https://drive.google.com/a/media.ucla.edu/file/d/1la9NABZ5NalqPjhJQsofZM3Y9p8iMGC5/view?usp=sharing).
@@ -29,8 +68,6 @@ G_CLIENT_SECRET=
 ```
 
 ### Prerequisites
-
-* Yarn
 
 ### Structure
 
