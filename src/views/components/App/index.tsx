@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import * as gql from 'graphql-tag';
 
 import Header from '../Header';
 import SourceTable from '../SourceTable';
