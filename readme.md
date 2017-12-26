@@ -50,6 +50,12 @@ Then start Postgres with the command:
 brew services start postgresql
 ```
 
+Awesome! Now you'll want to create a database. We call ours `sources`.
+
+```shell
+createdb sources
+```
+
 ##### Windows
 
 We're working on this! If you know how to install Postgres on Windows, please
