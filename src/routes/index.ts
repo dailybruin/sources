@@ -8,7 +8,7 @@ import {
   authCallback,
   ensureAuthenticated,
 } from '../controllers/authController';
-import { schema } from '../schema';
+import schema from './schema';
 
 dotenv.config();
 const router = Router();

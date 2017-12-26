@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express-serve-static-core';
 // const favicon = require('serve-favicon');
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
@@ -18,7 +18,11 @@ app.use(cookieParser());
 app.use('/', router);
 app.use(express.static('dist/views/static'));
 
-// catch 404 and forward to error handler
+/**
+ * Error Handling Middleware
+ *
+ *
+ */
 app.use((req: Request, res: Response, next: NextFunction) => {
   const err: any = new Error('Not Found');
   err.status = 404;

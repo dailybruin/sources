@@ -16,9 +16,9 @@
     "copy-static-files:watch":
       "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static --watch",
     "copy-graphql-schema:watch":
-      "cpx src/schema/schema.graphql dist/schema --watch",
+      "cpx src/routes/schema.graphql dist/routes --watch",
     "dev":
-      "concurrently \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn start:watch\" \"yarn copy-static-files:watch\"",
+      "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn start:watch\" \"yarn copy-static-files:watch\"",
     "build": "yarn build-client && yarn build-server && yarn copy-static-files",
     "test": "jest --forceExit && codecov",
     "create-data": "ts-node ./scripts/create-data.ts"
