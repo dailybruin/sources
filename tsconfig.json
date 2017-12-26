@@ -1,32 +1,32 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
+    "allowSyntheticDefaultImports": false,
+    "target": "es5",
     "module": "commonjs",
-    "target": "es6",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "jsx": "react",
     "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "lib": [
+      "es2015",
+      "es2016",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "*": ["src/types/*"]
+      "@/*": [
+        "src/views/*"
+      ]
     },
-    "lib": [
-      "es5",
-      "es6",
-      "dom",
-      "es2015.core",
-      "es2015.collection",
-      "es2015.generator",
-      "es2015.iterable",
-      "es2015.promise",
-      "es2015.proxy",
-      "es2015.reflect",
-      "es2015.symbol",
-      "es2015.symbol.wellknown",
-      "esnext.asynciterable"
+    "types": [
+      "node",
+      "webpack-env"
     ]
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.test.ts"]
+  }
 }

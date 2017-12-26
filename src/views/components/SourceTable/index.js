@@ -4,7 +4,6 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuProvider } from 'react-contexify';
 import 'react-contexify/dist/ReactContexify.min.css';
-import Modal from 'react-modal';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
@@ -17,6 +16,8 @@ function filterMethod(filter, rows) {
 }
 
 class SourceTable extends React.Component {
+  state = { value: '', modalIsOpen: false };
+
   columns = [
     {
       Header: 'Name',
@@ -46,11 +47,6 @@ class SourceTable extends React.Component {
       minWidth: 200,
     },
   ];
-
-  constructor(props) {
-    super(props);
-    this.state = { value: '', modalIsOpen: false };
-  }
 
   handleChange = event => {
     const newValue = event.target.value;
