@@ -1,7 +1,7 @@
-import React from 'react';
-import Modal from 'react-modal';
+import * as React from 'react';
+import * as Modal from 'react-modal';
 import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
+import * as gql from 'graphql-tag';
 
 const ADD_SOURCE_MUTATION = gql`
   mutation AddSourceMutation(
@@ -23,7 +23,7 @@ const ADD_SOURCE_MUTATION = gql`
   }
 `;
 class SourceTableModal extends React.Component {
-  state = {
+  public state = {
     name: '',
     organization: '',
     phone: '',
@@ -31,7 +31,7 @@ class SourceTableModal extends React.Component {
     notes: '',
   };
 
-  createSource = async event => {
+  public createSource = async event => {
     event.preventDefault();
     console.log('hi');
     const { name, organization, phone, email, notes } = this.state;
@@ -47,9 +47,7 @@ class SourceTableModal extends React.Component {
     return false;
   };
 
-  _createLink = async () => {};
-
-  render() {
+  public render() {
     return (
       <Modal {...this.props}>
         <h1>Add a Source</h1>
