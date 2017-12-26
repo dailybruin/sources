@@ -4,7 +4,6 @@ import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuProvider } from 'react-contexify';
 import 'react-contexify/dist/ReactContexify.min.css';
-import Modal from 'react-modal';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
