@@ -1,6 +1,27 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
+const ADD_SOURCE_MUTATION = gql`
+  mutation AddSourceMutation(
+    $name: String!
+    $org: String
+    $phone: String
+    $email: String
+    $notes: String
+  ) {
+    addSource(
+      description: $description
+      org: $org
+      phone: $phone
+      email: $email
+      notes: $notes
+    ) {
+      id
+    }
+  }
+`;
 class SourceTableModal extends React.Component {
   state = {
     name: '',
@@ -13,8 +34,20 @@ class SourceTableModal extends React.Component {
   createSource = async event => {
     event.preventDefault();
     console.log('hi');
+    const { name, organization, phone, email, notes } = this.state;
+    await this.props.createLinkMutation({
+      variables: {
+        name,
+        organization,
+        phone,
+        email,
+        notes,
+      },
+    });
     return false;
   };
+
+  _createLink = async () => {};
 
   render() {
     return (
@@ -79,4 +112,6 @@ class SourceTableModal extends React.Component {
   }
 }
 
-export default SourceTableModal;
+export default graphql(ADD_SOURCE_MUTATION, { name: 'addSourceMutation' })(
+  SourceTableModal
+);
