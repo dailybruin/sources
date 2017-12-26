@@ -27,7 +27,7 @@ class SourceTable extends React.Component {
     },
     {
       Header: 'Organization',
-      accessor: 'org',
+      accessor: 'organization',
       minWidth: 200,
     },
     {

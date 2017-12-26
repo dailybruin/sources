@@ -1,22 +1,12 @@
 import { getManager } from 'typeorm';
-import { Source } from '../models/Source';
-
+import { readAllSources, createSource } from '../controllers/sourceController';
 export const resolvers = {
   Query: {
-    allSources: async () => {
-      const sourceRepository = getManager().getRepository(Source);
-      const sources = await sourceRepository.find();
-      return sources;
-    },
+    allSources: readAllSources,
   },
 
   Mutation: {
-    addSource: async (_, data) => {
-      const sourceRepository = getManager().getRepository(Source);
-      const newSource = await sourceRepository.create(data);
-      await sourceRepository.save(newSource);
-      return newSource;
-    },
+    addSource: createSource,
   },
 };
 

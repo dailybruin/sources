@@ -6,7 +6,7 @@ const typeDefs = `
   type Source {
     id: ID!
     name: String!,
-    org: String,
+    organization: String,
     phone: String,
     email: String,
     notes: String,
@@ -19,7 +19,7 @@ const typeDefs = `
   type Mutation {
     addSource(
       name: String!,
-      org: String,
+      organization: String,
       phone: String,
       email: String,
       notes: String): Source
