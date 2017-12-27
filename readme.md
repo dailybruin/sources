@@ -18,6 +18,27 @@ Check out the [design specification](designs/spec.md) for more info!
 
 * React
 * Sequelize
+* Apollo
+* Parcel
+* Google Oauth 2
+* Express
+* react-table
+* react-contextmenu
+
+## Structure
+
+Sources follows an [MVC](https://en.wikipedia.org/wiki/Model–view–controller)
+pattern.
+
+The models are defined through Sequelize and stored in the `models` folder,
+along with some general database configuration. Currently there's only one
+model, Source.
+
+Controllers are stored in the `controllers` folder. There are 2 controllers,
+`authController` and `sourceController` that take care of Google Oauth
+authentication and interfacing with the Source model respectively.
+
+Views are stored in the `views` folder.
 
 ## Contributing to Sources
 

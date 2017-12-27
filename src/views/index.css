@@ -12,13 +12,3 @@ body {
   text-align: center;
   margin: 2rem auto;
 }
-
-img {
-  transition: 3s;
-  height: 100px;
-  width: 100px;
-}
-
-.App:hover > img {
-  transform: rotate(1080deg);
-}
