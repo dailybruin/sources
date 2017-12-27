@@ -14,15 +14,14 @@ function filterMethod(filter, rows) {
   });
 }
 
-console.log();
 class SourceTable extends React.Component<any, any> {
   public state = {
     filterValue: '',
     modalIsOpen: false,
-    currentlySelectedRow: null,
+    currentlySelectedRowID: null,
   };
 
-  public contextTrigger: any = null;
+  public contextTrigger: any;
   public columns = [
     {
       Header: 'Name',
@@ -68,11 +67,15 @@ class SourceTable extends React.Component<any, any> {
   };
 
   public edit = () => {
-    console.log(`Edit row ${this.state.currentlySelectedRow}!`);
+    const sourceID = this.state.currentlySelectedRowID;
+
+    console.log(`Edit row ${sourceID}!`);
   };
 
   public remove = () => {
-    console.log(`Delete row ${this.state.currentlySelectedRow}!`);
+    const sourceID = this.state.currentlySelectedRowID;
+
+    console.log(`Delete row ${sourceID}!`);
   };
 
   public render() {
@@ -107,17 +110,11 @@ class SourceTable extends React.Component<any, any> {
           getTrProps={(state, rowInfo, _, instance) => {
             return {
               onContextMenu: (e, handleOriginal) => {
-                this.setState({ currentlySelectedRow: rowInfo.original.id });
+                this.setState({ currentlySelectedRowID: rowInfo.original.id });
 
-                if (this.contextTrigger !== null) {
+                if (this.contextTrigger) {
                   this.contextTrigger.handleContextClick(e);
                 }
-
-                // IMPORTANT! React-Table uses onClick internally to trigger
-                // events like expanding SubComponents and pivots.
-                // By default a custom 'onClick' handler will override this functionality.
-                // If you want to fire the original onClick handler, call the
-                // 'handleOriginal' function.
                 if (handleOriginal) {
                   handleOriginal();
                 }
