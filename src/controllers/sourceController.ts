@@ -41,7 +41,7 @@ export async function updateSource(
 
 export async function deleteSource(_, { id }): Promise<boolean> {
   const numberOfDeletedSources = await Source.destroy({
-    where: { _id: id },
+    where: { id },
   });
 
   if (numberOfDeletedSources === 1) {
