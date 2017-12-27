@@ -1,29 +1,14 @@
 import * as React from 'react';
-import { graphql } from 'react-apollo';
-import * as gql from 'graphql-tag';
 
 import Header from '../Header';
 import SourceTable from '../SourceTable';
 import './style.scss';
 
-const SOURCES_QUERY = gql`
-  query AllSourcesQuery {
-    sources {
-      id
-      name
-      organization
-      phone
-      email
-      notes
-    }
-  }
-`;
-
-const App = props => (
+const App = () => (
   <div className="container">
     <Header />
-    <SourceTable sources={props.sourcesQuery.sources} />
+    <SourceTable />
   </div>
 );
 
-export default graphql(SOURCES_QUERY, { name: 'sourcesQuery' })(App);
+export default App;

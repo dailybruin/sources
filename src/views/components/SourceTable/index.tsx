@@ -3,10 +3,12 @@ import * as matchSorter from 'match-sorter';
 import { default as ReactTable, ReactTableDefaults } from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuTrigger } from 'react-contextmenu';
+import { compose, graphql } from 'react-apollo';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
 import SourceTableModal from './SourceTableModal';
+import { sourcesQuery } from './graphql';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -79,6 +81,8 @@ class SourceTable extends React.Component<any, any> {
   };
 
   public render() {
+    console.log(this.props);
+
     return (
       <div className="source-table">
         <div className="source-table__input">
@@ -95,7 +99,7 @@ class SourceTable extends React.Component<any, any> {
         </div>
         <ReactTable
           ref="reactTable"
-          data={this.props.sources}
+          data={this.props.sourcesQuery.sources}
           columns={this.columns}
           defaultPageSize={50}
           className="-striped -highlight"
@@ -133,4 +137,6 @@ class SourceTable extends React.Component<any, any> {
   }
 }
 
-export default SourceTable;
+export default compose(graphql(sourcesQuery, { name: 'sourcesQuery' }))(
+  SourceTable
+);
