@@ -22,7 +22,7 @@ const ADD_SOURCE_MUTATION = gql`
     }
   }
 `;
-class SourceTableModal extends React.Component {
+class SourceTableModal extends React.Component<any, any> {
   public state = {
     name: '',
     organization: '',
@@ -43,6 +43,7 @@ class SourceTableModal extends React.Component {
         notes,
       },
     });
+    this.props.onRequestClose();
     return false;
   };
 
