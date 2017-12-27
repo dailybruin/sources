@@ -39,6 +39,7 @@
     "extends": "stylelint-config-uclaradio"
   },
   "prettier": {
+    "editorconfig": true,
     "overrides": [
       {
         "files": "*.{js,jsx,ts,tsx}",
@@ -123,7 +124,7 @@
     "node-sass": "^4.7.2",
     "nodemon": "^1.12.1",
     "parcel-bundler": "~1.2.1",
-    "prettier": "^1.8.2",
+    "prettier": "^1.9.2",
     "style-loader": "^0.19.1",
     "stylelint": "^8.4.0",
     "stylelint-config-uclaradio": "^1.0.7",
