@@ -90,7 +90,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
-    "react-contexify": "^2.1.4",
+    "react-contextmenu": "^2.9.2",
     "react-dom": "^16.2.0",
     "react-modal": "^3.1.10",
     "react-table": "^6.7.5",

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as matchSorter from 'match-sorter';
-import ReactTable from 'react-table';
+import { default as ReactTable, ReactTableDefaults } from 'react-table';
 import 'react-table/react-table.css';
-import { ContextMenuProvider } from 'react-contexify';
-import 'react-contexify/dist/ReactContexify.min.css';
+import { ContextMenuTrigger } from 'react-contextmenu';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
@@ -15,6 +14,7 @@ function filterMethod(filter, rows) {
   });
 }
 
+console.log();
 class SourceTable extends React.Component<any, any> {
   public state = { value: '', modalIsOpen: false };
 
@@ -65,10 +65,6 @@ class SourceTable extends React.Component<any, any> {
   public render() {
     return (
       <div className="source-table">
-        <div>Test</div>
-        <ContextMenuProvider id="menu_id" event="onClick">
-          <div>Context Menu</div>
-        </ContextMenuProvider>
         <div className="source-table__input">
           <div className="source-table__input__add" onClick={this.openModal}>
             Add a Source
@@ -87,6 +83,11 @@ class SourceTable extends React.Component<any, any> {
           columns={this.columns}
           defaultPageSize={50}
           className="-striped -highlight"
+          TbodyComponent={props => (
+            <ContextMenuTrigger id="menu_id">
+              <ReactTableDefaults.TbodyComponent {...props} />
+            </ContextMenuTrigger>
+          )}
         />
         <SourceTableContextMenu />
         <SourceTableModal
