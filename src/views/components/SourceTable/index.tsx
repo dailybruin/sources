@@ -16,8 +16,13 @@ function filterMethod(filter, rows) {
 
 console.log();
 class SourceTable extends React.Component<any, any> {
-  public state = { value: '', modalIsOpen: false };
+  public state = {
+    filterValue: '',
+    modalIsOpen: false,
+    currentlySelectedRow: null,
+  };
 
+  public contextTrigger: any = null;
   public columns = [
     {
       Header: 'Name',
@@ -48,10 +53,10 @@ class SourceTable extends React.Component<any, any> {
     },
   ];
 
-  public handleChange = event => {
-    const newValue = event.target.value;
-    this.setState({ value: newValue });
-    return this.refs.reactTable.filterColumn(this.columns[0], newValue);
+  public handleFilterChange = event => {
+    const newFilterValue = event.target.value;
+    this.setState({ filterValue: newFilterValue });
+    return this.refs.reactTable.filterColumn(this.columns[0], newFilterValue);
   };
 
   public openModal = () => {
@@ -60,6 +65,14 @@ class SourceTable extends React.Component<any, any> {
 
   public closeModal = () => {
     this.setState({ modalIsOpen: false });
+  };
+
+  public edit = () => {
+    console.log(`Edit row ${this.state.currentlySelectedRow}!`);
+  };
+
+  public remove = () => {
+    console.log(`Delete row ${this.state.currentlySelectedRow}!`);
   };
 
   public render() {
@@ -73,8 +86,8 @@ class SourceTable extends React.Component<any, any> {
             type="text"
             name="filter"
             placeholder="Search"
-            value={this.state.value}
-            onChange={this.handleChange}
+            value={this.state.filterValue}
+            onChange={this.handleFilterChange}
           />
         </div>
         <ReactTable
@@ -84,12 +97,35 @@ class SourceTable extends React.Component<any, any> {
           defaultPageSize={50}
           className="-striped -highlight"
           TbodyComponent={props => (
-            <ContextMenuTrigger id="menu_id">
+            <ContextMenuTrigger
+              id="menu_id"
+              ref={c => (this.contextTrigger = c)}
+            >
               <ReactTableDefaults.TbodyComponent {...props} />
             </ContextMenuTrigger>
           )}
+          getTrProps={(state, rowInfo, _, instance) => {
+            return {
+              onContextMenu: (e, handleOriginal) => {
+                this.setState({ currentlySelectedRow: rowInfo.original.id });
+
+                if (this.contextTrigger !== null) {
+                  this.contextTrigger.handleContextClick(e);
+                }
+
+                // IMPORTANT! React-Table uses onClick internally to trigger
+                // events like expanding SubComponents and pivots.
+                // By default a custom 'onClick' handler will override this functionality.
+                // If you want to fire the original onClick handler, call the
+                // 'handleOriginal' function.
+                if (handleOriginal) {
+                  handleOriginal();
+                }
+              },
+            };
+          }}
         />
-        <SourceTableContextMenu />
+        <SourceTableContextMenu edit={this.edit} remove={this.remove} />
         <SourceTableModal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

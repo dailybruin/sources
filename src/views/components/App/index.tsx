@@ -9,6 +9,7 @@ import './style.scss';
 const SOURCES_QUERY = gql`
   query AllSourcesQuery {
     sources {
+      id
       name
       organization
       phone

@@ -33,7 +33,6 @@ class SourceTableModal extends React.Component {
 
   public createSource = async event => {
     event.preventDefault();
-    console.log('hi');
     const { name, organization, phone, email, notes } = this.state;
     await this.props.addSourceMutation({
       variables: {
