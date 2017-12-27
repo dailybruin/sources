@@ -2,7 +2,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { makeExecutableSchema } from 'graphql-tools';
 
-import { readAllSources, createSource } from '../controllers/sourceController';
+import {
+  readAllSources,
+  createSource,
+  readSource,
+  deleteSource,
+  updateSource,
+} from '../controllers/sourceController';
 
 const typeDefs = [
   fs.readFileSync(path.join(__dirname, 'schema.graphql'), 'utf8'),
@@ -10,11 +16,14 @@ const typeDefs = [
 
 const resolvers = {
   Query: {
-    allSources: readAllSources,
+    source: readSource,
+    sources: readAllSources,
   },
 
   Mutation: {
     addSource: createSource,
+    updateSource,
+    removeSource: deleteSource,
   },
 };
 

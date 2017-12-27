@@ -6,12 +6,9 @@ import Header from '../Header';
 import SourceTable from '../SourceTable';
 import './style.scss';
 
-import ReactTable from 'react-table';
-import 'react-table/react-table.css';
-
-const ALL_SOURCES_QUERY = gql`
+const SOURCES_QUERY = gql`
   query AllSourcesQuery {
-    allSources {
+    sources {
       name
       organization
       phone
@@ -24,8 +21,8 @@ const ALL_SOURCES_QUERY = gql`
 const App = props => (
   <div className="container">
     <Header />
-    <SourceTable sources={props.allSourcesQuery.allSources} />
+    <SourceTable sources={props.sourcesQuery.sources} />
   </div>
 );
 
-export default graphql(ALL_SOURCES_QUERY, { name: 'allSourcesQuery' })(App);
+export default graphql(SOURCES_QUERY, { name: 'sourcesQuery' })(App);

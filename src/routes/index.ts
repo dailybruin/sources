@@ -20,7 +20,7 @@ router.get('/auth/google/callback', authCallback);
 /** GraphQL */
 router.use(
   '/graphql',
-  ensureAuthenticated,
+  // ensureAuthenticated,
   bodyParser.json(),
   graphqlExpress({ schema })
 );
@@ -37,7 +37,7 @@ router.use(
 /** Main Pages */
 // Login Page
 router.get('/login', (req: Request, res: Response) => {
-  res.sendFile(`login.html`, { root: './dist/views/static/' });
+  res.sendFile('login.html', { root: './dist/views/static/' });
 });
 
 // Sources Page; ensure authentication; if not, send to login.

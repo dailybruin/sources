@@ -50,7 +50,7 @@ export function ensureAuthenticated(
       if (err || response.hd !== 'media.ucla.edu') {
         res.redirect('/login');
       } else {
-        return next();
+        next();
       }
     }
   );

@@ -8,15 +8,25 @@ type Source {
 }
 
 type Query {
-  allSources: [Source!]!
+  source(id: ID!): Source
+  sources: [Source!]!
 }
 
 type Mutation {
   addSource(
     name: String!
+    organization: String!
+    phone: String!
+    email: String!
+    notes: String!
+  ): Source
+  updateSource(
+    id: ID!
+    name: String
     organization: String
     phone: String
     email: String
     notes: String
   ): Source
+  removeSource(id: ID!): Boolean
 }

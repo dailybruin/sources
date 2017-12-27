@@ -1,7 +1,33 @@
+// I'd like to use the line
+// import { Model, Instance, STRING } from 'sequelize';
+// but apparently this doesn't work :(. See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/16588.
 import * as Sequelize from 'sequelize';
 import { sequelize } from './index';
 
-const Source = sequelize.define('Source', {
+/**
+ *
+ *
+ * @export
+ * @interface SourceAttributes
+ */
+export interface SourceAttributes {
+  name: string;
+  organization: string;
+  phone: string;
+  email: string;
+  notes: string;
+}
+
+export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const Source: Sequelize.Model<
+  SourceAttributes,
+  SourceInstance
+> = sequelize.define('Source', {
   name: Sequelize.STRING,
   organization: Sequelize.STRING,
   phone: Sequelize.STRING,
