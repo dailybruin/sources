@@ -8,7 +8,7 @@ import { compose, graphql } from 'react-apollo';
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
 import SourceTableModal from './SourceTableModal';
-import { sourcesQuery, removeSource } from './graphql';
+import { sourcesQuery, updateSource, removeSource } from './graphql';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -68,9 +68,9 @@ class SourceTable extends React.Component<any, any> {
     this.setState({ modalIsOpen: false });
   };
 
-  public edit = () => {
+  public edit = async () => {
     const sourceID = this.state.currentlySelectedRowID;
-
+    // await this.props.updateSource({ variables: { id, } });
     console.log(`Edit row ${sourceID}!`);
   };
 
@@ -79,6 +79,7 @@ class SourceTable extends React.Component<any, any> {
     await this.props.removeSource({ variables: { id } });
     console.log(`Deleted row ${id}!`);
   };
+
   public render() {
     return (
       <div className="source-table">
@@ -148,5 +149,6 @@ class SourceTable extends React.Component<any, any> {
 
 export default compose(
   graphql(sourcesQuery, { name: 'sourcesQuery' }),
+  graphql(updateSource, { name: 'updateSource' }),
   graphql(removeSource, { name: 'removeSource' })
 )(SourceTable);
