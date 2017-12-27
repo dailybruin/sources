@@ -6,14 +6,14 @@ import * as gql from 'graphql-tag';
 const ADD_SOURCE_MUTATION = gql`
   mutation AddSourceMutation(
     $name: String!
-    $org: String
-    $phone: String
-    $email: String
-    $notes: String
+    $organization: String!
+    $phone: String!
+    $email: String!
+    $notes: String!
   ) {
     addSource(
-      description: $description
-      org: $org
+      name: $name
+      organization: $organization
       phone: $phone
       email: $email
       notes: $notes
@@ -35,7 +35,7 @@ class SourceTableModal extends React.Component {
     event.preventDefault();
     console.log('hi');
     const { name, organization, phone, email, notes } = this.state;
-    await this.props.createLinkMutation({
+    await this.props.addSourceMutation({
       variables: {
         name,
         organization,
@@ -52,57 +52,67 @@ class SourceTableModal extends React.Component {
       <Modal {...this.props}>
         <h1>Add a Source</h1>
         <form onSubmit={this.createSource}>
-          <label htmlFor="name">Source Name:</label>
-          <input
-            id="name"
-            onChange={event =>
-              this.setState({
-                name: event.target.value,
-              })
-            }
-            value={this.state.name}
-            type="text"
-          />
-          <label htmlFor="organization">Source Organization:</label>
-          <input
-            id="organization"
-            onChange={event =>
-              this.setState({
-                organization: event.target.value,
-              })
-            }
-            value={this.state.organization}
-            type="text"
-          />
-          <label htmlFor="phone">Source Phone:</label>
-          <input
-            id="phone"
-            onChange={event =>
-              this.setState({
-                phone: event.target.value,
-              })
-            }
-            type="tel"
-          />
-          <label htmlFor="email">Source Email:</label>
-          <input
-            type="email"
-            onChange={event =>
-              this.setState({
-                email: event.target.value,
-              })
-            }
-          />
-          <label htmlFor="notes">Notes:</label>
-          <input
-            id="notes"
-            onChange={event =>
-              this.setState({
-                notes: event.target.value,
-              })
-            }
-            type="text"
-          />
+          <div>
+            <label htmlFor="name">Source Name: </label>
+            <input
+              id="name"
+              onChange={event =>
+                this.setState({
+                  name: event.target.value,
+                })
+              }
+              value={this.state.name}
+              type="text"
+            />
+          </div>
+          <div>
+            <label htmlFor="organization">Source Organization: </label>
+            <input
+              id="organization"
+              onChange={event =>
+                this.setState({
+                  organization: event.target.value,
+                })
+              }
+              value={this.state.organization}
+              type="text"
+            />
+          </div>
+          <div>
+            <label htmlFor="phone">Source Phone: </label>
+            <input
+              id="phone"
+              onChange={event =>
+                this.setState({
+                  phone: event.target.value,
+                })
+              }
+              type="tel"
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Source Email: </label>
+            <input
+              type="email"
+              onChange={event =>
+                this.setState({
+                  email: event.target.value,
+                })
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="notes">Notes: </label>
+            <input
+              id="notes"
+              onChange={event =>
+                this.setState({
+                  notes: event.target.value,
+                })
+              }
+              type="text"
+            />
+          </div>
           <input type="submit" value="Create" />
         </form>
       </Modal>
