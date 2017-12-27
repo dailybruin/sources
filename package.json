@@ -79,7 +79,7 @@
     "express": "^4.16.2",
     "global": "^4.3.2",
     "googleapis": "^23.0.0",
-    "graphql": "0.11.7",
+    "graphql": "0.12.3",
     "graphql-tag": "^2.6.1",
     "graphql-tools": "^2.14.1",
     "match-sorter": "^2.2.0",
