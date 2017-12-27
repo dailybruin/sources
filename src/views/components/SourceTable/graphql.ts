@@ -2,6 +2,7 @@ import * as gql from 'graphql-tag';
 export const sourcesQuery = gql`
   query SourcesQuery {
     sources {
+      id
       name
       organization
       phone
@@ -51,8 +52,8 @@ export const updateSource = gql`
   }
 `;
 
-export const deleteSource = gql`
-  mutation deleteSource($id: ID!) {
-    deleteSource(id: $id)
+export const removeSource = gql`
+  mutation removeSource($id: ID!) {
+    removeSource(id: $id)
   }
 `;

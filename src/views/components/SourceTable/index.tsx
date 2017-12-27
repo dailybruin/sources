@@ -8,7 +8,7 @@ import { compose, graphql } from 'react-apollo';
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
 import SourceTableModal from './SourceTableModal';
-import { sourcesQuery } from './graphql';
+import { sourcesQuery, removeSource } from './graphql';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -23,7 +23,7 @@ class SourceTable extends React.Component<any, any> {
     currentlySelectedRowID: null,
   };
 
-  public contextTrigger: any;
+  public contextTrigger: any = null;
   public columns = [
     {
       Header: 'Name',
@@ -74,58 +74,17 @@ class SourceTable extends React.Component<any, any> {
     console.log(`Edit row ${sourceID}!`);
   };
 
-  public remove = () => {
-    const sourceID = this.state.currentlySelectedRowID;
-
-    console.log(`Delete row ${sourceID}!`);
+  public remove = async () => {
+    const id = this.state.currentlySelectedRowID;
+    await this.props.removeSource({ variables: { id } });
+    console.log(`Deleted row ${id}!`);
   };
-
   public render() {
-    console.log(this.props);
-
     return (
       <div className="source-table">
-        <div className="source-table__input">
-          <div className="source-table__input__add" onClick={this.openModal}>
-            Add a Source
-          </div>
-          <input
-            type="text"
-            name="filter"
-            placeholder="Search"
-            value={this.state.filterValue}
-            onChange={this.handleFilterChange}
-          />
-        </div>
-        <ReactTable
-          ref="reactTable"
-          data={this.props.sourcesQuery.sources}
-          columns={this.columns}
-          defaultPageSize={50}
-          className="-striped -highlight"
-          TbodyComponent={props => (
-            <ContextMenuTrigger
-              id="menu_id"
-              ref={c => (this.contextTrigger = c)}
-            >
-              <ReactTableDefaults.TbodyComponent {...props} />
-            </ContextMenuTrigger>
-          )}
-          getTrProps={(state, rowInfo, _, instance) => {
-            return {
-              onContextMenu: (e, handleOriginal) => {
-                this.setState({ currentlySelectedRowID: rowInfo.original.id });
+        {this.renderInput()}
+        {this.renderTable()}
 
-                if (this.contextTrigger) {
-                  this.contextTrigger.handleContextClick(e);
-                }
-                if (handleOriginal) {
-                  handleOriginal();
-                }
-              },
-            };
-          }}
-        />
         <SourceTableContextMenu edit={this.edit} remove={this.remove} />
         <SourceTableModal
           isOpen={this.state.modalIsOpen}
@@ -135,8 +94,59 @@ class SourceTable extends React.Component<any, any> {
       </div>
     );
   }
+
+  private renderInput = () => {
+    return (
+      <div className="source-table__input">
+        <div className="source-table__input__add" onClick={this.openModal}>
+          Add a Source
+        </div>
+        <input
+          type="text"
+          name="filter"
+          placeholder="Search"
+          value={this.state.filterValue}
+          onChange={this.handleFilterChange}
+        />
+      </div>
+    );
+  };
+
+  private renderTable = () => {
+    return (
+      <ReactTable
+        ref="reactTable"
+        data={this.props.sourcesQuery.sources}
+        columns={this.columns}
+        defaultPageSize={50}
+        className="-striped -highlight"
+        TbodyComponent={props => (
+          <ContextMenuTrigger id="menu_id" ref={c => (this.contextTrigger = c)}>
+            <ReactTableDefaults.TbodyComponent {...props} />
+          </ContextMenuTrigger>
+        )}
+        getTrProps={(state, rowInfo, _, instance) => {
+          return {
+            onContextMenu: (e, handleOriginal) => {
+              this.setState({
+                currentlySelectedRowID: rowInfo.original.id,
+              });
+
+              if (this.contextTrigger !== null) {
+                this.contextTrigger.handleContextClick(e);
+              }
+              if (handleOriginal) {
+                handleOriginal();
+              }
+            },
+          };
+        }}
+      />
+    );
+  };
 }
 
-export default compose(graphql(sourcesQuery, { name: 'sourcesQuery' }))(
-  SourceTable
-);
+export default compose(
+  graphql(sourcesQuery, { name: 'sourcesQuery' }),
+  graphql(removeSource, { name: 'removeSource' })
+)(SourceTable);
