@@ -3,6 +3,9 @@ import { Express } from 'express-serve-static-core';
 import * as logger from 'morgan';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 import router from './routes';
 import { notFoundHandler, errorHandler } from './errorHandling';
