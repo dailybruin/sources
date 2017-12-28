@@ -29,7 +29,6 @@
     },
     "types": [
       "node",
-      "webpack-env"
     ]
   },
   "include": [
