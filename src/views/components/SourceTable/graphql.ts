@@ -48,7 +48,9 @@ export const updateSource = gql`
       phone: $phone
       email: $email
       notes: $notes
-    )
+    ) {
+      id
+    }
   }
 `;
 
