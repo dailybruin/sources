@@ -3,7 +3,8 @@ import * as Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
 import * as gql from 'graphql-tag';
 
-import { addSource, updateSource } from './graphql';
+import { addSource, updateSource } from '../graphql';
+import './style.scss';
 
 export enum ModalType {
   Add,
@@ -70,8 +71,9 @@ class SourceTableModal extends React.Component<any, any> {
         onAfterOpen={this.initializeInputs}
         {...this.props}
       >
-        <h1>{label}</h1>
+        <h1 className="modal__header">{label}</h1>
         <form
+          className="modal__form"
           onSubmit={
             this.props.type === ModalType.Add
               ? this.createSource
