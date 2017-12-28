@@ -7,7 +7,7 @@ import { compose, graphql } from 'react-apollo';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
-import SourceTableModal from './SourceTableModal';
+import { default as SourceTableModal, ModalType } from './SourceTableModal';
 import { sourcesQuery, removeSource } from './graphql';
 
 function filterMethod(filter, rows) {
@@ -20,7 +20,8 @@ class SourceTable extends React.Component<any, any> {
   public state = {
     filterValue: '',
     modalIsOpen: false,
-    currentlySelectedRowID: null,
+    modalType: ModalType.Add,
+    currentlySelectedSource: {},
   };
 
   public contextTrigger: any = null;
@@ -65,32 +66,34 @@ class SourceTable extends React.Component<any, any> {
     return this.refs.reactTable.filterColumn(this.columns[0], newFilterValue);
   };
 
-  public openModal = () => {
-    this.setState({ modalIsOpen: true });
+  public openModal = (type: ModalType) => {
+    this.setState({ modalIsOpen: true, modalType: type });
   };
 
   public closeModal = () => {
     this.setState({ modalIsOpen: false });
   };
 
-  public edit = async () => {
-    const sourceID = this.state.currentlySelectedRowID;
-    // await this.props.updateSource({ variables: { id, } });
-    console.log(`Edit row ${sourceID}!`);
+  public addSource = () => {
+    this.openModal(ModalType.Add);
   };
 
-  public remove = async () => {
-    const id = this.state.currentlySelectedRowID;
+  public editSource = async () => {
+    this.openModal(ModalType.Edit);
+  };
+
+  public removeSource = async () => {
+    const id = this.state.currentlySelectedSource.id;
     await this.props.removeSource({ variables: { id } });
     console.log(`Deleted row ${id}!`);
   };
 
-  public tableOnContextClick = (event, handleOriginal, rowID) => {
+  public tableOnContextClick = (event, handleOriginal, sourceInfo) => {
     // rowInfo.original.id
-    this.setState({ currentlySelectedRowID: rowID });
+    this.setState({ currentlySelectedSource: sourceInfo });
 
     if (this.contextTrigger !== null) {
-      this.contextTrigger.handleContextClick(e);
+      this.contextTrigger.handleContextClick(event);
     }
     if (handleOriginal) {
       handleOriginal();
@@ -108,7 +111,7 @@ class SourceTable extends React.Component<any, any> {
       <div className="source-table">
         {/* Filter */}
         <div className="source-table__input">
-          <div className="source-table__input__add" onClick={this.openModal}>
+          <div className="source-table__input__add" onClick={this.addSource}>
             Add a Source
           </div>
           <input
@@ -130,21 +133,22 @@ class SourceTable extends React.Component<any, any> {
           getTrProps={(state, rowInfo, _, instance) => {
             return {
               onContextMenu: (e, handleOriginal) => {
-                this.tableOnContextClick(
-                  e,
-                  handleOriginal,
-                  rowInfo.original.id
-                );
+                this.tableOnContextClick(e, handleOriginal, rowInfo.original);
               },
             };
           }}
         />
         {/* Popups */}
-        <SourceTableContextMenu edit={this.edit} remove={this.remove} />
+        <SourceTableContextMenu
+          onEdit={this.editSource}
+          onRemove={this.removeSource}
+        />
         <SourceTableModal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="Add a Source"
+          type={this.state.modalType}
+          source={this.state.currentlySelectedSource}
         />
       </div>
     );

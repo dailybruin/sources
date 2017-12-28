@@ -4,10 +4,10 @@ import './style.scss';
 
 const SourceTableContextMenu = props => (
   <ContextMenu id="menu_id">
-    <MenuItem onClick={props.edit}>
+    <MenuItem onClick={props.onEdit}>
       <i className="fas fa-pencil-alt" /> Edit
     </MenuItem>
-    <MenuItem onClick={props.remove}>
+    <MenuItem onClick={props.onRemove}>
       <i className="fas fa-times" /> Remove
     </MenuItem>
   </ContextMenu>

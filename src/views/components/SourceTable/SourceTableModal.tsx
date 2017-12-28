@@ -1,27 +1,15 @@
 import * as React from 'react';
 import * as Modal from 'react-modal';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import * as gql from 'graphql-tag';
 
-const ADD_SOURCE_MUTATION = gql`
-  mutation AddSourceMutation(
-    $name: String!
-    $organization: String!
-    $phone: String!
-    $email: String!
-    $notes: String!
-  ) {
-    addSource(
-      name: $name
-      organization: $organization
-      phone: $phone
-      email: $email
-      notes: $notes
-    ) {
-      id
-    }
-  }
-`;
+import { addSource, updateSource } from './graphql';
+
+export enum ModalType {
+  Add,
+  Edit,
+}
+
 class SourceTableModal extends React.Component<any, any> {
   public state = {
     name: '',
@@ -29,12 +17,18 @@ class SourceTableModal extends React.Component<any, any> {
     phone: '',
     email: '',
     notes: '',
+    id: '',
+  };
+  public initializeInputs = () => {
+    if (this.props.type === ModalType.Edit) {
+      this.setState({ ...this.props.source });
+    }
   };
 
   public createSource = async event => {
     event.preventDefault();
     const { name, organization, phone, email, notes } = this.state;
-    await this.props.addSourceMutation({
+    await this.props.addSource({
       variables: {
         name,
         organization,
@@ -44,23 +38,51 @@ class SourceTableModal extends React.Component<any, any> {
       },
     });
     this.props.onRequestClose();
-    return false;
+  };
+
+  public updateSource = async event => {
+    event.preventDefault();
+    const { id, name, organization, phone, email, notes } = this.state;
+    await this.props.updateSource({
+      variables: {
+        id,
+        name,
+        organization,
+        phone,
+        email,
+        notes,
+      },
+    });
+    this.props.onRequestClose();
+  };
+
+  public onChange = event => {
+    this.setState({ [event.target.id]: event.target.value });
   };
 
   public render() {
+    const label =
+      this.props.type === ModalType.Add ? 'Add a Source' : 'Edit Source';
+
     return (
-      <Modal {...this.props}>
-        <h1>Add a Source</h1>
-        <form onSubmit={this.createSource}>
+      <Modal
+        contentLabel={label}
+        onAfterOpen={this.initializeInputs}
+        {...this.props}
+      >
+        <h1>{label}</h1>
+        <form
+          onSubmit={
+            this.props.type === ModalType.Add
+              ? this.createSource
+              : this.updateSource
+          }
+        >
           <div>
             <label htmlFor="name">Source Name: </label>
             <input
               id="name"
-              onChange={event =>
-                this.setState({
-                  name: event.target.value,
-                })
-              }
+              onChange={this.onChange}
               value={this.state.name}
               type="text"
             />
@@ -69,11 +91,7 @@ class SourceTableModal extends React.Component<any, any> {
             <label htmlFor="organization">Source Organization: </label>
             <input
               id="organization"
-              onChange={event =>
-                this.setState({
-                  organization: event.target.value,
-                })
-              }
+              onChange={this.onChange}
               value={this.state.organization}
               type="text"
             />
@@ -82,44 +100,40 @@ class SourceTableModal extends React.Component<any, any> {
             <label htmlFor="phone">Source Phone: </label>
             <input
               id="phone"
-              onChange={event =>
-                this.setState({
-                  phone: event.target.value,
-                })
-              }
+              onChange={this.onChange}
+              value={this.state.phone}
               type="tel"
             />
           </div>
           <div>
             <label htmlFor="email">Source Email: </label>
             <input
+              id="email"
               type="email"
-              onChange={event =>
-                this.setState({
-                  email: event.target.value,
-                })
-              }
+              onChange={this.onChange}
+              value={this.state.email}
             />
           </div>
           <div>
             <label htmlFor="notes">Notes: </label>
             <input
               id="notes"
-              onChange={event =>
-                this.setState({
-                  notes: event.target.value,
-                })
-              }
+              onChange={this.onChange}
+              value={this.state.notes}
               type="text"
             />
           </div>
-          <input type="submit" value="Create" />
+          <input
+            type="submit"
+            value={this.props.type === ModalType.Add ? 'Create' : 'Update'}
+          />
         </form>
       </Modal>
     );
   }
 }
 
-export default graphql(ADD_SOURCE_MUTATION, { name: 'addSourceMutation' })(
-  SourceTableModal
-);
+export default compose(
+  graphql(addSource, { name: 'addSource' }),
+  graphql(updateSource, { name: 'updateSource' })
+)(SourceTableModal);
