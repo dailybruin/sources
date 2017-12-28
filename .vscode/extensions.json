@@ -1,3 +1,13 @@
 {
-  "recommendations": ["eg2.tslint", "streetsidesoftware.code-spell-checker"]
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    "EditorConfig.editorconfig",
+    "kumar-harsh.graphql-for-vscode",
+    "esbenp.prettier-vscode",
+    "eg2.tslint",
+    "shinnn.stylelint",
+    "joelday.docthis",
+    "msjsdiag.debugger-for-chrome"
+  ]
 }
