@@ -3,7 +3,8 @@ import * as Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
 import * as gql from 'graphql-tag';
 
-import { addSource, updateSource } from './graphql';
+import { addSource, updateSource } from '../graphql';
+import './style.scss';
 
 export enum ModalType {
   Add,
@@ -64,14 +65,25 @@ class SourceTableModal extends React.Component<any, any> {
     const label =
       this.props.type === ModalType.Add ? 'Add a Source' : 'Edit Source';
 
+    const styles = {
+      content: {
+        top: '6rem',
+        left: '4rem',
+        right: '4rem',
+        bottom: 'auto',
+      },
+    };
+
     return (
       <Modal
+        style={styles}
         contentLabel={label}
         onAfterOpen={this.initializeInputs}
         {...this.props}
       >
-        <h1>{label}</h1>
+        <h1 className="modal__header">{label}</h1>
         <form
+          className="modal__form"
           onSubmit={
             this.props.type === ModalType.Add
               ? this.createSource
@@ -116,11 +128,11 @@ class SourceTableModal extends React.Component<any, any> {
           </div>
           <div>
             <label htmlFor="notes">Notes: </label>
-            <input
+            <textarea
               id="notes"
               onChange={this.onChange}
               value={this.state.notes}
-              type="text"
+              rows={4}
             />
           </div>
           <input
