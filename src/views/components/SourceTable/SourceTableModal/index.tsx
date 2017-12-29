@@ -15,8 +15,8 @@ class SourceTableModal extends React.Component<any, any> {
   public state = {
     name: '',
     organization: '',
-    phone: '',
-    email: '',
+    phones: '',
+    emails: '',
     notes: '',
     id: '',
   };
@@ -28,13 +28,13 @@ class SourceTableModal extends React.Component<any, any> {
 
   public createSource = async event => {
     event.preventDefault();
-    const { name, organization, phone, email, notes } = this.state;
+    const { name, organization, phones, emails, notes } = this.state;
     await this.props.addSource({
       variables: {
         name,
         organization,
-        phone,
-        email,
+        phones,
+        emails,
         notes,
       },
       update: (store, { data: { addSource: sourceToAdd } }) => {
@@ -52,8 +52,8 @@ class SourceTableModal extends React.Component<any, any> {
       id: sourceToUpdateID,
       name,
       organization,
-      phone,
-      email,
+      phones,
+      emails,
       notes,
     } = this.state;
     await this.props.updateSource({
@@ -61,8 +61,8 @@ class SourceTableModal extends React.Component<any, any> {
         id: sourceToUpdateID,
         name,
         organization,
-        phone,
-        email,
+        phones,
+        emails,
         notes,
       },
       update: store => {
@@ -74,8 +74,8 @@ class SourceTableModal extends React.Component<any, any> {
           id: sourceToUpdateID,
           name,
           organization,
-          phone,
-          email,
+          phones,
+          emails,
           notes,
         });
         store.writeQuery({ query: sourcesQuery, data });
@@ -136,21 +136,21 @@ class SourceTableModal extends React.Component<any, any> {
             />
           </div>
           <div>
-            <label htmlFor="phone">Source Phone: </label>
+            <label htmlFor="phones">Source Phone: </label>
             <input
-              id="phone"
+              id="phones"
               onChange={this.onChange}
-              value={this.state.phone}
-              type="tel"
+              value={this.state.phones}
+              type="text"
             />
           </div>
           <div>
-            <label htmlFor="email">Source Email: </label>
+            <label htmlFor="emails">Source Email: </label>
             <input
-              id="email"
-              type="email"
+              id="emails"
+              type="text"
               onChange={this.onChange}
-              value={this.state.email}
+              value={this.state.emails}
             />
           </div>
           <div>

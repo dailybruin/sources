@@ -5,8 +5,8 @@ export const sourcesQuery = gql`
       id
       name
       organization
-      phone
-      email
+      phones
+      emails
       notes
     }
   }
@@ -16,22 +16,22 @@ export const addSource = gql`
   mutation addSource(
     $name: String!
     $organization: String!
-    $phone: String!
-    $email: String!
+    $phones: String!
+    $emails: String!
     $notes: String!
   ) {
     addSource(
       name: $name
       organization: $organization
-      phone: $phone
-      email: $email
+      phones: $phones
+      emails: $emails
       notes: $notes
     ) {
       id
       name
       organization
-      phone
-      email
+      phones
+      emails
       notes
     }
   }
@@ -42,16 +42,16 @@ export const updateSource = gql`
     $id: ID!
     $name: String
     $organization: String
-    $phone: String
-    $email: String
+    $phones: String
+    $emails: String
     $notes: String
   ) {
     updateSource(
       id: $id
       name: $name
       organization: $organization
-      phone: $phone
-      email: $email
+      phones: $phones
+      emails: $emails
       notes: $notes
     ) {
       id

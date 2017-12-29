@@ -5,6 +5,8 @@
 
   .ReactTable .rt-td {
     white-space: normal;
+    text-overflow: clip;
+    overflow: scroll;
   }
 
   a {
@@ -21,7 +23,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 1.2rem 1.2rem;
+  margin: 0 1.2rem 0.9rem;
 
   input[name="filter"] {
     padding: 1rem 0.6rem;
@@ -42,6 +44,12 @@
   }
 }
 
+.source-table__input__note {
+  margin-top: 0.4rem;
+  color: $dark-gray;
+  align-self: center;
+}
+
 .ReactModalPortal > div {
   opacity: 0;
 }
@@ -49,9 +57,11 @@
 .ReactModalPortal .ReactModal__Overlay {
   transition: opacity 200ms ease-in-out;
   background: rgba(0, 0, 0, 0.15);
+
   &--after-open {
     opacity: 1;
   }
+
   &--before-close {
     opacity: 0;
   }

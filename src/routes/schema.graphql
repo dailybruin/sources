@@ -2,8 +2,8 @@ type Source {
   id: ID!
   name: String!
   organization: String
-  phone: String
-  email: String
+  phones: String
+  emails: String
   notes: String
 }
 
@@ -16,16 +16,16 @@ type Mutation {
   addSource(
     name: String!
     organization: String!
-    phone: String!
-    email: String!
+    phones: String!
+    emails: String!
     notes: String!
   ): Source
   updateSource(
     id: ID!
     name: String
     organization: String
-    phone: String
-    email: String
+    phones: String
+    emails: String
     notes: String
   ): Source
   removeSource(id: ID!): Boolean

@@ -13,8 +13,8 @@ import { sequelize } from './index';
 export interface SourceAttributes {
   name: string;
   organization: string;
-  phone: string;
-  email: string;
+  phones: string;
+  emails: string;
   notes: string;
 }
 
@@ -27,12 +27,19 @@ export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
 const Source: Sequelize.Model<
   SourceAttributes,
   SourceInstance
-> = sequelize.define('Source', {
-  name: Sequelize.STRING,
-  organization: Sequelize.STRING,
-  phone: Sequelize.STRING,
-  email: Sequelize.STRING,
-  notes: Sequelize.STRING,
-});
+> = sequelize.define(
+  'Source',
+  {
+    name: Sequelize.STRING,
+    organization: Sequelize.STRING,
+    phones: Sequelize.STRING,
+    emails: Sequelize.STRING,
+    notes: Sequelize.STRING,
+  },
+  {
+    freezeTableName: true,
+    tableName: 'sources',
+  }
+);
 
 export default Source;

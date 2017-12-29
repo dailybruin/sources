@@ -32,9 +32,6 @@ export async function updateSource(
     returning: true,
   });
 
-  console.log(numberOfUpdatedSources);
-  console.log(updatedSources);
-
   if (numberOfUpdatedSources === 1) {
     return updatedSources[0];
   } else if (numberOfUpdatedSources !== 0) {

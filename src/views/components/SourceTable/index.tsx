@@ -12,7 +12,7 @@ import { sourcesQuery, removeSource } from './graphql';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
-    keys: ['name', 'org', 'phone', 'email'],
+    keys: ['name', 'org', 'phones', 'emails'],
   });
 }
 
@@ -39,14 +39,14 @@ class SourceTable extends React.Component<any, any> {
       minWidth: 200,
     },
     {
-      Header: 'Phone',
-      accessor: 'phone',
-      Cell: props => <a href={`tel:+1-${props.value}`}>{props.value}</a>,
+      Header: 'Phones',
+      accessor: 'phones',
+      // Cell: props => <a href={`tel:+1-${props.value}`}>{props.value}</a>,
     },
     {
-      Header: 'Email',
-      accessor: 'email',
-      Cell: props => <a href={`mailto:${props.value}`}>{props.value}</a>,
+      Header: 'Emails',
+      accessor: 'emails',
+      // Cell: props => <a href={`mailto:${props.value}`}>{props.value}</a>,
     },
     {
       Header: 'Notes',
@@ -131,6 +131,9 @@ class SourceTable extends React.Component<any, any> {
             value={this.state.filterValue}
             onChange={this.handleFilterChange}
           />
+          <div className="source-table__input__note">
+            Edit or delete a source by right clicking on its row.
+          </div>
         </div>
         {/* Table */}
         <ReactTable
