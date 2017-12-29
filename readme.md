@@ -81,7 +81,7 @@ Controllers are stored in the `controllers` folder. There are 2 controllers,
 `authController` and `sourceController` that take care of Google Oauth
 authentication and interfacing with the Source model respectively.
 
-Views are stored in the `views` folder.
+Frontend files are stored in the `views` folder. This includes both the login and main pages (`login.html` and `index.html` respectively) as well as React components (in the `components/` directory).
 
 ## Contributing to Sources
 
@@ -142,6 +142,8 @@ DATABASE_PASSWORD=
 (other values)
 ...
 ```
+
+Dope. Now you'll want to just create some data with `yarn create-data` and you're ready to go!
 
 For development, you may also find it useful to use a GUI client to visualize the database. There [a lot of great options](https://wiki.postgresql.org/wiki/Community_Guide_to_PostgreSQL_GUI_Tools), but we recommend [PSequel](http://www.psequel.com)!
 
