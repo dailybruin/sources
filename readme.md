@@ -2,29 +2,40 @@
 
 [![Travis CI](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)](https://travis-ci.org/daily-bruin/sources)
 [![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
-[![](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
-[![](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
+[![Dependencies](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
+[![Dev dependencies](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?style=flat)](https://github.com/facebook/jest)
 [![license](https://img.shields.io/github/license/daily-bruin/sources.svg)]()
 
-A small little website the Daily Bruin uses to keep track of all of our sources.
+A website the Daily Bruin uses to keep track of all of our sources.
 It's powered by an Express server with a PostgreSQL backend and a GraphQL
 endpoint, and uses React on the frontend.
 
 Check out the [design specification](designs/spec.md) for more info!
 
 ## Technologies Used
+Below is a non-exhaustive list of some of the more major technologies used by Sources and the reasoning why these technologies were chosen. This list is meant to give you a starting point for considering adding or changing the technologies used by Sources or other projects and should change over time as needs and technologies change.
 
-* React
-* Sequelize
-* Apollo
-* Parcel
-* Google Oauth 2
+### General
+* [TypeScript]()
+* [Jest]()
+* [Prettier]()
+
+### Frontend
+* [React](https://reactjs.org) is a popular JavaScript library for building user interfaces.
+* [Parcel](https://parceljs.org) is an application bundler focused on simplicity and speed. It's very new and currently has a lot of bugs and limitations but shows a lot of promise and is much easier to use than alternatives such as [Webpack](https://webpack.js.org).
+* [Apollo Client](https://www.apollographql.com/client) is a popular GraphQL client that works very nicely with React.
+* [react-table](https://react-table.js.org) is a small and extensible component for displaying data (in our case, all of the Sources). It was selected because it's popular and had all the features we need. A potential alternative that was considered was [react-data-grid](http://adazzle.github.io/react-data-grid/), but we liked the lightweightness and styling of react-table better.
+* [react-contextmenu](https://vkbansal.me/react-contextmenu/) is a simple popup context menu used to display options to edit and delete sources. We actually started by using [react-contextify](https://github.com/galkinrost/react-contextify), but switched to react-contextmenu as it was more popular and appeared to be more actively developed.
+* [react-modal](https://github.com/reactjs/react-modal) is a simple modal component used to display the "Add" and "Edit" modals. A couple of modal components were considered, but react-modal seemed to be the least opinionated and did not come bundled as part of a larger library, such as [react-bootstrap](https://react-bootstrap.github.io).
+
+### Backend
+* Node
 * Express
-* react-table
-* react-contextmenu
-* react-modal
+* Google Oauth 2
+* Apollo Server
+* Sequelize
 
 ## Services Used
 
@@ -82,6 +93,8 @@ Controllers are stored in the `controllers` folder. There are 2 controllers,
 authentication and interfacing with the Source model respectively.
 
 Frontend files are stored in the `views` folder. This includes both the login and main pages (`login.html` and `index.html` respectively) as well as React components (in the `components/` directory).
+
+Note that test files are put in the same directory as the respective file they test and have the extension `.test.ts`.
 
 ## Contributing to Sources
 
