@@ -7413,11 +7413,11 @@ tslint-microsoft-contrib@^5.0.1:
   dependencies:
     tsutils "^1.4.0"
 
-tslint-react@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.2.0.tgz#851fb505201c63d0343c51726e6364f7e9ad2e99"
+tslint-react@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/tslint-react/-/tslint-react-3.3.3.tgz#06a6beb826645ab21d85339663a1295e107bc405"
   dependencies:
-    tsutils "^2.8.0"
+    tsutils "^2.13.1"
 
 tslint@^5.8.0:
   version "5.8.0"
@@ -7439,7 +7439,7 @@ tsutils@^1.4.0:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-1.9.1.tgz#b9f9ab44e55af9681831d5f28d0aeeaf5c750cb0"
 
-tsutils@^2.12.1, tsutils@^2.14.0, tsutils@^2.8.0:
+tsutils@^2.12.1, tsutils@^2.13.1, tsutils@^2.14.0:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/tsutils/-/tsutils-2.14.0.tgz#bc5291622aa2448c1baffc544bcc14ecfa528fb7"
   dependencies:
