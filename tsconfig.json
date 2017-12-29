@@ -13,20 +13,30 @@
     "strictNullChecks": true,
     "preserveConstEnums": true,
     "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
     "lib": [
       "es2015",
       "es2016",
-      "dom"
+      "dom",
+      "esnext.asynciterable"
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/views/*"
+        "src/views/*",
+        "src/types/*"
       ]
     },
     "types": [
       "node",
-      "webpack-env"
     ]
-  }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts",
+    "src/views/*"
+  ]
 }

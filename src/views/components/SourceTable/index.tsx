@@ -3,10 +3,12 @@ import * as matchSorter from 'match-sorter';
 import { default as ReactTable, ReactTableDefaults } from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuTrigger } from 'react-contextmenu';
+import { compose, graphql } from 'react-apollo';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
-import SourceTableModal from './SourceTableModal';
+import { default as SourceTableModal, ModalType } from './SourceTableModal';
+import { sourcesQuery, removeSource } from './graphql';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -14,12 +16,12 @@ function filterMethod(filter, rows) {
   });
 }
 
-console.log();
 class SourceTable extends React.Component<any, any> {
   public state = {
     filterValue: '',
     modalIsOpen: false,
-    currentlySelectedRow: null,
+    modalType: ModalType.Add,
+    currentlySelectedSource: {},
   };
 
   public contextTrigger: any = null;
@@ -53,33 +55,73 @@ class SourceTable extends React.Component<any, any> {
     },
   ];
 
+  /**
+   * Changes the internal state of the filter's value on a change and filters the table based on this new value.
+   *
+   * @memberof SourceTable
+   */
   public handleFilterChange = event => {
     const newFilterValue = event.target.value;
     this.setState({ filterValue: newFilterValue });
     return this.refs.reactTable.filterColumn(this.columns[0], newFilterValue);
   };
 
-  public openModal = () => {
-    this.setState({ modalIsOpen: true });
+  public openModal = (type: ModalType) => {
+    this.setState({ modalIsOpen: true, modalType: type });
   };
 
   public closeModal = () => {
     this.setState({ modalIsOpen: false });
   };
 
-  public edit = () => {
-    console.log(`Edit row ${this.state.currentlySelectedRow}!`);
+  public addSource = () => {
+    this.openModal(ModalType.Add);
   };
 
-  public remove = () => {
-    console.log(`Delete row ${this.state.currentlySelectedRow}!`);
+  public editSource = async () => {
+    this.openModal(ModalType.Edit);
   };
+
+  public removeSource = async () => {
+    const sourceToDeleteID = this.state.currentlySelectedSource.id;
+    await this.props.removeSource({
+      variables: { id: sourceToDeleteID },
+      update: store => {
+        const data = store.readQuery({ query: sourcesQuery });
+        data.sources = data.sources.filter(
+          source => source.id !== sourceToDeleteID
+        );
+        store.writeQuery({ query: sourcesQuery, data });
+      },
+    });
+  };
+
+  public tableOnContextClick = (event, handleOriginal, sourceInfo) => {
+    // rowInfo.original.id
+    this.setState({ currentlySelectedSource: sourceInfo });
+
+    if (this.contextTrigger !== null) {
+      this.contextTrigger.handleContextClick(event);
+    }
+    if (handleOriginal) {
+      handleOriginal();
+    }
+  };
+
+  public tableBody = props => (
+    <ContextMenuTrigger id="menu_id" ref={c => (this.contextTrigger = c)}>
+      <ReactTableDefaults.TbodyComponent {...props} />
+    </ContextMenuTrigger>
+  );
 
   public render() {
+    const sources = this.props.sourcesQuery.sources;
+
     return (
       <div className="source-table">
+        {/* Filter */}
         <div className="source-table__input">
-          <div className="source-table__input__add" onClick={this.openModal}>
+          <div className="source-table__input__add" onClick={this.addSource}>
             Add a Source
           </div>
           <input
@@ -90,50 +132,40 @@ class SourceTable extends React.Component<any, any> {
             onChange={this.handleFilterChange}
           />
         </div>
+        {/* Table */}
         <ReactTable
           ref="reactTable"
-          data={this.props.sources}
+          data={sources}
           columns={this.columns}
           defaultPageSize={50}
           className="-striped -highlight"
-          TbodyComponent={props => (
-            <ContextMenuTrigger
-              id="menu_id"
-              ref={c => (this.contextTrigger = c)}
-            >
-              <ReactTableDefaults.TbodyComponent {...props} />
-            </ContextMenuTrigger>
-          )}
+          TbodyComponent={this.tableBody}
           getTrProps={(state, rowInfo, _, instance) => {
             return {
               onContextMenu: (e, handleOriginal) => {
-                this.setState({ currentlySelectedRow: rowInfo.original.id });
-
-                if (this.contextTrigger !== null) {
-                  this.contextTrigger.handleContextClick(e);
-                }
-
-                // IMPORTANT! React-Table uses onClick internally to trigger
-                // events like expanding SubComponents and pivots.
-                // By default a custom 'onClick' handler will override this functionality.
-                // If you want to fire the original onClick handler, call the
-                // 'handleOriginal' function.
-                if (handleOriginal) {
-                  handleOriginal();
-                }
+                this.tableOnContextClick(e, handleOriginal, rowInfo.original);
               },
             };
           }}
         />
-        <SourceTableContextMenu edit={this.edit} remove={this.remove} />
+        {/* Popups */}
+        <SourceTableContextMenu
+          onEdit={this.editSource}
+          onRemove={this.removeSource}
+        />
         <SourceTableModal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="Add a Source"
+          type={this.state.modalType}
+          source={this.state.currentlySelectedSource}
         />
       </div>
     );
   }
 }
 
-export default SourceTable;
+export default compose(
+  graphql(sourcesQuery, { name: 'sourcesQuery' }),
+  graphql(removeSource, { name: 'removeSource' })
+)(SourceTable);

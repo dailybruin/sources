@@ -1,7 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import * as bodyParser from 'body-parser';
-import * as dotenv from 'dotenv';
 
 import {
   redirectToAuthURL,
@@ -10,7 +9,6 @@ import {
 } from '../controllers/authController';
 import schema from './schema';
 
-dotenv.config();
 const router = Router();
 
 /** Authentication */

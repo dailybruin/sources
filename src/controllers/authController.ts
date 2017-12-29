@@ -1,9 +1,6 @@
 import * as google from 'googleapis';
 import * as url from 'url';
-import * as dotenv from 'dotenv';
 import { Request, Response, NextFunction } from 'express';
-
-dotenv.config();
 
 const { OAuth2 } = google.auth;
 const oauth2Client = new OAuth2(
