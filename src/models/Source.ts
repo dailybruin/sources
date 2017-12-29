@@ -27,19 +27,12 @@ export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
 const Source: Sequelize.Model<
   SourceAttributes,
   SourceInstance
-> = sequelize.define(
-  'Source',
-  {
-    name: Sequelize.STRING,
-    organization: Sequelize.STRING,
-    phones: Sequelize.STRING,
-    emails: Sequelize.STRING,
-    notes: Sequelize.STRING,
-  },
-  {
-    freezeTableName: true,
-    tableName: 'sources',
-  }
-);
+> = sequelize.define('Source', {
+  name: Sequelize.STRING,
+  organization: Sequelize.STRING,
+  phones: Sequelize.STRING,
+  emails: Sequelize.STRING,
+  notes: Sequelize.STRING,
+});
 
 export default Source;

@@ -132,7 +132,7 @@ class SourceTable extends React.Component<any, any> {
             onChange={this.handleFilterChange}
           />
           <div className="source-table__input__note">
-            Edit or delete a source by right clicking on its row.
+            Edit or remove a source by right clicking on its row.
           </div>
         </div>
         {/* Table */}
