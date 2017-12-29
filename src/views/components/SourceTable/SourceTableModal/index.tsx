@@ -3,7 +3,7 @@ import * as Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
 import * as gql from 'graphql-tag';
 
-import { addSource, updateSource } from '../graphql';
+import { addSource, updateSource, sourcesQuery } from '../graphql';
 import './style.scss';
 
 export enum ModalType {
@@ -37,21 +37,48 @@ class SourceTableModal extends React.Component<any, any> {
         email,
         notes,
       },
+      update: (store, { data: { addSource: sourceToAdd } }) => {
+        const data = store.readQuery({ query: sourcesQuery });
+        data.sources.unshift(sourceToAdd);
+        store.writeQuery({ query: sourcesQuery, data });
+      },
     });
     this.props.onRequestClose();
   };
 
   public updateSource = async event => {
     event.preventDefault();
-    const { id, name, organization, phone, email, notes } = this.state;
+    const {
+      id: sourceToUpdateID,
+      name,
+      organization,
+      phone,
+      email,
+      notes,
+    } = this.state;
     await this.props.updateSource({
       variables: {
-        id,
+        id: sourceToUpdateID,
         name,
         organization,
         phone,
         email,
         notes,
+      },
+      update: store => {
+        const data = store.readQuery({ query: sourcesQuery });
+        const sourceToUpdate = data.sources.find(
+          source => source.id === sourceToUpdateID
+        );
+        Object.assign(sourceToUpdate, {
+          id: sourceToUpdateID,
+          name,
+          organization,
+          phone,
+          email,
+          notes,
+        });
+        store.writeQuery({ query: sourcesQuery, data });
       },
     });
     this.props.onRequestClose();

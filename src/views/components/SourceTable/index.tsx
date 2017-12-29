@@ -83,9 +83,17 @@ class SourceTable extends React.Component<any, any> {
   };
 
   public removeSource = async () => {
-    const id = this.state.currentlySelectedSource.id;
-    await this.props.removeSource({ variables: { id } });
-    console.log(`Deleted row ${id}!`);
+    const sourceToDeleteID = this.state.currentlySelectedSource.id;
+    await this.props.removeSource({
+      variables: { id: sourceToDeleteID },
+      update: store => {
+        const data = store.readQuery({ query: sourcesQuery });
+        data.sources = data.sources.filter(
+          source => source.id !== sourceToDeleteID
+        );
+        store.writeQuery({ query: sourcesQuery, data });
+      },
+    });
   };
 
   public tableOnContextClick = (event, handleOriginal, sourceInfo) => {
@@ -107,6 +115,8 @@ class SourceTable extends React.Component<any, any> {
   );
 
   public render() {
+    const sources = this.props.sourcesQuery.sources;
+
     return (
       <div className="source-table">
         {/* Filter */}
@@ -125,7 +135,7 @@ class SourceTable extends React.Component<any, any> {
         {/* Table */}
         <ReactTable
           ref="reactTable"
-          data={this.props.sourcesQuery.sources}
+          data={sources}
           columns={this.columns}
           defaultPageSize={50}
           className="-striped -highlight"

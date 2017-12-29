@@ -28,6 +28,11 @@ export const addSource = gql`
       notes: $notes
     ) {
       id
+      name
+      organization
+      phone
+      email
+      notes
     }
   }
 `;
