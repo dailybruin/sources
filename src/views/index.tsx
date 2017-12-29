@@ -9,7 +9,9 @@ import App from './components/App';
 import './index.css';
 
 // 2
-const httpLink = new HttpLink({ uri: `http://localhost:3000/graphql` });
+const httpLink = new HttpLink({
+  uri: process.env.GRAPHQL_URI || 'http://localhost:3000/graphql',
+});
 
 // 3
 const client = new ApolloClient({
