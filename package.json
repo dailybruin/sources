@@ -4,26 +4,29 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "start:watch": "nodemon ./bin/www",
+    "start:watch": "nodemon",
     "build-client": "parcel build src/views/index.html --out-dir dist/views/static --public-url ./",
     "build-client:watch": "parcel watch src/views/index.html --out-dir dist/views/static --public-url ./",
     "build-server": "tsc",
-    "build-server:watch": "tsc -w",
+    "build-server:watch": "nodemon",
     "copy-static-files": "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static",
     "copy-static-files:watch": "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static --watch",
     "copy-graphql-schema": "cpx src/routes/schema.graphql dist/routes",
     "copy-graphql-schema:watch": "cpx src/routes/schema.graphql dist/routes --watch",
-    "dev": "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn start:watch\" \"yarn copy-static-files:watch\"",
+    "dev": "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn copy-static-files:watch\"",
     "build": "yarn build-client && yarn build-server && yarn copy-static-files && yarn copy-graphql-schema",
     "test": "jest --forceExit && codecov",
     "create-data": "ts-node ./scripts/create-data.ts"
   },
   "nodemonConfig": {
-    "ignore": [
-      "src/*",
-      "dist/views/"
+    "watch": [
+      "src"
     ],
-    "delay": "2500"
+    "ignore": [
+      "src/views/"
+    ],
+    "ext": "ts",
+    "exec": "tsc && node ./bin/www"
   },
   "eslintConfig": {
     "extends": "react-app",
