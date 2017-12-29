@@ -8,8 +8,8 @@ function createSources(n) {
       Source.create({
         name: faker.name.findName(),
         organization: faker.company.catchPhrase(),
-        phone: faker.phone.phoneNumberFormat(),
-        email: faker.internet.email(),
+        phones: faker.phone.phoneNumberFormat(),
+        emails: faker.internet.email(),
         notes: faker.lorem.sentence(),
       })
     );
