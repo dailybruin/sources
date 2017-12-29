@@ -117,7 +117,7 @@ class SourceTableModal extends React.Component<any, any> {
               : this.updateSource
           }
         >
-          <div>
+          <div className="modal__form__input-field">
             <label htmlFor="name">Source Name: </label>
             <input
               id="name"
@@ -126,7 +126,7 @@ class SourceTableModal extends React.Component<any, any> {
               type="text"
             />
           </div>
-          <div>
+          <div className="modal__form__input-field">
             <label htmlFor="organization">Source Organization: </label>
             <input
               id="organization"
@@ -135,7 +135,7 @@ class SourceTableModal extends React.Component<any, any> {
               type="text"
             />
           </div>
-          <div>
+          <div className="modal__form__input-field">
             <label htmlFor="phones">Source Phone: </label>
             <input
               id="phones"
@@ -143,8 +143,11 @@ class SourceTableModal extends React.Component<any, any> {
               value={this.state.phones}
               type="text"
             />
+            <div className="modal__form__input-field__note">
+              Work: (xxx) xxx-xxxx; Cell: (xxx) xxx-xxxx; etc.
+            </div>
           </div>
-          <div>
+          <div className="modal__form__input-field">
             <label htmlFor="emails">Source Email: </label>
             <input
               id="emails"
@@ -152,8 +155,11 @@ class SourceTableModal extends React.Component<any, any> {
               onChange={this.onChange}
               value={this.state.emails}
             />
+            <div className="modal__form__input-field__note">
+              Work: suzy@dailybruin.com; Home: suzy@gmail.com; etc.
+            </div>
           </div>
-          <div>
+          <div className="modal__form__input-field">
             <label htmlFor="notes">Notes: </label>
             <textarea
               id="notes"

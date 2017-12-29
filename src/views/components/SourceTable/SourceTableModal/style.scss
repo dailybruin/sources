@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .modal__header {
   font-family: Futura-Medium;
   text-align: center;
@@ -10,6 +12,15 @@
   font-family: Futura-Medium;
 }
 
+.modal__form__input-field {
+  margin: 0.2rem 0 0.6rem;
+}
+
+.modal__form__input-field__note {
+  color: $dark-gray;
+  font-size: 0.8rem;
+}
+
 .ReactModal__Content {
   input[type="text"],
   input[type="tel"],
@@ -17,7 +28,6 @@
   textarea {
     width: 100%;
     padding: 0.4rem;
-    margin: 0.2rem 0 0.6rem;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 0.2rem;
