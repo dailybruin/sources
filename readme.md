@@ -18,9 +18,9 @@ Check out the [design specification](designs/spec.md) for more info!
 Below is a non-exhaustive list of some of the more major technologies used by Sources and the reasoning why these technologies were chosen. This list is meant to give you a starting point for considering adding or changing the technologies used by Sources or other projects and should change over time as needs and technologies change.
 
 ### General
-* [TypeScript]()
-* [Jest]()
-* [Prettier]()
+* [TypeScript](http://www.typescriptlang.org) is a language developed by Microsoft. It's like JavaScript with types!
+* [Jest](https://facebook.github.io/jest/) is testing framework.
+* [Prettier](https://prettier.io) is an code formatter that makes sure all our code looks pretty!
 
 ### Frontend
 * [React](https://reactjs.org) is a popular JavaScript library for building user interfaces.
