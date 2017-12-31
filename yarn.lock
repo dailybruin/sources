@@ -2000,7 +2000,7 @@ cross-spawn@^3.0.0:
     lru-cache "^4.0.1"
     which "^1.2.9"
 
-cross-spawn@^5.0.1:
+cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
   dependencies:
@@ -5272,9 +5272,9 @@ pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
 
-parcel-bundler@~1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/parcel-bundler/-/parcel-bundler-1.2.1.tgz#2736f51a2c8df20f7fc419c4c9d7b2d1da3a5946"
+parcel-bundler@~1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/parcel-bundler/-/parcel-bundler-1.4.0.tgz#de86da5367d4b797c2f9407b1b8426429299183d"
   dependencies:
     babel-core "^6.25.0"
     babel-generator "^6.25.0"
@@ -5285,6 +5285,7 @@ parcel-bundler@~1.2.1:
     chalk "^2.1.0"
     chokidar "^1.7.0"
     commander "^2.11.0"
+    cross-spawn "^5.1.0"
     cssnano "^3.10.0"
     get-port "^3.2.0"
     glob "^7.1.2"
@@ -5294,6 +5295,7 @@ parcel-bundler@~1.2.1:
     json5 "^0.5.1"
     micromatch "^3.0.4"
     mkdirp "^0.5.1"
+    node-forge "^0.7.1"
     node-libs-browser "^2.0.0"
     opn "^5.1.0"
     physical-cpu-count "^2.0.0"
@@ -5301,6 +5303,7 @@ parcel-bundler@~1.2.1:
     postcss-value-parser "^3.3.0"
     posthtml "^0.10.1"
     resolve "^1.4.0"
+    sanitize-filename "^1.6.1"
     serve-static "^1.12.4"
     uglify-es "^3.2.1"
     v8-compile-cache "^1.1.0"
@@ -6512,6 +6515,12 @@ sane@^2.0.0:
   optionalDependencies:
     fsevents "^1.1.1"
 
+sanitize-filename@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/sanitize-filename/-/sanitize-filename-1.6.1.tgz#612da1c96473fa02dccda92dcd5b4ab164a6772a"
+  dependencies:
+    truncate-utf8-bytes "^1.0.0"
+
 sass-graph@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/sass-graph/-/sass-graph-2.2.4.tgz#13fbd63cd1caf0908b9fd93476ad43a51d1e0b49"
@@ -7352,6 +7361,12 @@ trough@^1.0.0:
   dependencies:
     glob "^6.0.4"
 
+truncate-utf8-bytes@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/truncate-utf8-bytes/-/truncate-utf8-bytes-1.0.2.tgz#405923909592d56f78a5818434b0b78489ca5f2b"
+  dependencies:
+    utf8-byte-length "^1.0.1"
+
 ts-jest@^22.0.0:
   version "22.0.0"
   resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-22.0.0.tgz#cce1a5f1106150ca002d09f7e85913355ceb5e8d"
@@ -7657,6 +7672,10 @@ use@^2.0.0:
     define-property "^0.2.5"
     isobject "^3.0.0"
     lazy-cache "^2.0.2"
+
+utf8-byte-length@^1.0.1:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/utf8-byte-length/-/utf8-byte-length-1.0.4.tgz#f45f150c4c66eee968186505ab93fcbb8ad6bf61"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
