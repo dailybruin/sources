@@ -1,24 +1,24 @@
 import { Source } from '../models';
-import { SourceAttributes } from '../models/Source';
+import { SourceAttributes, SourceInstance } from '../models/Source';
 
 /**
+ * Creates a new source from the specified parameters given.
  *
- *
- * @export
- * @param {any} _
- * @param {any} data
- * @returns
+ * @param source An object of parameters for the source.
+ * @param source
  */
-export async function createSource(_, data): Promise<SourceAttributes> {
-  const newSource: SourceAttributes = await Source.create(data);
+export async function createSource(
+  source: SourceAttributes
+): Promise<SourceInstance> {
+  const newSource: SourceInstance = await Source.create(source);
   return newSource;
 }
 
-export async function readSource(_, { id }): Promise<SourceAttributes | null> {
-  const source: SourceAttributes | null = await Source.findById(id);
+export async function getSource(id: number): Promise<SourceInstance | null> {
+  const source: SourceInstance | null = await Source.findById(id);
   return source;
 }
-export async function readAllSources() {
+export async function getAllSources() {
   const sources: SourceAttributes[] = await Source.all();
   return sources;
 }

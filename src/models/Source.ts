@@ -25,8 +25,8 @@ export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
 }
 
 const Source: Sequelize.Model<
-  SourceAttributes,
-  SourceInstance
+  SourceInstance,
+  SourceAttributes
 > = sequelize.define('Source', {
   name: Sequelize.STRING,
   organization: Sequelize.STRING,

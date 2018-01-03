@@ -21,7 +21,7 @@ const resolvers = {
   },
 
   Mutation: {
-    addSource: createSource,
+    addSource: (_, args) => createSource(args),
     updateSource,
     removeSource: deleteSource,
   },
