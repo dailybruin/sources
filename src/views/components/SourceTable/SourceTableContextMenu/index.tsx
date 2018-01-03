@@ -4,8 +4,16 @@ import { ContextMenu, MenuItem } from 'react-contextmenu';
 // react-contextmenu is styled via a stylesheet
 import './style.scss';
 
-const SourceTableContextMenu = props => (
-  <ContextMenu id="menu_id">
+interface SourceTableContextMenuProps {
+  onEdit: () => void;
+  onRemove: () => void;
+}
+
+/**
+ * The context menu for SourceTable.
+ */
+const SourceTableContextMenu = (props: SourceTableContextMenuProps) => (
+  <ContextMenu id="SourceTable-ContextMenu">
     <MenuItem onClick={props.onEdit}>
       <i className="fas fa-pencil-alt" /> Edit
     </MenuItem>

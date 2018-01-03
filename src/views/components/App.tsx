@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Div } from 'glamorous';
 
-import Header from '../Header';
-import SourceTable from '../SourceTable';
+import Header from './Header';
+import SourceTable from './SourceTable';
 
 const App = () => (
   <Div
