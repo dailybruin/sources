@@ -11,11 +11,11 @@ import { sequelize } from './index';
  * @interface SourceAttributes
  */
 export interface SourceAttributes {
-  name: string;
-  organization: string;
-  phones: string;
-  emails: string;
-  notes: string;
+  name?: string;
+  organization?: string;
+  phones?: string;
+  emails?: string;
+  notes?: string;
 }
 
 export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
