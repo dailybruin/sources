@@ -20,12 +20,12 @@ export function redirectToAuthURL(
 }
 
 export function authCallback(req: Request, res: Response, next: NextFunction) {
-  const response = url.parse(req.url, true).query; // get authentication code
+  const authURL = url.parse(req.url, true) as any; // get authentication code
 
-  if (response.error) {
-    res.redirect('/login'); // send user back to login to try again
+  if (!authURL.query || !authURL.query.hasOwnProperty('code')) {
+    res.redirect('/login');
   } else {
-    oauth2Client.getToken(response.code, (err, tokens) => {
+    oauth2Client.getToken(authURL.query.code, (err, tokens) => {
       // Now tokens contains an access_token and an optional refresh_token. Save them.
       if (!err) {
         oauth2Client.credentials = tokens; // See https://github.com/google/google-api-nodejs-client/issues/869
