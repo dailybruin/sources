@@ -15,14 +15,17 @@ endpoint, and uses React on the frontend.
 Check out the [design specification](designs/spec.md) for more info!
 
 ## Technologies Used
+
 Below is a non-exhaustive list of some of the more major technologies used by Sources and the reasoning why these technologies were chosen. This list is meant to give you a starting point for considering adding or changing the technologies used by Sources or other projects and should change over time as needs and technologies change.
 
 ### General
+
 * [TypeScript](http://www.typescriptlang.org) is a language developed by Microsoft. It's like JavaScript with types!
 * [Jest](https://facebook.github.io/jest/) is testing framework.
 * [Prettier](https://prettier.io) is an code formatter that makes sure all our code looks pretty!
 
 ### Frontend
+
 * [React](https://reactjs.org) is a popular JavaScript library for building user interfaces.
 * [Parcel](https://parceljs.org) is an application bundler focused on simplicity and speed. It's very new and currently has a lot of bugs and limitations but shows a lot of promise and is much easier to use than alternatives such as [Webpack](https://webpack.js.org).
 * [Apollo Client](https://www.apollographql.com/client) is a popular GraphQL client that works very nicely with React.
@@ -31,11 +34,12 @@ Below is a non-exhaustive list of some of the more major technologies used by So
 * [react-modal](https://github.com/reactjs/react-modal) is a simple modal component used to display the "Add" and "Edit" modals. A couple of modal components were considered, but react-modal seemed to be the least opinionated and did not come bundled as part of a larger library, such as [react-bootstrap](https://react-bootstrap.github.io).
 
 ### Backend
-* Node
-* Express
-* Google Oauth 2
-* Apollo Server
-* Sequelize
+
+* [Node](https://nodejs.org/en/) almost needs no introduction. A JavaScript runtime for servers.
+* [Express](https://expressjs.com) is the most popular web framework for Node.
+* [Google APIs Node.js Client](http://google.github.io/google-api-nodejs-client/22.2.0/index.html) are used to authenticated users via Google Oauth 2.
+* [Apollo Server](https://www.apollographql.com/servers) is a popular serverside package for creating a server that supports GraphQL queries.
+* [Sequelize](http://docs.sequelizejs.com) is an ORM (Object-Relation Mapping) library for SQL in JavaScript. Essentially, it allows us to represent our database in JavaScript. Pretty nifty!
 
 ## Services Used
 
@@ -103,17 +107,18 @@ Note that test files are put in the same directory as the respective file they t
 There are a couple of programs and files Sources depends on that you'll need to
 have installed to run it locally.
 
-1. [Yarn](https://yarnpkg.com/lang/en/docs/install/) – Yarn is a JavaScript
+1. Node – You can install this with a simple `brew install node` on macOS.
+2. [Yarn](https://yarnpkg.com/lang/en/docs/install/) – Yarn is a JavaScript
    package manager, and an alternative to npm. We prefer it to npm because it
    has a couple of nice features such as caching, lockfiles, and faster
    downloads.
-2. [Visual Studio Code](https://code.visualstudio.com) – VS Code is an open
+3. [Visual Studio Code](https://code.visualstudio.com) – VS Code is an open
    source text editor built by Microsoft and has amazing tooling support for
    TypeScript projects (as well as a lot of other awesome features!). You can
    use any text editor you want, but VS Code will give you a nice experience :).
-3. PostgreSQL – Postgres is the database we use. Installing it locally can be a
+4. PostgreSQL – Postgres is the database we use. Installing it locally can be a
    little daunting, so check out our guide below if you're unfamiliar with it!
-4. A `.env` file – It's [good practice](https://12factor.net/config) to store
+5. A `.env` file – It's [good practice](https://12factor.net/config) to store
    things like API keys and database information with environment variables so
    that they can easily be changed for different environments without code
    changes. This is cool, but when you have a lot of configuration variables it
@@ -138,11 +143,7 @@ Then start Postgres with the command:
 brew services start postgresql
 ```
 
-Awesome! For reference, you can stop postgres at any time with `berw services stop postgresql`. You don't want to do that right now, though! Instead, you'll want to create Sources' database. We call ours `sources`.
-
-```shell
-createdb sources
-```
+Awesome! For reference, you can stop postgres at any time with `berw services stop postgresql`. You don't want to do that right now, though!
 
 Note that by default, the Postgres user is your computer's username and there is
 no password. When creating your `.env` file, the values will look something like:
