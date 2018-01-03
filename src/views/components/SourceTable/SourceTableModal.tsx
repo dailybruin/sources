@@ -1,10 +1,9 @@
 import * as React from 'react';
 import * as Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
-import * as gql from 'graphql-tag';
+import glamorous from 'glamorous';
 
-import { addSource, updateSource, sourcesQuery } from '../graphql';
-import './style.scss';
+import { addSource, updateSource, sourcesQuery } from './graphql';
 
 export enum ModalType {
   Add,
@@ -100,6 +99,51 @@ class SourceTableModal extends React.Component<
       },
     };
 
+    const ModalHeader = glamorous.h1({
+      fontFamily: 'Futura-Medium',
+      textAlign: 'center',
+      color: '#000',
+      fontSize: '2.6rem',
+      margin: '1rem 0',
+    });
+
+    const inputStyles = {
+      width: '100%',
+      padding: '0.4rem',
+      display: 'inline-block',
+      border: '1px solid #ccc',
+      borderRadius: '0.2rem',
+      boxSizing: 'border-box',
+    };
+
+    const ModalInput = glamorous.div({
+      margin: '0.2rem 0 0.6rem',
+    });
+
+    const ModalInputField = glamorous.input(inputStyles);
+    const ModalTextArea = glamorous.textarea(inputStyles);
+
+    const ModalInputNote = glamorous.div({
+      color: '#8a8a8a',
+      fontSize: '0.8rem',
+    });
+
+    const ModalSubmit = glamorous.input({
+      width: '100%',
+      backgroundColor: '#4caf50',
+      color: 'white',
+      padding: '1rem 1.2rem',
+      margin: '0.8rem 0',
+      border: 'none',
+      borderRadius: '0.2rem',
+      cursor: 'pointer',
+      fontSize: '1rem',
+      fontFamily: 'Futura-Medium',
+      ':hover': {
+        backgroundColor: '#45a049',
+      },
+    });
+
     return (
       <Modal
         style={styles}
@@ -107,63 +151,63 @@ class SourceTableModal extends React.Component<
         onAfterOpen={this.initializeInputs}
         {...this.props}
       >
-        <h1 className="modal__header">{label}</h1>
+        <ModalHeader>{label}</ModalHeader>
         <form
           className="modal__form"
           onSubmit={isAdd ? this.createSource : this.updateSource}
         >
-          <div className="modal__form__input-field">
+          <ModalInput>
             <label htmlFor="name">Source Name: </label>
-            <input
+            <ModalInputField
               id="name"
               onChange={this.onChange}
               value={this.state.nameInputValue}
               type="text"
             />
-          </div>
-          <div className="modal__form__input-field">
+          </ModalInput>
+          <ModalInput>
             <label htmlFor="organization">Source Organization: </label>
-            <input
+            <ModalInputField
               id="organization"
               onChange={this.onChange}
               value={this.state.organizationInputValue}
               type="text"
             />
-          </div>
-          <div className="modal__form__input-field">
+          </ModalInput>
+          <ModalInput>
             <label htmlFor="phones">Source Phone: </label>
-            <input
+            <ModalInputField
               id="phones"
               onChange={this.onChange}
               value={this.state.phonesInputValue}
               type="text"
             />
-            <div className="modal__form__input-field__note">
+            <ModalInputNote>
               Work: (xxx) xxx-xxxx; Cell: (xxx) xxx-xxxx; etc.
-            </div>
-          </div>
-          <div className="modal__form__input-field">
+            </ModalInputNote>
+          </ModalInput>
+          <ModalInput>
             <label htmlFor="emails">Source Email: </label>
-            <input
+            <ModalInputField
               id="emails"
               type="text"
               onChange={this.onChange}
               value={this.state.emailsInputValue}
             />
-            <div className="modal__form__input-field__note">
+            <ModalInputNote>
               Work: suzy@dailybruin.com; Home: suzy@gmail.com; etc.
-            </div>
-          </div>
-          <div className="modal__form__input-field">
+            </ModalInputNote>
+          </ModalInput>
+          <ModalInput>
             <label htmlFor="notes">Notes: </label>
-            <textarea
+            <ModalTextArea
               id="notes"
               onChange={this.onChange}
               value={this.state.notesInputValue}
               rows={4}
             />
-          </div>
-          <input type="submit" value={isAdd ? 'Create' : 'Update'} />
+          </ModalInput>
+          <ModalSubmit type="submit" value={isAdd ? 'Create' : 'Update'} />
         </form>
       </Modal>
     );
