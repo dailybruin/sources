@@ -16,14 +16,14 @@ const typeDefs = [
 
 const resolvers = {
   Query: {
-    source: getSource,
+    source: (_, { id }) => getSource(id),
     sources: getAllSources,
   },
 
   Mutation: {
     addSource: (_, args) => createSource(args),
-    updateSource,
-    removeSource: deleteSource,
+    updateSource: (_, { id, ...args }) => updateSource(id, args),
+    removeSource: (_, { id }) => deleteSource(id),
   },
 };
 
