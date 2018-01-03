@@ -11,24 +11,65 @@ export enum ModalType {
   Edit,
 }
 
-class SourceTableModal extends React.Component<any, any> {
+export interface Source {
+  id: string;
+  name: string;
+  organization: string;
+  phones: string;
+  emails: string;
+  notes: string;
+}
+
+interface SourceTableModalProps {
+  /** Whether or not the modal is open. */
+  isOpen: boolean;
+  /** Function for the modal to call on close. */
+  onRequestClose: () => void;
+  /** Label for Modal. */
+  contentLabel: string;
+  /** Type of modal. Can either be Add or Edit. */
+  type: ModalType;
+  source: Source;
+
+  addSource: any;
+  updateSource: any;
+}
+
+interface SourceTableModalState {
+  nameInputValue: string;
+  organizationInputValue: string;
+  phonesInputValue: string;
+  emailsInputValue: string;
+  notesInputValue: string;
+  selectedSourceID: string;
+}
+
+/**
+ * The popup modal for a SourceTable. It comes in 2 variants, Add and Edit which is specified by the type prop.
+ */
+class SourceTableModal extends React.Component<
+  SourceTableModalProps,
+  SourceTableModalState
+> {
   public state = {
-    name: '',
-    organization: '',
-    phones: '',
-    emails: '',
-    notes: '',
-    id: '',
-  };
-  public initializeInputs = () => {
-    if (this.props.type === ModalType.Edit) {
-      this.setState({ ...this.props.source });
-    }
+    nameInputValue: '',
+    organizationInputValue: '',
+    phonesInputValue: '',
+    emailsInputValue: '',
+    notesInputValue: '',
+    selectedSourceID: '',
   };
 
   public createSource = async event => {
     event.preventDefault();
-    const { name, organization, phones, emails, notes } = this.state;
+    const {
+      nameInputValue: name,
+      organizationInputValue: organization,
+      phonesInputValue: phones,
+      emailsInputValue: emails,
+      notesInputValue: notes,
+    } = this.state;
+
     await this.props.addSource({
       variables: {
         name,
@@ -46,51 +87,9 @@ class SourceTableModal extends React.Component<any, any> {
     this.props.onRequestClose();
   };
 
-  public updateSource = async event => {
-    event.preventDefault();
-    const {
-      id: sourceToUpdateID,
-      name,
-      organization,
-      phones,
-      emails,
-      notes,
-    } = this.state;
-    await this.props.updateSource({
-      variables: {
-        id: sourceToUpdateID,
-        name,
-        organization,
-        phones,
-        emails,
-        notes,
-      },
-      update: store => {
-        const data = store.readQuery({ query: sourcesQuery });
-        const sourceToUpdate = data.sources.find(
-          source => source.id === sourceToUpdateID
-        );
-        Object.assign(sourceToUpdate, {
-          id: sourceToUpdateID,
-          name,
-          organization,
-          phones,
-          emails,
-          notes,
-        });
-        store.writeQuery({ query: sourcesQuery, data });
-      },
-    });
-    this.props.onRequestClose();
-  };
-
-  public onChange = event => {
-    this.setState({ [event.target.id]: event.target.value });
-  };
-
   public render() {
-    const label =
-      this.props.type === ModalType.Add ? 'Add a Source' : 'Edit Source';
+    const isAdd = this.props.type === ModalType.Add;
+    const label = isAdd ? 'Add a Source' : 'Edit Source';
 
     const styles = {
       content: {
@@ -111,18 +110,14 @@ class SourceTableModal extends React.Component<any, any> {
         <h1 className="modal__header">{label}</h1>
         <form
           className="modal__form"
-          onSubmit={
-            this.props.type === ModalType.Add
-              ? this.createSource
-              : this.updateSource
-          }
+          onSubmit={isAdd ? this.createSource : this.updateSource}
         >
           <div className="modal__form__input-field">
             <label htmlFor="name">Source Name: </label>
             <input
               id="name"
               onChange={this.onChange}
-              value={this.state.name}
+              value={this.state.nameInputValue}
               type="text"
             />
           </div>
@@ -131,7 +126,7 @@ class SourceTableModal extends React.Component<any, any> {
             <input
               id="organization"
               onChange={this.onChange}
-              value={this.state.organization}
+              value={this.state.organizationInputValue}
               type="text"
             />
           </div>
@@ -140,7 +135,7 @@ class SourceTableModal extends React.Component<any, any> {
             <input
               id="phones"
               onChange={this.onChange}
-              value={this.state.phones}
+              value={this.state.phonesInputValue}
               type="text"
             />
             <div className="modal__form__input-field__note">
@@ -153,7 +148,7 @@ class SourceTableModal extends React.Component<any, any> {
               id="emails"
               type="text"
               onChange={this.onChange}
-              value={this.state.emails}
+              value={this.state.emailsInputValue}
             />
             <div className="modal__form__input-field__note">
               Work: suzy@dailybruin.com; Home: suzy@gmail.com; etc.
@@ -164,18 +159,115 @@ class SourceTableModal extends React.Component<any, any> {
             <textarea
               id="notes"
               onChange={this.onChange}
-              value={this.state.notes}
+              value={this.state.notesInputValue}
               rows={4}
             />
           </div>
-          <input
-            type="submit"
-            value={this.props.type === ModalType.Add ? 'Create' : 'Update'}
-          />
+          <input type="submit" value={isAdd ? 'Create' : 'Update'} />
         </form>
       </Modal>
     );
   }
+
+  /**
+   * Initialize the input values of the modal's fields.
+   *
+   * If the modal is an add modal, all fields should be blank. If it's an edit modal, the fields should be the current values of the select source's attributes.
+   */
+  private initializeInputs = () => {
+    const { source } = this.props;
+    if (this.props.type === ModalType.Edit) {
+      this.setState({
+        nameInputValue: source.name,
+        organizationInputValue: source.organization,
+        phonesInputValue: source.phones,
+        emailsInputValue: source.emails,
+        notesInputValue: source.notes,
+      });
+    }
+  };
+
+  /**
+   * Updates the state of the modal on a change of the value of the respective input field.
+   */
+  private onChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { value } = event.currentTarget;
+
+    switch (event.currentTarget.id) {
+      case 'name':
+        this.setState({ nameInputValue: value });
+        break;
+      case 'organization':
+        this.setState({ organizationInputValue: value });
+        break;
+      case 'phones':
+        this.setState({ phonesInputValue: value });
+        break;
+      case 'emails':
+        this.setState({ emailsInputValue: value });
+        break;
+      case 'notes':
+        this.setState({ notesInputValue: value });
+        break;
+      default:
+        break;
+    }
+  };
+
+  /**
+   * Makes a GraphQL request to update a selected source. Should only be used by an edit modal.
+   */
+  private updateSource = async (event: React.FormEvent<HTMLInputElement>) => {
+    // Prevent default because we don't want a page refresh
+    event.preventDefault();
+
+    const {
+      selectedSourceID: sourceToUpdateID,
+      nameInputValue: name,
+      organizationInputValue: organization,
+      phonesInputValue: phones,
+      emailsInputValue: emails,
+      notesInputValue: notes,
+    } = this.state;
+
+    await this.props.updateSource({
+      // `variables` gives GraphQL which variables to update
+      variables: {
+        id: sourceToUpdateID,
+        name,
+        organization,
+        phones,
+        emails,
+        notes,
+      },
+      // `update` lets update update the local GraphQL cache so we don't have to refresh to see changes
+      update: store => {
+        // Get data from cache
+        const data = store.readQuery({ query: sourcesQuery });
+
+        // Find source by id, update it.
+        const sourceToUpdate = data.sources.find(
+          source => source.id === sourceToUpdateID
+        );
+        Object.assign(sourceToUpdate, {
+          id: sourceToUpdateID,
+          name,
+          organization,
+          phones,
+          emails,
+          notes,
+        });
+
+        // Write modified data back to cache
+        store.writeQuery({ query: sourcesQuery, data });
+      },
+    });
+
+    // Close the modal after submit
+    this.props.onRequestClose();
+  };
 }
 
 export default compose(
