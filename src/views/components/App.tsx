@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { Div } from 'glamorous';
 
 import Header from '../Header';
 import SourceTable from '../SourceTable';
-import './style.scss';
 
 const App = () => (
-  <div className="container">
+  <Div
+    display="flex"
+    flexDirection="column"
+    justifyContent="center"
+    margin="0 50px"
+  >
     <Header />
     <SourceTable />
-  </div>
+  </Div>
 );
 
 export default App;

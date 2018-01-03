@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ContextMenu, MenuItem } from 'react-contextmenu';
+
+// react-contextmenu is styled via a stylesheet
 import './style.scss';
 
 const SourceTableContextMenu = props => (

@@ -1,3 +1,6 @@
+/// Default react-contextmenu stylings, taken from: https://github.com/vkbansal/react-contextmenu/blob/master/examples/react-contextmenu.css
+/// See https://github.com/vkbansal/react-contextmenu/blob/master/docs/usage.md for documentation on the classes
+
 .react-contextmenu {
   min-width: 160px;
   padding: 5px 0;
@@ -38,42 +41,4 @@
   background-color: #20a0ff;
   border-color: #20a0ff;
   text-decoration: none;
-}
-
-.react-contextmenu-item.react-contextmenu-item--disabled,
-.react-contextmenu-item.react-contextmenu-item--disabled:hover {
-  color: #878a8c;
-  background-color: transparent;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-.react-contextmenu-item--divider {
-  margin-bottom: 3px;
-  padding: 2px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  cursor: inherit;
-}
-.react-contextmenu-item--divider:hover {
-  background-color: transparent;
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-.react-contextmenu-item.react-contextmenu-submenu {
-  padding: 0;
-}
-
-.react-contextmenu-item.react-contextmenu-submenu > .react-contextmenu-item {
-}
-
-.react-contextmenu-item.react-contextmenu-submenu
-  > .react-contextmenu-item:after {
-  content: "▶";
-  display: inline-block;
-  position: absolute;
-  right: 7px;
-}
-
-.example-multiple-targets::after {
-  content: attr(data-count);
-  display: block;
 }
