@@ -12,9 +12,9 @@
     "build-server": "tsc",
     "build-server:watch": "nodemon",
     "copy-static-files":
-      "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static",
+      "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static",
     "copy-static-files:watch":
-      "cpx \"src/views/{login.{html,css},*.png}\" dist/views/static --watch",
+      "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static --watch",
     "copy-graphql-schema": "cpx src/routes/schema.graphql dist/routes",
     "copy-graphql-schema:watch":
       "cpx src/routes/schema.graphql dist/routes --watch",
