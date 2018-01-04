@@ -143,7 +143,17 @@ Then start Postgres with the command:
 brew services start postgresql
 ```
 
-Awesome! For reference, you can stop postgres at any time with `berw services stop postgresql`. You don't want to do that right now, though!
+Awesome! For reference, you can stop postgres at any time with `berw services stop postgresql`. You don't want to do that right now, though! Instead, you'll want to create Sources' database. We call ours `sources`.
+
+```shell
+createdb sources
+```
+
+You'll also want to create a dummy database used for testing. It's called `sources-test`.
+
+```shell
+createdb sources
+```
 
 Note that by default, the Postgres user is your computer's username and there is
 no password. When creating your `.env` file, the values will look something like:

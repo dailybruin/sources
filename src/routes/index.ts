@@ -18,7 +18,7 @@ router.get('/auth/google/callback', authCallback);
 /** GraphQL */
 router.use(
   '/graphql',
-  ensureAuthenticated,
+  // ensureAuthenticated,
   bodyParser.json(),
   graphqlExpress({ schema })
 );

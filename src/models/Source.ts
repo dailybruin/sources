@@ -11,11 +11,11 @@ import { sequelize } from './index';
  * @interface SourceAttributes
  */
 export interface SourceAttributes {
-  name: string;
-  organization: string;
-  phones: string;
-  emails: string;
-  notes: string;
+  name?: string;
+  organization?: string;
+  phones?: string;
+  emails?: string;
+  notes?: string;
 }
 
 export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
@@ -25,8 +25,8 @@ export interface SourceInstance extends Sequelize.Instance<SourceAttributes> {
 }
 
 const Source: Sequelize.Model<
-  SourceAttributes,
-  SourceInstance
+  SourceInstance,
+  SourceAttributes
 > = sequelize.define('Source', {
   name: Sequelize.STRING,
   organization: Sequelize.STRING,

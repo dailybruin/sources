@@ -1,13 +1,17 @@
 import * as Sequelize from 'sequelize';
 
 // Configure connection to database.
+const databaseName =
+  process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources';
+
 const sequelize = new Sequelize(
-  'sources',
+  databaseName,
   process.env.DATABASE_USER!,
   process.env.DATABASE_PASSWORD!,
   {
     host: process.env.DATABASE_HOST,
     dialect: 'postgres',
+    logging: false,
     operatorsAliases: false,
   }
 );

@@ -3,9 +3,9 @@ import * as path from 'path';
 import { makeExecutableSchema } from 'graphql-tools';
 
 import {
-  readAllSources,
+  getAllSources,
   createSource,
-  readSource,
+  getSource,
   deleteSource,
   updateSource,
 } from '../controllers/sourceController';
@@ -16,14 +16,14 @@ const typeDefs = [
 
 const resolvers = {
   Query: {
-    source: readSource,
-    sources: readAllSources,
+    source: (_, { id }) => getSource(id),
+    sources: getAllSources,
   },
 
   Mutation: {
-    addSource: createSource,
-    updateSource,
-    removeSource: deleteSource,
+    addSource: (_, args) => createSource(args),
+    updateSource: (_, { id, ...args }) => updateSource(id, args),
+    removeSource: (_, { id }) => deleteSource(id),
   },
 };
 
