@@ -15,28 +15,12 @@
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
-    "lib": [
-      "es2015",
-      "es2016",
-      "dom",
-      "esnext.asynciterable"
-    ],
+    "lib": ["es2015", "es2016", "dom", "esnext.asynciterable"],
     "paths": {
-      "@/*": [
-        "src/views/*",
-        "src/types/*"
-      ]
+      "@/*": ["src/views/*", "src/types/*"]
     },
-    "types": [
-      "node",
-    ]
+    "types": ["node"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.test.ts",
-    "src/views/*"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts", "src/views/*"]
 }
