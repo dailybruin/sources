@@ -22,7 +22,7 @@ export function redirectToAuthURL(
 export function authCallback(req: Request, res: Response, next: NextFunction) {
   const authURL = url.parse(req.url, true) as any; // get authentication code
 
-  if (!authURL.query || !authURL.query.hasOwnProperty('code')) {
+  if (!authURL.query) {
     res.redirect('/login');
   } else {
     oauth2Client.getToken(authURL.query.code, (err, tokens) => {
