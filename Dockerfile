@@ -16,7 +16,6 @@ RUN yarn --production=false
 # Bundle app source
 COPY . .
 
-RUN yarn create-data
 RUN yarn build
 CMD [ "yarn", "start" ]
 EXPOSE 3000
