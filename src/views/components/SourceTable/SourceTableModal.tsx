@@ -228,6 +228,15 @@ class SourceTableModal extends React.Component<
         emailsInputValue: source.emails,
         notesInputValue: source.notes,
       });
+    } else {
+      this.setState({
+        nameInputValue: '',
+        organizationInputValue: '',
+        phonesInputValue: '',
+        emailsInputValue: '',
+        notesInputValue: '',
+        selectedSourceID: '',
+      });
     }
   };
 
