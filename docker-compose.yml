@@ -2,12 +2,21 @@ version: '3'
 services:
   web:
     image: sources
-    build: "yarn build"
+    build: .
     ports:
-    - "5000:5000"
+    - "3000:3000"
     depends_on:
     - database
+    environment:
+    - DATABASE_USER=sources
+    - DATABASE_PASSWORD=sources
+    - DATABASE_HOST=database
   database:
     image: postgres:latest
+    restart: always
     ports:
       - "5432:5432"
+    environment:
+    - POSTGRES_USER=sources
+    - POSTGRES_PASSWORD=sources
+    - POSTGRES_DB=sources
