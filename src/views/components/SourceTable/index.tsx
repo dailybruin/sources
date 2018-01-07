@@ -8,11 +8,18 @@ import { compose, graphql } from 'react-apollo';
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
 import {
-  default as SourceTableModal,
+  default as SourceTableCreateUpdateModal,
   ModalType,
   Source,
-} from './SourceTableModal';
-import { sourcesQuery, removeSource } from './graphql';
+} from './SourceTableModals/SourceTableCreateUpdateModal';
+import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
+import { sourcesQuery } from './graphql';
+
+/**
+ * Use setAppElement for screen readers. See https://reactcommunity.org/react-modal/examples/set_app_element.html
+ */
+// SourceTableCreateUpdateModal.setAppElement('#root');
+// SourceTableDeleteConfirmationModal.setAppElement('#root');
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -22,12 +29,12 @@ function filterMethod(filter, rows) {
 
 interface SourceTableProps {
   sourcesQuery: any;
-  removeSource: any;
 }
 
 interface SourceTableState {
   filterValue: string;
-  modalIsOpen: boolean;
+  deleteModalIsOpen: boolean;
+  createUpdateModalIsOpen: boolean;
   modalType: ModalType;
   currentlySelectedSource: Source | null;
 }
@@ -35,7 +42,8 @@ interface SourceTableState {
 class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
   public state = {
     filterValue: '',
-    modalIsOpen: false,
+    deleteModalIsOpen: false,
+    createUpdateModalIsOpen: false,
     modalType: ModalType.Add,
     currentlySelectedSource: null,
   };
@@ -82,7 +90,7 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
         <div className="source-table__input">
           <div
             className="source-table__input__add"
-            onClick={() => this.openModal(ModalType.Add)}
+            onClick={() => this.openCreateUpdateModal(ModalType.Add)}
           >
             Add a Source
           </div>
@@ -109,13 +117,18 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
         />
         {/* Popups */}
         <SourceTableContextMenu
-          onEdit={() => this.openModal(ModalType.Edit)}
-          onRemove={this.removeSource}
+          onEdit={() => this.openCreateUpdateModal(ModalType.Edit)}
+          onRemove={this.openDeleteModal}
         />
-        <SourceTableModal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
+        <SourceTableCreateUpdateModal
+          isOpen={this.state.createUpdateModalIsOpen}
+          onRequestClose={this.closeCreateUpdateModal}
           type={this.state.modalType}
+          source={this.state.currentlySelectedSource}
+        />
+        <SourceTableDeleteConfirmationModal
+          isOpen={this.state.deleteModalIsOpen}
+          onRequestClose={this.closeDeleteModal}
           source={this.state.currentlySelectedSource}
         />
       </div>
@@ -132,42 +145,31 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
   };
 
   /**
-   * Makes a GraphQL request to remove a source based on `currentlySelectedSource`.
+   * Function called to open the create/update modal.
    */
-  private removeSource = async () => {
-    const sourceToDeleteID = this.state.currentlySelectedSource.id;
-
-    await this.props.removeSource({
-      // Pass id in GraphQL query
-      variables: { id: sourceToDeleteID },
-      // Update local cache so we don't have to refresh.
-      update: store => {
-        // Get the current sourcesQuery from the cache.
-        const data = store.readQuery({ query: sourcesQuery });
-
-        // Remove the deleted id.
-        data.sources = data.sources.filter(
-          source => source.id !== sourceToDeleteID
-        );
-
-        // Write the updated query back to the cache.
-        store.writeQuery({ query: sourcesQuery, data });
-      },
-    });
+  private openCreateUpdateModal = (type: ModalType) => {
+    this.setState({ createUpdateModalIsOpen: true, modalType: type });
   };
 
   /**
-   * Function called to open modal.
+   * Function called to close the create/update modal.
    */
-  private openModal = (type: ModalType) => {
-    this.setState({ modalIsOpen: true, modalType: type });
+  private closeCreateUpdateModal = () => {
+    this.setState({ createUpdateModalIsOpen: false });
   };
 
   /**
-   * Function called when modal is closed.
+   * Function called to open the delete confirmation modal.
    */
-  private closeModal = () => {
-    this.setState({ modalIsOpen: false });
+  private openDeleteModal = () => {
+    this.setState({ deleteModalIsOpen: true });
+  };
+
+  /**
+   * Function called to close the delete confirmation modal.
+   */
+  private closeDeleteModal = () => {
+    this.setState({ deleteModalIsOpen: false });
   };
 
   /**
@@ -212,7 +214,4 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
   };
 }
 
-export default compose(
-  graphql(sourcesQuery, { name: 'sourcesQuery' }),
-  graphql(removeSource, { name: 'removeSource' })
-)(SourceTable);
+export default graphql(sourcesQuery, { name: 'sourcesQuery' })(SourceTable);

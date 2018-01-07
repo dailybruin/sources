@@ -3,7 +3,8 @@ import * as Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
 import glamorous from 'glamorous';
 
-import { addSource, updateSource, sourcesQuery } from './graphql';
+import { addSource, updateSource, sourcesQuery } from '../graphql';
+import ModalHeader from './ModalHeader';
 
 export enum ModalType {
   Add,
@@ -19,7 +20,44 @@ export interface Source {
   notes: string;
 }
 
-interface SourceTableModalProps {
+const inputStyles: any = {
+  width: '100%',
+  padding: '0.4rem',
+  display: 'inline-block',
+  border: '1px solid #ccc',
+  borderRadius: '0.2rem',
+  boxSizing: 'border-box',
+};
+
+const ModalInput = glamorous.div({
+  margin: '0.2rem 0 0.6rem',
+});
+
+const ModalInputField = glamorous.input(inputStyles);
+const ModalTextArea = glamorous.textarea(inputStyles);
+
+const ModalInputNote = glamorous.div({
+  color: '#8a8a8a',
+  fontSize: '0.8rem',
+});
+
+const ModalSubmit = glamorous.input({
+  width: '100%',
+  backgroundColor: '#4caf50',
+  color: 'white',
+  padding: '1rem 1.2rem',
+  margin: '0.8rem 0',
+  border: 'none',
+  borderRadius: '0.2rem',
+  cursor: 'pointer',
+  fontSize: '1rem',
+  fontFamily: 'Futura-Medium',
+  ':hover': {
+    backgroundColor: '#45a049',
+  },
+});
+
+interface SourceTableCreateUpdateModalProps {
   /** Whether or not the modal is open. */
   isOpen: boolean;
   /** Function for the modal to call on close. */
@@ -34,7 +72,7 @@ interface SourceTableModalProps {
   updateSource: any;
 }
 
-interface SourceTableModalState {
+interface SourceTableCreateUpdateModalState {
   nameInputValue: string;
   organizationInputValue: string;
   phonesInputValue: string;
@@ -44,11 +82,11 @@ interface SourceTableModalState {
 }
 
 /**
- * The popup modal for a SourceTable. It comes in 2 variants, Add and Edit which is specified by the type prop.
+ * The popup modal for editing and adding sources to a SourceTable. It comes in 2 variants, Add and Edit which is specified by the type prop.
  */
-class SourceTableModal extends React.Component<
-  SourceTableModalProps,
-  SourceTableModalState
+class SourceTableCreateUpdateModal extends React.Component<
+  SourceTableCreateUpdateModalProps,
+  SourceTableCreateUpdateModalState
 > {
   public state = {
     nameInputValue: '',
@@ -90,63 +128,10 @@ class SourceTableModal extends React.Component<
     const isAdd = this.props.type === ModalType.Add;
     const label = isAdd ? 'Add a Source' : 'Edit Source';
 
-    const styles = {
-      content: {
-        top: '6rem',
-        left: '4rem',
-        right: '4rem',
-        bottom: 'auto',
-      },
-    };
-
-    const ModalHeader = glamorous.h1({
-      fontFamily: 'Futura-Medium',
-      textAlign: 'center',
-      color: '#000',
-      fontSize: '2.6rem',
-      margin: '1rem 0',
-    });
-
-    const inputStyles = {
-      width: '100%',
-      padding: '0.4rem',
-      display: 'inline-block',
-      border: '1px solid #ccc',
-      borderRadius: '0.2rem',
-      boxSizing: 'border-box',
-    };
-
-    const ModalInput = glamorous.div({
-      margin: '0.2rem 0 0.6rem',
-    });
-
-    const ModalInputField = glamorous.input(inputStyles);
-    const ModalTextArea = glamorous.textarea(inputStyles);
-
-    const ModalInputNote = glamorous.div({
-      color: '#8a8a8a',
-      fontSize: '0.8rem',
-    });
-
-    const ModalSubmit = glamorous.input({
-      width: '100%',
-      backgroundColor: '#4caf50',
-      color: 'white',
-      padding: '1rem 1.2rem',
-      margin: '0.8rem 0',
-      border: 'none',
-      borderRadius: '0.2rem',
-      cursor: 'pointer',
-      fontSize: '1rem',
-      fontFamily: 'Futura-Medium',
-      ':hover': {
-        backgroundColor: '#45a049',
-      },
-    });
-
     return (
       <Modal
-        style={styles}
+        appElement={document.getElementById('root')}
+        style={this.modalStyles}
         contentLabel={label}
         onAfterOpen={this.initializeInputs}
         {...this.props}
@@ -212,6 +197,18 @@ class SourceTableModal extends React.Component<
       </Modal>
     );
   }
+
+  /**
+   * How react-modal likes its styles. See https://github.com/reactjs/react-modal#styles for details.
+   */
+  private modalStyles = {
+    content: {
+      top: '6rem',
+      left: '4rem',
+      right: '4rem',
+      bottom: 'auto',
+    },
+  };
 
   /**
    * Initialize the input values of the modal's fields.
@@ -326,4 +323,4 @@ class SourceTableModal extends React.Component<
 export default compose(
   graphql(addSource, { name: 'addSource' }),
   graphql(updateSource, { name: 'updateSource' })
-)(SourceTableModal);
+)(SourceTableCreateUpdateModal);
