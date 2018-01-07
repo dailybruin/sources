@@ -37,4 +37,23 @@ describe('source query', () => {
     expect(data.source).toMatchObject(source);
     expect(data.source.id).toEqual(id);
   });
+
+  it('should return null if there is no source with the given id', async () => {
+    const id = '5';
+    const query = `
+      {
+        source(id: ${id}) {
+          id
+          name
+          organization
+          phones
+          emails
+          notes
+        }
+      }
+    `;
+
+    const { data } = await graphql(schema, query);
+    expect(data.source).toBeNull();
+  });
 });
