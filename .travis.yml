@@ -9,3 +9,6 @@ before_install:
   - psql -c 'create database "sources-test";' -U postgres
 before_script:
   - yarn build
+branches:
+  only:
+    - master

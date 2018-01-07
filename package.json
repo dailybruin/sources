@@ -22,7 +22,7 @@
       "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn copy-static-files:watch\"",
     "build":
       "yarn build-client && yarn build-server && yarn copy-static-files && yarn copy-graphql-schema",
-    "test": "NODE_ENV='test' jest --forceExit && codecov",
+    "test": "NODE_ENV='test' jest --forceExit",
     "create-data": "ts-node ./scripts/create-data.ts"
   },
   "nodemonConfig": {
