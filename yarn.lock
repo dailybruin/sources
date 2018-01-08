@@ -5036,9 +5036,9 @@ node-sass@^4.7.2:
     stdout-stream "^1.4.0"
     "true-case-path" "^1.0.2"
 
-nodemon@^1.14.3:
-  version "1.14.7"
-  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.14.7.tgz#ef544baa64603155c2ee6dcfba9204a2cd46d355"
+nodemon@^1.14.9:
+  version "1.14.9"
+  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.14.9.tgz#eec45a916db61503264037b4233c0f8a15d69802"
   dependencies:
     chokidar "^1.7.0"
     debug "^2.6.8"
@@ -5312,7 +5312,7 @@ pako@~1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.6.tgz#0101211baa70c4bca4a0f63f2206e97b7dfaf258"
 
-parcel-bundler@1.2.1:
+parcel-bundler@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/parcel-bundler/-/parcel-bundler-1.2.1.tgz#2736f51a2c8df20f7fc419c4c9d7b2d1da3a5946"
   dependencies:
