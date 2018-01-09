@@ -9,8 +9,9 @@ import App from './components/App';
 import './index.css';
 
 // 2
+const graphQLEndpoint = '/graphql';
 const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URI || 'http://localhost:3000/graphql',
+  uri: graphQLEndpoint,
 });
 
 // 3

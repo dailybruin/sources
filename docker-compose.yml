@@ -9,6 +9,7 @@ services:
     - "3000:3000"
     depends_on:
     - database
+    env_file: .env
     environment:
     - DATABASE_USER=sources
     - DATABASE_PASSWORD=sources
