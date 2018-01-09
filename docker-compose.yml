@@ -4,6 +4,7 @@ services:
     build: .
     image: sources
     restart: always
+    command: yarn start
     ports:
     - "3000:3000"
     depends_on:
