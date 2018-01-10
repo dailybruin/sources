@@ -35,4 +35,6 @@ const Source: Sequelize.Model<
   notes: Sequelize.STRING,
 });
 
+sequelize.sync();
+
 export default Source;

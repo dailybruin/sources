@@ -1,0 +1,25 @@
+version: '2'
+volumes:
+  data:
+    driver: rancher-nfs
+services:
+  web:
+    build: .
+    image: sources
+    restart: always
+    command: yarn start
+    ports:
+    - "3000:3000"
+    depends_on:
+    - database
+    env_file: .env
+    environment:
+
+  database:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file: .env
+    volumes:
+    - data:/var/lib/postgresql/data
