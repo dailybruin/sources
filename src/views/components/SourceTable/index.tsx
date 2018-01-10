@@ -23,7 +23,7 @@ import { sourcesQuery } from './graphql';
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
-    keys: ['name', 'org', 'phones', 'emails'],
+    keys: ['name', 'organization', 'phones', 'emails', 'notes'],
   });
 }
 
