@@ -14,17 +14,12 @@ services:
     - database
     env_file: .env
     environment:
-    - DATABASE_USER=sources
-    - DATABASE_PASSWORD=sources
-    - DATABASE_HOST=database
+
   database:
     image: postgres:latest
     restart: always
     ports:
       - "5432:5432"
-    environment:
-    - POSTGRES_USER=sources
-    - POSTGRES_PASSWORD=sources
-    - POSTGRES_DB=sources
+    env_file: .env
     volumes:
     - data:/var/lib/postgresql/data
