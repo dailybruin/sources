@@ -78,7 +78,7 @@ interface SourceTableCreateUpdateModalState {
   phonesInputValue: string;
   emailsInputValue: string;
   notesInputValue: string;
-  selectedSourceID: string;
+  selectedSourceID: number;
 }
 
 /**
@@ -94,7 +94,7 @@ class SourceTableCreateUpdateModal extends React.Component<
     phonesInputValue: '',
     emailsInputValue: '',
     notesInputValue: '',
-    selectedSourceID: '',
+    selectedSourceID: -1,
   };
 
   public createSource = async event => {
@@ -224,6 +224,7 @@ class SourceTableCreateUpdateModal extends React.Component<
         phonesInputValue: source.phones,
         emailsInputValue: source.emails,
         notesInputValue: source.notes,
+        selectedSourceID: Number(source.id),
       });
     } else {
       this.setState({
@@ -232,7 +233,7 @@ class SourceTableCreateUpdateModal extends React.Component<
         phonesInputValue: '',
         emailsInputValue: '',
         notesInputValue: '',
-        selectedSourceID: '',
+        selectedSourceID: -1,
       });
     }
   };
@@ -298,9 +299,9 @@ class SourceTableCreateUpdateModal extends React.Component<
         const data = store.readQuery({ query: sourcesQuery });
 
         // Find source by id, update it.
-        const sourceToUpdate = data.sources.find(
-          source => source.id === sourceToUpdateID
-        );
+        const sourceToUpdate = data.sources.find(source => {
+          return Number(source.id) === sourceToUpdateID;
+        });
         Object.assign(sourceToUpdate, {
           id: sourceToUpdateID,
           name,
