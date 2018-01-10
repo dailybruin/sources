@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express';
 
 const { OAuth2 } = google.auth;
 
-let callbackURL = 'http://localhost:3000/auth/google/callback'
+let callbackURL = 'http://localhost:3000/auth/google/callback';
 if (process.env.PRODUCTION == 'true') {
   callbackURL = 'http://sources.dailybruin.com/auth/google/callback';
 }
@@ -12,7 +12,7 @@ if (process.env.PRODUCTION == 'true') {
 const oauth2Client = new OAuth2(
   process.env.G_CLIENT_ID,
   process.env.G_CLIENT_SECRET,
-  'http://sources.dailybruin.com/auth/google/callback'
+  callbackURL
 );
 const Profile = google.oauth2('v2'); // to obtain profile details
 
