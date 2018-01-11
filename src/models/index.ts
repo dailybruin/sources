@@ -27,3 +27,4 @@ sequelize
 
 export { sequelize };
 export { default as Source } from './Source';
+export { default as User } from './User';
