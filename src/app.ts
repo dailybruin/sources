@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 /** Parse Cookies */
 app.use(cookieParser());
 
-/**  */
+/** Session Configuration with Sequelize */
 app.use(
   session({
     secret: 'keyboard cat',
