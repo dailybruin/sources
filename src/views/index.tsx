@@ -12,6 +12,7 @@ import './index.css';
 const graphQLEndpoint = '/graphql';
 const httpLink = new HttpLink({
   uri: graphQLEndpoint,
+  credentials: 'same-origin',
 });
 
 // 3

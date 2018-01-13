@@ -35,8 +35,7 @@ app.use(
       db: sequelize,
     }),
     resave: false,
-    // we support the touch method so per the express-session docs this should be set to false
-    saveUninitialized: true, // need
+    saveUninitialized: true,
   })
 );
 

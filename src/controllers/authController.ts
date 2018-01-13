@@ -31,6 +31,7 @@ passport.use(
       const [user] = await User.findOrCreate({
         where: { id: String(profile.id) },
       });
+      console.log(user);
       return done(null, user);
     }
   )
@@ -40,56 +41,9 @@ passport.use(
  * Login Required middleware.
  */
 export function isAuthenticated(req, res, next) {
-  console.log(req.isAuthenticated());
+  console.log(req);
   if (req.isAuthenticated()) {
     return next();
   }
   res.redirect('/login');
 }
-
-// export function redirectToAuthURL(
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) {
-//   passport.authenticate('google', {
-//     scope: ['https://www.googleapis.com/auth/plus.login'],
-//   });
-// }
-
-// export function authCallback(req: Request, res: Response, next: NextFunction) {
-//   passport.authenticate('google', { failureRedirect: '/login' });
-
-//   if (
-//     !authURL.query ||
-//     !Object.prototype.hasOwnProperty.call(authURL.query, 'code')
-//   ) {
-//     res.redirect('/login');
-//   } else {
-//     oauth2Client.getToken(authURL.query.code, (err, tokens) => {
-//       // Now tokens contains an access_token and an optional refresh_token. Save them.
-//       if (!err) {
-//         oauth2Client.credentials = tokens; // See https://github.com/google/google-api-nodejs-client/issues/869
-//         res.redirect('/');
-//       }
-//     });
-//   }
-// }
-// export function ensureAuthenticated(
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) {
-//   Profile.userinfo.v2.me.get(
-//     {
-//       auth: oauth2Client,
-//     },
-//     (err, response) => {
-//       if (err || response.hd !== 'media.ucla.edu') {
-//         res.redirect('/login');
-//       } else {
-//         next();
-//       }
-//     }
-//   );
-// }
