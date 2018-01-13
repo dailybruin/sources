@@ -15,6 +15,12 @@ const User: Sequelize.Model<UserInstance, UserAttributes> = sequelize.define(
   'User',
   {
     name: Sequelize.STRING,
+
+    // Google IDs are long af, so we need a longer type than INT
+    id: {
+      type: Sequelize.STRING,
+      primaryKey: true,
+    },
   }
 );
 
