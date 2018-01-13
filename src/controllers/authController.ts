@@ -27,8 +27,8 @@ passport.use(
       callbackURL,
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-      const user = await User.findOrCreate({
+      console.log('hi');
+      const [user] = await User.findOrCreate({
         where: { id: String(profile.id) },
       });
       return done(null, user);
@@ -40,6 +40,7 @@ passport.use(
  * Login Required middleware.
  */
 export function isAuthenticated(req, res, next) {
+  console.log(req.isAuthenticated());
   if (req.isAuthenticated()) {
     return next();
   }

@@ -1,18 +1,21 @@
 import * as express from 'express';
-import { Express } from 'express-serve-static-core';
 import * as logger from 'morgan';
+import * as session from 'express-session';
+import * as connectSession from 'connect-session-sequelize';
 import * as cookieParser from 'cookie-parser';
 import * as bodyParser from 'body-parser';
 import * as passport from 'passport';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+const SequelizeStore = connectSession(session.Store);
 
 import router from './routes';
+import { sequelize } from './models';
 import { notFoundHandler, errorHandler } from './errorHandling';
 
 /** Create Express server */
-const app: Express = express();
+const app = express();
 
 /** Logging */
 app.use(logger('dev'));
@@ -20,6 +23,22 @@ app.use(logger('dev'));
 /** Parse incoming request bodies */
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+/** Parse Cookies */
+app.use(cookieParser());
+
+/**  */
+app.use(
+  session({
+    secret: 'keyboard cat',
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
+    resave: false,
+    // we support the touch method so per the express-session docs this should be set to false
+    saveUninitialized: true, // need
+  })
+);
 
 /** Passport Initialization (for authentication) */
 app.use(passport.initialize());

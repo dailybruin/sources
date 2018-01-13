@@ -17,15 +17,17 @@ const router = Router();
 router.get(
   '/auth/google',
   passport.authenticate('google', {
-    scope: ['https://www.googleapis.com/auth/plus.login'],
+    scope: ['profile', 'email'],
   })
 );
 
 router.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
-  (req, res) => {
-    res.redirect('/');
+  (req: any, res) => {
+    req.session.save(() => {
+      res.redirect('/');
+    });
   }
 );
 
