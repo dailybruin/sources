@@ -27,12 +27,16 @@ passport.use(
       callbackURL,
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log('hi');
-      const [user] = await User.findOrCreate({
-        where: { id: String(profile.id) },
-      });
-      console.log(user);
-      return done(null, user);
+      if (profile._json.domain === 'media.ucla.edu') {
+        const [user] = await User.findOrCreate({
+          where: { id: String(profile.id) },
+        });
+        user.name = profile.displayName;
+        await user.save();
+        return done(null, user);
+      } else {
+        done(new Error('Invalid host domain.'));
+      }
     }
   )
 );
@@ -41,7 +45,6 @@ passport.use(
  * Login Required middleware.
  */
 export function isAuthenticated(req, res, next) {
-  console.log(req);
   if (req.isAuthenticated()) {
     return next();
   }

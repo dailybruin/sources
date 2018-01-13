@@ -18,6 +18,7 @@ router.get(
   '/auth/google',
   passport.authenticate('google', {
     scope: ['profile', 'email'],
+    hd: 'media.ucla.edu',
   })
 );
 

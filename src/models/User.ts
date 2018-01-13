@@ -6,6 +6,8 @@ export interface UserAttributes {
 }
 
 export interface UserInstance extends Sequelize.Instance<UserAttributes> {
+  name: string;
+
   id: number;
   createdAt: Date;
   updatedAt: Date;
