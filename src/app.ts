@@ -30,7 +30,7 @@ app.use(cookieParser());
 /** Session Configuration with Sequelize */
 app.use(
   session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     store: new SequelizeStore({
       db: sequelize,
     }),
