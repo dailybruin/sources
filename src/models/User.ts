@@ -8,7 +8,7 @@ export interface UserAttributes {
 export interface UserInstance extends Sequelize.Instance<UserAttributes> {
   name: string;
 
-  id: number;
+  id: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -18,7 +18,7 @@ const User: Sequelize.Model<UserInstance, UserAttributes> = sequelize.define(
   {
     name: Sequelize.STRING,
 
-    // Google IDs are long af, so we need a longer type than INT
+    // Google IDs are long af (like too long for INTs), so we need to use STRINGs
     id: {
       type: Sequelize.STRING,
       primaryKey: true,

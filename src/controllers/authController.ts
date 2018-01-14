@@ -27,9 +27,10 @@ passport.use(
       callbackURL,
     },
     async (accessToken, refreshToken, profile, done) => {
+      // Using the _json property isn't the nicest, but it seems to be the only way to get a user's domain
       if (profile._json.domain === 'media.ucla.edu') {
         const [user] = await User.findOrCreate({
-          where: { id: String(profile.id) },
+          where: { id: profile.id },
         });
         user.name = profile.displayName;
         await user.save();
