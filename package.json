@@ -5,29 +5,26 @@
   "scripts": {
     "start": "node ./bin/www",
     "start:watch": "nodemon",
-    "build-client":
-      "parcel build src/views/index.html --out-dir dist/views/static --public-url ./",
-    "build-client:watch":
-      "parcel watch src/views/index.html --out-dir dist/views/static --public-url ./",
+    "build-client": "parcel build src/views/index.html --out-dir dist/views/static --public-url ./",
+    "build-client:watch": "parcel watch src/views/index.html --out-dir dist/views/static --public-url ./",
     "build-server": "tsc",
     "build-server:watch": "nodemon",
-    "copy-static-files":
-      "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static",
-    "copy-static-files:watch":
-      "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static --watch",
+    "copy-static-files": "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static",
+    "copy-static-files:watch": "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static --watch",
     "copy-graphql-schema": "cpx src/routes/schema.graphql dist/routes",
-    "copy-graphql-schema:watch":
-      "cpx src/routes/schema.graphql dist/routes --watch",
-    "dev":
-      "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn copy-static-files:watch\"",
-    "build":
-      "yarn build-client && yarn build-server && yarn copy-static-files && yarn copy-graphql-schema",
+    "copy-graphql-schema:watch": "cpx src/routes/schema.graphql dist/routes --watch",
+    "dev": "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn copy-static-files:watch\"",
+    "build": "yarn build-client && yarn build-server && yarn copy-static-files && yarn copy-graphql-schema",
     "test": "NODE_ENV='test' jest --forceExit",
     "create-data": "ts-node ./scripts/create-data.ts"
   },
   "nodemonConfig": {
-    "watch": ["src"],
-    "ignore": ["src/views/"],
+    "watch": [
+      "src"
+    ],
+    "ignore": [
+      "src/views/"
+    ],
     "ext": "ts",
     "exec": "tsc && node ./bin/www"
   },
@@ -58,14 +55,21 @@
         "tsConfigFile": "tsconfig.json"
       }
     },
-    "moduleFileExtensions": ["js", "ts"],
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": ["**/src/**/*.test.(js|ts)"],
+    "testMatch": [
+      "**/src/**/*.test.(js|ts)"
+    ],
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coverageReporters": ["json"]
+    "coverageReporters": [
+      "json"
+    ]
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.4",
@@ -108,7 +112,7 @@
     "@types/morgan": "^1.7.35",
     "@types/react": "^16.0.34",
     "@types/react-dom": "^16.0.3",
-    "@types/sequelize": "^4.0.80",
+    "@types/sequelize": "^4.27.2",
     "@types/supertest": "^2.0.4",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
