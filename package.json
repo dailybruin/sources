@@ -144,7 +144,7 @@
     "tslint-eslint-rules": "^4.1.1",
     "tslint-microsoft-contrib": "^5.0.1",
     "tslint-react": "^3.3.3",
-    "tsutils": "^2.14.0",
+    "tsutils": "^2.19.1",
     "typescript": "^2.6.2"
   }
 }
