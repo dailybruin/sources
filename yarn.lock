@@ -6679,13 +6679,17 @@ semver-diff@^2.0.0:
   dependencies:
     semver "^5.0.3"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0:
+"semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
 
 semver@4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/semver/-/semver-4.3.2.tgz#c7a07158a80bedd052355b770d82d6640f803be7"
+
+semver@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
 semver@~5.3.0:
   version "5.3.0"
@@ -6709,9 +6713,9 @@ send@0.16.1:
     range-parser "~1.2.0"
     statuses "~1.3.1"
 
-sequelize@^4.28.6:
-  version "4.28.6"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-4.28.6.tgz#44b4b69f550bc53f41135bf8db73c5d492cb7e64"
+sequelize@^4.32.2:
+  version "4.32.2"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-4.32.2.tgz#de5924f6b904cabfbde1f9f8886d1be14ecf9e42"
   dependencies:
     bluebird "^3.4.6"
     cls-bluebird "^2.0.1"
@@ -6724,10 +6728,10 @@ sequelize@^4.28.6:
     moment "^2.13.0"
     moment-timezone "^0.5.4"
     retry-as-promised "^2.3.1"
-    semver "^5.0.1"
+    semver "^5.5.0"
     terraformer-wkt-parser "^1.1.2"
     toposort-class "^1.0.1"
-    uuid "^3.0.0"
+    uuid "^3.2.1"
     validator "^9.1.0"
     wkx "^0.4.1"
 
@@ -7837,6 +7841,10 @@ utils-merge@1.0.1, utils-merge@1.x.x:
 uuid@^3.0.0, uuid@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
+
+uuid@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
 v8-compile-cache@^1.1.0:
   version "1.1.0"
