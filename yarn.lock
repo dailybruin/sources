@@ -102,9 +102,9 @@
   version "16.0.34"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.34.tgz#7a8f795afd8a404a9c4af9539b24c75d3996914e"
 
-"@types/sequelize@^4.0.80":
-  version "4.0.80"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.0.80.tgz#0bc3a81d89d6a54f946a3a91c26608d410f7cda7"
+"@types/sequelize@^4.27.5":
+  version "4.27.5"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.5.tgz#3bd4019be8af888413fa95e02c98b69d019fa52f"
   dependencies:
     "@types/bluebird" "*"
     "@types/continuation-local-storage" "*"
