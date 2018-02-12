@@ -312,6 +312,14 @@ apollo-link@^1.0.0, apollo-link@^1.0.7:
     apollo-utilities "^1.0.0"
     zen-observable "^0.6.0"
 
+apollo-link@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-1.1.0.tgz#9d573b16387ee0d8e147b1f319e42c8c562f18f7"
+  dependencies:
+    "@types/zen-observable" "0.5.3"
+    apollo-utilities "^1.0.0"
+    zen-observable "^0.7.0"
+
 apollo-server-core@^1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-1.3.2.tgz#f36855a3ebdc2d77b8b9c454380bf1d706105ffc"
@@ -2450,10 +2458,6 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
-es6-promise@^4.1.1:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.2.tgz#f722d7769af88bd33bc13ec6605e1f92966b82d9"
-
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -3167,25 +3171,18 @@ graphql-extensions@^0.0.x:
     core-js "^2.5.1"
     source-map-support "^0.5.0"
 
-graphql-subscriptions@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.5.6.tgz#0d8e960fbaaf9ecbe7900366e86da2fc143fc5b2"
-  dependencies:
-    es6-promise "^4.1.1"
-    iterall "^1.1.3"
-
 graphql-tag@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.6.1.tgz#4788d509f6e29607d947fc47a40c4e18f736d34a"
 
-graphql-tools@^2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.16.0.tgz#689e46ce8b4570e01214cb7fda4a0c9338c0459f"
+graphql-tools@^2.21.0:
+  version "2.21.0"
+  resolved "https://registry.yarnpkg.com/graphql-tools/-/graphql-tools-2.21.0.tgz#c0d0fbda6f40a87c8d267a2989ade2ae8b9a288e"
   dependencies:
-    apollo-link "^1.0.0"
+    apollo-link "^1.1.0"
     apollo-utilities "^1.0.1"
     deprecated-decorator "^0.1.6"
-    graphql-subscriptions "^0.5.6"
+    iterall "^1.1.3"
     uuid "^3.1.0"
 
 graphql@0.12.3:
@@ -8131,3 +8128,7 @@ yn@^2.0.0:
 zen-observable@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.6.1.tgz#01dbed3bc8d02cbe9ee1112c83e04c807f647244"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
