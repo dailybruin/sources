@@ -89,7 +89,7 @@
     "glamorous": "^4.11.2",
     "global": "^4.3.2",
     "googleapis": "^23.0.0",
-    "graphql": "0.12.3",
+    "graphql": "0.13.1",
     "graphql-tag": "^2.6.1",
     "graphql-tools": "^2.16.0",
     "match-sorter": "^2.2.0",
