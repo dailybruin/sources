@@ -6227,9 +6227,9 @@ react-modal@^3.1.10:
     prop-types "^15.5.10"
     warning "^3.0.0"
 
-react-table@^6.7.6:
-  version "6.7.6"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.7.6.tgz#3f9e3b308328ceb04ef93a47babefaba2619c905"
+react-table@^6.8.0:
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.8.0.tgz#5ce402eb735df68534c03dabb3faa031478b6a58"
   dependencies:
     classnames "^2.2.5"
 
