@@ -3,6 +3,12 @@ collectors:
 - type: js-npm
   path: /
   actors:
-  # pull requests for all major, minor, and patch updates
   - type: js-npm
     versions: "Y.Y.Y"
+    settings:
+      batch_mode: true
+      related_pr_behavior: close
+      github_assignees:
+      - nathunsmitty
+      # github_labels:
+      # - dependency
