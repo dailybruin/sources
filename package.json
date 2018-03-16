@@ -92,7 +92,7 @@
     "graphql": "0.12.3",
     "graphql-tag": "^2.6.1",
     "graphql-tools": "^2.23.0",
-    "match-sorter": "^2.2.0",
+    "match-sorter": "^2.2.1",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
