@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { H1, Span } from 'glamorous';
 
-class Header extends React.Component<{}, { sauce: boolean }> {
+class SourcesHeader extends React.Component<{}, { sauce: boolean }> {
   public state = {
     sauce: false,
   };
@@ -35,4 +35,4 @@ class Header extends React.Component<{}, { sauce: boolean }> {
   }
 }
 
-export default Header;
+export default SourcesHeader;

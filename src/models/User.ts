@@ -26,6 +26,4 @@ const User: Sequelize.Model<UserInstance, UserAttributes> = sequelize.define(
   }
 );
 
-sequelize.sync();
-
 export default User;

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Div } from 'glamorous';
 
-import Header from './Header';
+import SourcesHeader from './SourcesHeader';
 import SourceTable from './SourceTable';
+import SourcesFooter from './SourcesFooter';
 
 const App = () => (
   <Div
@@ -11,8 +12,9 @@ const App = () => (
     justifyContent="center"
     margin="0 50px"
   >
-    <Header />
+    <SourcesHeader />
     <SourceTable />
+    <SourcesFooter />
   </Div>
 );
 
