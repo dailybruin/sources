@@ -88,7 +88,7 @@
     "glamor": "^2.20.40",
     "glamorous": "^4.11.2",
     "global": "^4.3.2",
-    "googleapis": "^27.0.0",
+    "googleapis": "^28.0.0",
     "graphql": "0.13.2",
     "graphql-tag": "^2.6.1",
     "graphql-tools": "^2.16.0",
