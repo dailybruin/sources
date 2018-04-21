@@ -1,7 +1,5 @@
 # Sources
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/daily-bruin/sources.svg)](https://greenkeeper.io/)
-
 [![Travis CI](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)](https://travis-ci.org/daily-bruin/sources)
 [![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
 [![Dependencies](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
