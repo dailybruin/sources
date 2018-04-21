@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Div } from 'glamorous';
 
 import SourcesHeader from './SourcesHeader';
-import SourceTable from './SourceTable';
+// import SourceTable from './SourceTable';
 import SourcesFooter from './SourcesFooter';
 
 const App = () => (
@@ -13,7 +13,7 @@ const App = () => (
     margin="0 50px"
   >
     <SourcesHeader />
-    <SourceTable />
+    {/* <SourceTable /> */}
     <SourcesFooter />
   </Div>
 );

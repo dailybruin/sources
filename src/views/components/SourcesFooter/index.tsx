@@ -27,6 +27,7 @@ const SourcesFooter = () => (
           css={{
             ':hover': {
               color: 'red',
+              cursor: 'default',
             },
           }}
         >
