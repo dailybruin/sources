@@ -7,12 +7,12 @@ import { compose, graphql } from 'react-apollo';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
-import {
-  default as SourceTableCreateUpdateModal,
-  ModalType,
-  Source,
-} from './SourceTableModals/SourceTableCreateUpdateModal';
-import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
+// import {
+//   default as SourceTableCreateUpdateModal,
+//   ModalType,
+//   Source,
+// } from './SourceTableModals/SourceTableCreateUpdateModal';
+// import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
 import { sourcesQuery } from './graphql';
 
 /**
@@ -120,7 +120,7 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
           onEdit={() => this.openCreateUpdateModal(ModalType.Edit)}
           onRemove={this.openDeleteModal}
         />
-        <SourceTableCreateUpdateModal
+        {/* <SourceTableCreateUpdateModal
           isOpen={this.state.createUpdateModalIsOpen}
           onRequestClose={this.closeCreateUpdateModal}
           type={this.state.modalType}
@@ -130,7 +130,7 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
           isOpen={this.state.deleteModalIsOpen}
           onRequestClose={this.closeDeleteModal}
           source={this.state.currentlySelectedSource}
-        />
+        /> */}
       </div>
     );
   }
