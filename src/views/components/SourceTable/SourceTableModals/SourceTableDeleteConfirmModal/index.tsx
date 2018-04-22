@@ -1,10 +1,11 @@
 import * as React from 'react';
-import * as Modal from 'react-modal';
+import Modal from 'react-modal';
 import { graphql } from 'react-apollo';
 import glamorous from 'glamorous';
 
-import ModalHeader from './ModalHeader';
-import { removeSource, sourcesQuery } from '../graphql';
+import ModalHeader from '../ModalHeader';
+import DeleteModalButton from './DeleteModalButton';
+import { removeSource, sourcesQuery } from '../../graphql';
 
 const modalStyles = {
   content: { top: '6rem', left: '10rem', right: '10rem', bottom: 'auto' },
@@ -22,33 +23,10 @@ interface SourceTableDeleteConfirmationModalProps {
  * Makes a GraphQL request to remove a source based on `currentlySelectedSource`.
  */
 
-const DeleteModalButton = glamorous.button(
-  {
-    backgroundColor: '#4caf50',
-    color: 'white',
-    padding: '1rem 1.2rem',
-    margin: '0.8rem 0.2rem',
-    border: 'none',
-    borderRadius: '0.2rem',
-    cursor: 'pointer',
-    fontSize: '1rem',
-    fontFamily: 'Futura-Medium',
-  },
-  ({ use = 'primary' }) => ({
-    backgroundColor: use === 'primary' ? '#CC4B37' : '#CACACA',
-    ':hover': {
-      backgroundColor: use === 'primary' ? '#CC4B37' : '#CACACA',
-    },
-  })
-);
-
 /**
  * The popup modal for to confirm deleting a source.
  */
-class SourceTableDeleteConfirmationModal extends React.Component<
-  SourceTableDeleteConfirmationModalProps,
-  {}
-> {
+class SourceTableDeleteConfirmationModal extends React.Component<any, any> {
   public render() {
     return (
       <Modal

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as matchSorter from 'match-sorter';
+import matchSorter from 'match-sorter';
 import { default as ReactTable, ReactTableDefaults } from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuTrigger } from 'react-contextmenu';
@@ -12,16 +12,8 @@ import {
   ModalType,
   Source,
 } from './SourceTableModals/SourceTableCreateUpdateModal';
-import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
+import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmModal';
 import { sourcesQuery } from './graphql';
-
-/**
- * Use setAppElement for screen readers. See https://reactcommunity.org/react-modal/examples/set_app_element.html
- */
-// console.log(SourceTableCreateUpdateModal);
-// console.log(SourceTableDeleteConfirmationModal);
-// SourceTableCreateUpdateModal.setAppElement('#root');
-// SourceTableDeleteConfirmationModal.setAppElement('#root');
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {
@@ -122,7 +114,7 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
           onEdit={() => this.openCreateUpdateModal(ModalType.Edit)}
           onRemove={this.openDeleteModal}
         />
-        {/* <SourceTableCreateUpdateModal
+        <SourceTableCreateUpdateModal
           isOpen={this.state.createUpdateModalIsOpen}
           onRequestClose={this.closeCreateUpdateModal}
           type={this.state.modalType}
@@ -132,7 +124,7 @@ class SourceTable extends React.Component<SourceTableProps, SourceTableState> {
           isOpen={this.state.deleteModalIsOpen}
           onRequestClose={this.closeDeleteModal}
           source={this.state.currentlySelectedSource}
-        /> */}
+        />
       </div>
     );
   }

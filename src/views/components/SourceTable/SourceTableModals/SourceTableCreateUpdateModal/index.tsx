@@ -1,10 +1,10 @@
 import * as React from 'react';
-import * as Modal from 'react-modal';
+import Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
 import glamorous from 'glamorous';
 
-import { addSource, updateSource, sourcesQuery } from '../graphql';
-import ModalHeader from './ModalHeader';
+import { addSource, updateSource, sourcesQuery } from '../../graphql';
+import ModalHeader from '../ModalHeader';
 
 export enum ModalType {
   Add,
