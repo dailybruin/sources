@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Modal from 'react-modal';
+import * as Modal from 'react-modal';
 import { graphql, compose } from 'react-apollo';
 import glamorous from 'glamorous';
 

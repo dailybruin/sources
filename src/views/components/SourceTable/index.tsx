@@ -7,17 +7,19 @@ import { compose, graphql } from 'react-apollo';
 
 import './style.scss';
 import SourceTableContextMenu from './SourceTableContextMenu';
-// import {
-//   default as SourceTableCreateUpdateModal,
-//   ModalType,
-//   Source,
-// } from './SourceTableModals/SourceTableCreateUpdateModal';
-// import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
+import {
+  default as SourceTableCreateUpdateModal,
+  ModalType,
+  Source,
+} from './SourceTableModals/SourceTableCreateUpdateModal';
+import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
 import { sourcesQuery } from './graphql';
 
 /**
  * Use setAppElement for screen readers. See https://reactcommunity.org/react-modal/examples/set_app_element.html
  */
+// console.log(SourceTableCreateUpdateModal);
+// console.log(SourceTableDeleteConfirmationModal);
 // SourceTableCreateUpdateModal.setAppElement('#root');
 // SourceTableDeleteConfirmationModal.setAppElement('#root');
 
