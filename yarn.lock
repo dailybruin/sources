@@ -121,9 +121,9 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@types/async@2.0.45":
-  version "2.0.45"
-  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.45.tgz#0cfe971d7ed5542695740338e0455c91078a0e83"
+"@types/async@2.0.47":
+  version "2.0.47"
+  resolved "https://registry.yarnpkg.com/@types/async/-/async-2.0.47.tgz#f49ba1dd1f189486beb6e1d070a850f6ab4bd521"
 
 "@types/bluebird@*":
   version "3.5.19"
@@ -407,19 +407,25 @@ apollo-cache@^1.0.2:
   dependencies:
     apollo-utilities "^1.0.3"
 
-apollo-client@2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.0.4.tgz#425c2944e068602b4e002b3f1ad08ddd893f1a0c"
+apollo-cache@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.1.7.tgz#5817018a2fbfc05a21ba319bd17a3e7538110cc5"
+  dependencies:
+    apollo-utilities "^1.0.11"
+
+apollo-client@2.2.8:
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/apollo-client/-/apollo-client-2.2.8.tgz#b604d31ab2d2dd00db3105d8793b93ee02ce567e"
   dependencies:
     "@types/zen-observable" "^0.5.3"
-    apollo-cache "^1.0.2"
+    apollo-cache "^1.1.7"
     apollo-link "^1.0.0"
     apollo-link-dedup "^1.0.0"
-    apollo-utilities "^1.0.3"
+    apollo-utilities "^1.0.11"
     symbol-observable "^1.0.2"
-    zen-observable "^0.6.0"
+    zen-observable "^0.7.0"
   optionalDependencies:
-    "@types/async" "2.0.45"
+    "@types/async" "2.0.47"
 
 apollo-link-dedup@^1.0.0:
   version "1.0.5"
@@ -469,6 +475,10 @@ apollo-tracing@^0.1.0:
 apollo-utilities@^1.0.0, apollo-utilities@^1.0.1, apollo-utilities@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.3.tgz#bf435277609850dd442cf1d5c2e8bc6655eaa943"
+
+apollo-utilities@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.11.tgz#cd36bfa6e5c04eea2caf0c204a0f38a0ad550802"
 
 app-root-path@^2.0.1:
   version "2.0.1"
@@ -9108,3 +9118,7 @@ yn@^2.0.0:
 zen-observable@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.6.1.tgz#01dbed3bc8d02cbe9ee1112c83e04c807f647244"
+
+zen-observable@^0.7.0:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.7.1.tgz#f84075c0ee085594d3566e1d6454207f126411b3"
