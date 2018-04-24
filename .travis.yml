@@ -7,8 +7,6 @@ services:
 before_install:
 - psql -c 'create database sources;' -U postgres
 - psql -c 'create database "sources-test";' -U postgres
-before_script:
-- yarn prestart
 branches:
   only:
     - master
