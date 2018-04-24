@@ -2,6 +2,7 @@
   "name": "sources",
   "version": "0.0.0",
   "private": true,
+  "browserslist": [">5%"],
   "scripts": {
     "prestart":
       "tsc && parcel build src/views/index.html --no-autoinstall --out-dir ./dist/views/static",
