@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as matchSorter from 'match-sorter';
+import matchSorter from 'match-sorter';
 import { default as ReactTable, ReactTableDefaults } from 'react-table';
 import 'react-table/react-table.css';
 import { ContextMenuTrigger } from 'react-contextmenu';
@@ -12,14 +12,8 @@ import {
   ModalType,
   Source,
 } from './SourceTableModals/SourceTableCreateUpdateModal';
-import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmationModal';
+import SourceTableDeleteConfirmationModal from './SourceTableModals/SourceTableDeleteConfirmModal';
 import { sourcesQuery } from './graphql';
-
-/**
- * Use setAppElement for screen readers. See https://reactcommunity.org/react-modal/examples/set_app_element.html
- */
-// SourceTableCreateUpdateModal.setAppElement('#root');
-// SourceTableDeleteConfirmationModal.setAppElement('#root');
 
 function filterMethod(filter, rows) {
   return matchSorter(rows, filter.value, {

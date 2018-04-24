@@ -1,20 +1,16 @@
 import * as faker from 'faker';
 import { sequelize, Source } from '../src/models';
 
-function createSources(n) {
-  const promises = [];
+async function createSources(n) {
   for (let i = 0; i < n; i += 1) {
-    promises.push(
-      Source.create({
-        name: faker.name.findName(),
-        organization: faker.company.catchPhrase(),
-        phones: faker.phone.phoneNumberFormat(),
-        emails: faker.internet.email(),
-        notes: faker.lorem.sentence(),
-      })
-    );
+    await Source.create({
+      name: faker.name.findName(),
+      organization: faker.company.catchPhrase(),
+      phones: faker.phone.phoneNumberFormat(),
+      emails: faker.internet.email(),
+      notes: faker.lorem.sentence(),
+    });
   }
-  return Promise.all(promises);
 }
 
 async function main() {

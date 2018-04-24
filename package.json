@@ -2,29 +2,21 @@
   "name": "sources",
   "version": "0.0.0",
   "private": true,
+  "browserslist": [">5%"],
   "scripts": {
+    "prestart":
+      "tsc && yarn static-files && parcel build src/views/index.html --out-dir ./dist/views/static",
     "start": "node ./bin/www",
-    "start:watch": "nodemon",
-    "build-client": "parcel build src/views/index.html --out-dir dist/views/static --public-url ./",
-    "build-client:watch": "parcel watch src/views/index.html --out-dir dist/views/static --public-url ./",
-    "build-server": "tsc",
-    "build-server:watch": "nodemon",
-    "copy-static-files": "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static",
-    "copy-static-files:watch": "cpx \"src/views/{login.{html,css},*.svg}\" dist/views/static --watch",
-    "copy-graphql-schema": "cpx src/routes/schema.graphql dist/routes",
-    "copy-graphql-schema:watch": "cpx src/routes/schema.graphql dist/routes --watch",
-    "dev": "concurrently \"yarn copy-graphql-schema:watch\" \"yarn build-client:watch\" \"yarn build-server:watch\" \"yarn copy-static-files:watch\"",
-    "build": "yarn build-client && yarn build-server && yarn copy-static-files && yarn copy-graphql-schema",
-    "test": "NODE_ENV='test' jest --forceExit",
-    "create-data": "ts-node ./scripts/create-data.ts"
+    "dev":
+      "concurrently 'nodemon' 'parcel watch src/views/index.html --no-autoinstall --out-dir ./dist/views/static' 'yarn static-files:watch' --names '💻,⚛️,📦' --prefix name",
+    "test": "NODE_ENV='test' jest",
+    "create-data": "ts-node ./scripts/create-data.ts",
+    "static-files": "ts-node ./scripts/copy-static-files.ts",
+    "static-files:watch": "ts-node ./scripts/copy-static-files.ts watch"
   },
   "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
-    "ignore": [
-      "src/views/"
-    ],
+    "watch": ["src"],
+    "ignore": ["src/views/"],
     "ext": "ts",
     "exec": "tsc && node ./bin/www"
   },
@@ -33,9 +25,6 @@
     "rules": {
       "no-debugger": 0
     }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-uclaradio"
   },
   "prettier": {
     "editorconfig": true,
@@ -55,68 +44,65 @@
         "tsConfigFile": "tsconfig.json"
       }
     },
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ],
+    "moduleFileExtensions": ["js", "ts"],
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": [
-      "**/src/**/*.test.(js|ts)"
-    ],
+    "testMatch": ["**/src/**/*.test.(js|ts)"],
     "testEnvironment": "node",
     "collectCoverage": true,
-    "coverageReporters": [
-      "json"
-    ]
+    "coverageReporters": ["json"]
   },
   "dependencies": {
-    "apollo-cache-inmemory": "1.1.4",
-    "apollo-client": "2.0.4",
-    "apollo-link-http": "1.3.2",
-    "apollo-server-express": "1.3.2",
+    "@types/cpx": "^1.5.0",
+    "@types/serve-favicon": "^2.2.30",
+    "apollo-cache-inmemory": "1.1.12",
+    "apollo-client": "2.2.8",
+    "apollo-link-http": "1.5.4",
+    "apollo-server-express": "1.3.5",
     "body-parser": "1.18.2",
     "concurrently": "3.5.1",
-    "connect-session-sequelize": "5.1.0",
+    "connect-session-sequelize": "5.2.1",
     "cookie-parser": "1.4.3",
     "cpx": "1.5.0",
     "debug": "3.1.0",
     "dotenv": "5.0.1",
-    "express": "4.16.2",
+    "express": "4.16.3",
     "express-session": "1.15.6",
+    "faker": "4.1.0",
     "glamor": "2.20.40",
-    "glamorous": "4.11.2",
+    "glamorous": "4.12.4",
     "global": "4.3.2",
-    "googleapis": "27.0.0",
+    "googleapis": "29.0.0",
     "graphql": "0.13.2",
-    "graphql-tag": "2.6.1",
-    "graphql-tools": "2.16.0",
-    "match-sorter": "2.2.0",
+    "graphql-tag": "2.9.1",
+    "graphql-tools": "2.24.0",
+    "match-sorter": "2.2.1",
     "morgan": "1.9.0",
     "passport": "0.4.0",
     "passport-google-oauth": "1.0.0",
-    "pg": "7.4.0",
-    "prop-types": "15.6.0",
-    "react": "16.2.0",
-    "react-apollo": "2.0.4",
+    "pg": "7.4.1",
+    "prop-types": "15.6.1",
+    "react": "^0.14.0 || ^15.0.0 || ^16",
+    "react-apollo": "2.1.3",
     "react-contextmenu": "2.9.2",
-    "react-dom": "16.2.0",
+    "react-dom": "^0.14.0 || ^15.0.0 || ^16",
     "react-modal": "3.1.10",
-    "react-table": "6.7.6",
-    "sequelize": "4.28.6"
+    "react-table": "6.8.2",
+    "sequelize": "4.37.6",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "@types/cookie-parser": "1.4.1",
-    "@types/dotenv": "4.0.2",
-    "@types/express": "4.11.0",
+    "@types/dotenv": "4.0.3",
+    "@types/express": "4.11.1",
     "@types/faker": "4.1.2",
-    "@types/graphql": "0.12.7",
-    "@types/jest": "22.0.0",
+    "@types/graphql": "0.13.0",
+    "@types/jest": "22.2.3",
     "@types/morgan": "1.7.35",
-    "@types/react": "16.0.34",
-    "@types/react-dom": "16.0.3",
-    "@types/sequelize": "4.0.80",
+    "@types/react": "16.3.12",
+    "@types/react-dom": "16.0.5",
+    "@types/sequelize": "4.27.14",
     "@types/supertest": "2.0.4",
     "babel-core": "6.26.0",
     "babel-preset-env": "1.6.1",
@@ -124,27 +110,24 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-2": "6.24.1",
     "codecov": "3.0.0",
-    "css-loader": "0.28.7",
-    "faker": "4.1.0",
+    "css-loader": "0.28.11",
     "husky": "0.14.3",
-    "jest": "22.0.4",
+    "jest": "22.4.3",
     "lint-staged": "7.0.4",
-    "node-sass": "4.7.2",
-    "nodemon": "1.14.7",
-    "parcel-bundler": "1.6.2",
-    "prettier": "1.9.2",
-    "style-loader": "0.20.3",
+    "node-sass": "4.8.3",
+    "nodemon": "1.17.3",
+    "parcel-bundler": "1.7.1",
+    "prettier": "1.12.1",
     "stylelint": "9.2.0",
-    "stylelint-config-uclaradio": "1.0.7",
     "supertest": "3.0.0",
-    "ts-jest": "22.0.0",
-    "ts-node": "5.0.1",
-    "tslint": "5.8.0",
-    "tslint-config-prettier": "1.6.0",
+    "ts-jest": "22.4.4",
+    "ts-node": "6.0.0",
+    "tslint": "5.9.1",
+    "tslint-config-prettier": "1.12.0",
     "tslint-eslint-rules": "5.1.0",
-    "tslint-microsoft-contrib": "5.0.1",
-    "tslint-react": "3.3.3",
-    "tsutils": "2.15.0",
-    "typescript": "2.6.2"
+    "tslint-microsoft-contrib": "5.0.3",
+    "tslint-react": "3.5.1",
+    "tsutils": "2.26.1",
+    "typescript": "2.8.3"
   }
 }

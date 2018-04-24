@@ -27,7 +27,7 @@
                     <use fill="#4285F4" fill-rule="evenodd" xlink:href="#path-1"></use>
                 </g>
             </g>
-            <text id="Sign-in-with-Google" font-family="Roboto-Medium, Roboto" font-size="14" font-weight="400" letter-spacing="0.21875" fill="#FFFFFF">
+            <text id="Sign-in-with-Google" font-family="Roboto" font-size="14" font-weight="400" letter-spacing="0.21875" fill="#FFFFFF">
                 <tspan x="54" y="29">Sign in with Google</tspan>
             </text>
             <rect id="button-bg-copy" fill="#FFFFFF" x="5" y="5" width="38" height="38" rx="1"></rect>
