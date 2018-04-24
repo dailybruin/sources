@@ -10,7 +10,7 @@ before_install:
 - psql -c 'create database "sources-test";' -U postgres
 before_script:
 - greenkeeper-lockfile-update
-- yarn build
+- yarn prestart
 after_script: greenkeeper-lockfile-upload
 branches:
   only:
