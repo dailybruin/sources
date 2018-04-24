@@ -140,7 +140,7 @@
   dependencies:
     "@types/express" "*"
 
-"@types/cpx@^1.5.0":
+"@types/cpx@1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@types/cpx/-/cpx-1.5.0.tgz#d2a44b0ab5ec32bfdd743f64aae84847858bce0c"
   dependencies:
@@ -231,7 +231,7 @@
     "@types/lodash" "*"
     "@types/validator" "*"
 
-"@types/serve-favicon@^2.2.30":
+"@types/serve-favicon@2.2.30":
   version "2.2.30"
   resolved "https://registry.yarnpkg.com/@types/serve-favicon/-/serve-favicon-2.2.30.tgz#5bea4ead966a9ad5e0f409141edba0cebf20da73"
   dependencies:
@@ -6780,7 +6780,7 @@ react-contextmenu@2.9.2:
     classnames "^2.2.5"
     object-assign "^4.1.0"
 
-"react-dom@^0.14.0 || ^15.0.0 || ^16":
+react-dom@16.3.2:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
   dependencies:
@@ -6809,7 +6809,7 @@ react-table@6.8.2:
   dependencies:
     classnames "^2.2.5"
 
-"react@^0.14.0 || ^15.0.0 || ^16":
+react@16.3.2:
   version "16.3.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
   dependencies:
@@ -7343,7 +7343,7 @@ serialize-to-js@^1.1.1:
     js-beautify "^1.7.5"
     safer-eval "^1.2.3"
 
-serve-favicon@^2.5.0:
+serve-favicon@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/serve-favicon/-/serve-favicon-2.5.0.tgz#935d240cdfe0f5805307fdfe967d88942a2cbcf0"
   dependencies:
