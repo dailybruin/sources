@@ -15,6 +15,7 @@ const source = {
 beforeAll(async () => {
   await sequelize.sync({ force: true });
   await Source.create(source);
+  console.log(`created ${source.name}`);
 });
 
 describe('source query', () => {
