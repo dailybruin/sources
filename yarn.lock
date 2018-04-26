@@ -222,9 +222,9 @@
   dependencies:
     csstype "^2.2.0"
 
-"@types/sequelize@4.27.14":
-  version "4.27.14"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.14.tgz#621dcc33db884e1fca368dc1b9fa7a60b38785d3"
+"@types/sequelize@4.27.16":
+  version "4.27.16"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.16.tgz#ee5bcd6103ab3a333c42f7f58130f56c9390d4ea"
   dependencies:
     "@types/bluebird" "*"
     "@types/continuation-local-storage" "*"
