@@ -116,7 +116,7 @@
     "lint-staged": "7.0.5",
     "node-sass": "4.9.0",
     "nodemon": "1.17.3",
-    "parcel-bundler": "1.7.1",
+    "parcel-bundler": "1.8.1",
     "prettier": "1.12.1",
     "stylelint": "9.2.0",
     "supertest": "3.0.0",
