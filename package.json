@@ -57,7 +57,7 @@
     "@types/cpx": "1.5.0",
     "@types/serve-favicon": "2.2.30",
     "apollo-cache-inmemory": "1.1.12",
-    "apollo-client": "2.2.8",
+    "apollo-client": "2.3.1",
     "apollo-link-http": "1.5.4",
     "apollo-server-express": "1.3.6",
     "body-parser": "1.18.2",
