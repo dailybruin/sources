@@ -121,7 +121,7 @@
     "stylelint": "9.2.0",
     "supertest": "3.0.0",
     "ts-jest": "22.4.4",
-    "ts-node": "6.0.1",
+    "ts-node": "6.0.3",
     "tslint": "5.9.1",
     "tslint-config-prettier": "1.12.0",
     "tslint-eslint-rules": "5.1.0",
