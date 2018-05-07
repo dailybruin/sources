@@ -5174,9 +5174,9 @@ markdown-table@^1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
 
-match-sorter@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/match-sorter/-/match-sorter-2.2.1.tgz#899a5b900f4855204bc2d3aa8cb23ba16fc528dc"
+match-sorter@2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/match-sorter/-/match-sorter-2.2.3.tgz#5fc142821fed543f352fb7edce2603970919d225"
   dependencies:
     diacritic "0.0.2"
 
