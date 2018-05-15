@@ -89,7 +89,7 @@
     "react-dom": "16.3.2",
     "react-modal": "3.4.4",
     "react-table": "6.8.2",
-    "sequelize": "4.37.6",
+    "sequelize": "4.37.7",
     "serve-favicon": "2.5.0"
   },
   "devDependencies": {
@@ -102,7 +102,7 @@
     "@types/morgan": "1.7.35",
     "@types/react": "16.3.13",
     "@types/react-dom": "16.0.5",
-    "@types/sequelize": "4.27.16",
+    "@types/sequelize": "4.27.18",
     "@types/supertest": "2.0.4",
     "babel-core": "6.26.3",
     "babel-preset-env": "1.6.1",

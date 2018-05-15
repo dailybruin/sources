@@ -232,9 +232,9 @@
   dependencies:
     csstype "^2.2.0"
 
-"@types/sequelize@4.27.16":
-  version "4.27.16"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.16.tgz#ee5bcd6103ab3a333c42f7f58130f56c9390d4ea"
+"@types/sequelize@4.27.18":
+  version "4.27.18"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.18.tgz#0aa128af38f1d4195f586147928456c7da7d25ea"
   dependencies:
     "@types/bluebird" "*"
     "@types/continuation-local-storage" "*"
@@ -7298,9 +7298,9 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
-sequelize@4.37.6:
-  version "4.37.6"
-  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-4.37.6.tgz#f37eec55a285cfdeab27f8a85c5db38034f87126"
+sequelize@4.37.7:
+  version "4.37.7"
+  resolved "https://registry.yarnpkg.com/sequelize/-/sequelize-4.37.7.tgz#a66bfb486f438c0584c1ccc8107388311ba34780"
   dependencies:
     bluebird "^3.5.0"
     cls-bluebird "^2.1.0"
