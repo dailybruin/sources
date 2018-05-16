@@ -8182,9 +8182,9 @@ tslint-config-prettier@1.12.0:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.12.0.tgz#bc8504f286ecf42b906f3d1126a093114f5729cc"
 
-tslint-eslint-rules@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/tslint-eslint-rules/-/tslint-eslint-rules-5.1.0.tgz#3232b318da55dbb5a83e3f5d657c1ddbb27b9ff2"
+tslint-eslint-rules@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/tslint-eslint-rules/-/tslint-eslint-rules-5.3.1.tgz#10dec4361df0b3e4385d91ff8e0226bda4ec2ad4"
   dependencies:
     doctrine "0.7.2"
     tslib "1.9.0"
