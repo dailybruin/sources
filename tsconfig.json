@@ -18,8 +18,7 @@
     "lib": ["es2015", "es2016", "dom", "esnext.asynciterable"],
     "paths": {
       "@/*": ["src/views/*", "src/types/*"]
-    },
-    "types": ["node"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.ts", "src/views/*"]
