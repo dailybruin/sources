@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 import { User } from '../models';
 
 const callbackURL =
-  process.env.PRODUCTION === 'true'
+  process.env.NODE_ENV === 'production'
     ? 'http://sources.dailybruin.com/auth/google/callback'
     : 'http://localhost:3000/auth/google/callback';
 
