@@ -1,4 +1,4 @@
-# Squawk
+# Squawk 🐦
 
 [![Travis CI](https://img.shields.io/travis/daily-bruin/squawk.svg?style=flat)](https://travis-ci.org/daily-bruin/squawk)
 [![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/squawk.svg)](https://codecov.io/github/daily-bruin/squawk)

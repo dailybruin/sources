@@ -6,7 +6,7 @@ import { User } from '../models';
 
 const callbackURL =
   process.env.PRODUCTION === 'true'
-    ? 'http://sources.dailybruin.com/auth/google/callback'
+    ? 'http://sqauwk.dailybruin.com/auth/google/callback'
     : 'http://localhost:3000/auth/google/callback';
 
 passport.serializeUser((user, done) => {
