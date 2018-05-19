@@ -16,5 +16,6 @@ RUN yarn --production=false
 # Bundle app source
 COPY . .
 
-RUN yarn start
 EXPOSE 3000
+
+CMD yarn start
