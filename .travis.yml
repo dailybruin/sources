@@ -5,8 +5,8 @@ node_js:
 services:
 - postgresql
 before_install:
-- psql -c 'create database sources;' -U postgres
-- psql -c 'create database "sources-test";' -U postgres
+- psql -c 'create database squawk;' -U postgres
+- psql -c 'create database "squawk-test";' -U postgres
 branches:
   only:
     - master
