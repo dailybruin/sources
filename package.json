@@ -124,7 +124,7 @@
     "css-loader": "0.28.11",
     "husky": "0.14.3",
     "jest": "22.4.4",
-    "lint-staged": "7.1.1",
+    "lint-staged": "7.1.2",
     "node-sass": "4.9.0",
     "nodemon": "1.17.4",
     "parcel-bundler": "1.8.1",
