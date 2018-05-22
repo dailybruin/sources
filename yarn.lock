@@ -6750,9 +6750,9 @@ react-modal@3.4.4:
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
 
-react-table@6.8.5:
-  version "6.8.5"
-  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.8.5.tgz#88460a98d6e7c28ba323b1ceb6db3f4eab9c3357"
+react-table@6.8.6:
+  version "6.8.6"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.8.6.tgz#a0ad8b4839319052d5befc012603fb161e52ede3"
   dependencies:
     classnames "^2.2.5"
 
