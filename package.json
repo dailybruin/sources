@@ -100,7 +100,7 @@
     "react-dom": "16.4.0",
     "react-modal": "3.4.4",
     "react-table": "6.8.6",
-    "sequelize": "4.37.8",
+    "sequelize": "4.37.9",
     "serve-favicon": "2.5.0"
   },
   "devDependencies": {
