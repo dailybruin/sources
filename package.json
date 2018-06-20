@@ -95,7 +95,7 @@
     "pg": "7.4.3",
     "prop-types": "15.6.2",
     "react": "16.4.1",
-    "react-apollo": "2.1.5",
+    "react-apollo": "2.1.6",
     "react-contextmenu": "2.9.2",
     "react-dom": "16.4.1",
     "react-modal": "3.4.5",
