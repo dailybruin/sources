@@ -93,7 +93,7 @@
     "passport": "0.4.0",
     "passport-google-oauth": "1.0.0",
     "pg": "7.4.3",
-    "prop-types": "15.6.1",
+    "prop-types": "15.6.2",
     "react": "16.4.1",
     "react-apollo": "2.1.5",
     "react-contextmenu": "2.9.2",
