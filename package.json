@@ -67,8 +67,8 @@
   "dependencies": {
     "@types/cpx": "1.5.0",
     "@types/serve-favicon": "2.2.30",
-    "apollo-cache-inmemory": "1.2.6",
-    "apollo-client": "2.3.7",
+    "apollo-cache-inmemory": "1.2.7",
+    "apollo-client": "2.3.8",
     "apollo-link-http": "1.5.4",
     "apollo-server-express": "1.4.0",
     "body-parser": "1.18.3",
