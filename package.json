@@ -120,7 +120,7 @@
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-2": "6.24.1",
-    "codecov": "3.0.4",
+    "codecov": "3.1.0",
     "css-loader": "0.28.11",
     "husky": "0.14.3",
     "jest": "22.4.4",
