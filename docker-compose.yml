@@ -15,7 +15,7 @@ services:
     - DATABASE_PASSWORD=sources
     - DATABASE_HOST=database
   database:
-    image: postgres:latest@sha256:b7e44e53f21728d63cd6b6d21163fbc5fccdc8f973863f95f31fdca2c8264ac5
+    image: postgres:latest@sha256:f62119c9734a710ea1cf59c81fdff6f031f9d6dfa3ddc598f4df00a3180f36dc
     restart: always
     ports:
       - "5432:5432"
