@@ -2635,9 +2635,9 @@ debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.
   dependencies:
     ms "2.0.0"
 
-debug@3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.1.tgz#30b2d86ecc0f169034c260a84b295fcb51eb88ec"
+debug@3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.4.tgz#82123737c51afbe9609a2b5dfe9664e7487171f0"
   dependencies:
     ms "^2.1.1"
 
