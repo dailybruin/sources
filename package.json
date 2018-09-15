@@ -69,7 +69,7 @@
     "@types/serve-favicon": "2.2.30",
     "apollo-cache-inmemory": "1.2.10",
     "apollo-client": "2.4.2",
-    "apollo-link-http": "1.5.4",
+    "apollo-link-http": "1.5.5",
     "apollo-server-express": "1.4.0",
     "body-parser": "1.18.3",
     "concurrently": "3.6.1",
