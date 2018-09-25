@@ -98,7 +98,7 @@
     "react-apollo": "2.1.11",
     "react-contextmenu": "2.9.3",
     "react-dom": "16.5.2",
-    "react-modal": "3.5.1",
+    "react-modal": "3.6.1",
     "react-table": "6.8.6",
     "sequelize": "4.39.0",
     "serve-favicon": "2.5.0"
