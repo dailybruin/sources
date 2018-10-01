@@ -6,7 +6,7 @@
 [![Dev dependencies](https://david-dm.org/dailybruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?style=flat)](https://github.com/facebook/jest)
-[![license](https://img.shields.io/github/license/daily-bruin/sources.svg)]()
+[![license](https://img.shields.io/github/license/daily-bruin/sources.svg)](/LICENSE.md)
 
 A website the Daily Bruin uses to keep track of all of our sources.
 It's powered by an Express server with a PostgreSQL backend and a GraphQL
