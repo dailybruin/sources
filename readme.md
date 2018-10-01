@@ -1,9 +1,9 @@
 # Sources
 
-[![Travis CI](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)](https://travis-ci.org/daily-bruin/sources)
-[![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
-[![Dependencies](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
-[![Dev dependencies](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
+[![Travis CI](https://img.shields.io/travis/dailybruin/sources.svg?style=flat)](https://travis-ci.org/daily-bruin/sources)
+[![Codecov](https://img.shields.io/codecov/c/github/dailybruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
+[![Dependencies](https://david-dm.org/dailybruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
+[![Dev dependencies](https://david-dm.org/dailybruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?style=flat)](https://github.com/facebook/jest)
 [![license](https://img.shields.io/github/license/daily-bruin/sources.svg)]()
