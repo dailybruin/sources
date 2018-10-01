@@ -2,7 +2,7 @@ version: '2'
 services:
   web:
     build: .
-    image: sources
+    image: squawk
     restart: always
     command: yarn start
     ports:
@@ -11,8 +11,8 @@ services:
     - database
     env_file: .env
     environment:
-    - DATABASE_USER=sources
-    - DATABASE_PASSWORD=sources
+    - DATABASE_USER=squawk
+    - DATABASE_PASSWORD=squawk
     - DATABASE_HOST=database
   database:
     image: postgres:latest@sha256:1d26fae6c056760ed5aa5bb5d65d155848f48046ae8cd95c5b26ea7ceabb37ad
@@ -20,6 +20,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-    - POSTGRES_USER=sources
-    - POSTGRES_PASSWORD=sources
-    - POSTGRES_DB=sources
+    - POSTGRES_USER=squawk
+    - POSTGRES_PASSWORD=squawk
+    - POSTGRES_DB=squawk

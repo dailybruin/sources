@@ -1,22 +1,20 @@
-# Sources
+# Squawk 🐦
 
-[![Travis CI](https://img.shields.io/travis/daily-bruin/sources.svg?style=flat)](https://travis-ci.org/daily-bruin/sources)
-[![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/sources.svg)](https://codecov.io/github/daily-bruin/sources)
-[![Dependencies](https://david-dm.org/daily-bruin/sources/status.svg?style=flat)](https://david-dm.org/daily-bruin/sources)
-[![Dev dependencies](https://david-dm.org/daily-bruin/sources/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/sources?type=dev)
+[![Travis CI](https://img.shields.io/travis/daily-bruin/squawk.svg?style=flat)](https://travis-ci.org/daily-bruin/squawk)
+[![Codecov](https://img.shields.io/codecov/c/github/daily-bruin/squawk.svg)](https://codecov.io/github/daily-bruin/squawk)
+[![Dependencies](https://david-dm.org/daily-bruin/squawk/status.svg?style=flat)](https://david-dm.org/daily-bruin/squawk)
+[![Dev dependencies](https://david-dm.org/daily-bruin/squawk/dev-status.svg?style=flat)](https://david-dm.org/daily-bruin/squawk?type=dev)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg?style=flat)](https://github.com/facebook/jest)
-[![license](https://img.shields.io/github/license/daily-bruin/sources.svg)]()
+[![license](https://img.shields.io/github/license/daily-bruin/squawk.svg)]()
 
 A website the Daily Bruin uses to keep track of all of our sources.
 It's powered by an Express server with a PostgreSQL backend and a GraphQL
 endpoint, and uses React on the frontend.
 
-Check out the [design specification](designs/spec.md) for more info!
-
 ## Technologies Used
 
-Below is a non-exhaustive list of some of the more major technologies used by Sources and the reasoning why these technologies were chosen. This list is meant to give you a starting point for considering adding or changing the technologies used by Sources or other projects and should change over time as needs and technologies change.
+Below is a non-exhaustive list of some of the more major technologies used by Squawk and the reasoning why these technologies were chosen. This list is meant to give you a starting point for considering adding or changing the technologies used by Squawk or other projects and should change over time as needs and technologies change.
 
 ### General
 
@@ -29,7 +27,7 @@ Below is a non-exhaustive list of some of the more major technologies used by So
 * [React](https://reactjs.org) is a popular JavaScript library for building user interfaces.
 * [Parcel](https://parceljs.org) is an application bundler focused on simplicity and speed. It's very new and currently has a lot of bugs and limitations but shows a lot of promise and is much easier to use than alternatives such as [Webpack](https://webpack.js.org).
 * [Apollo Client](https://www.apollographql.com/client) is a popular GraphQL client that works very nicely with React.
-* [react-table](https://react-table.js.org) is a small and extensible component for displaying data (in our case, all of the Sources). It was selected because it's popular and had all the features we need. A potential alternative that was considered was [react-data-grid](http://adazzle.github.io/react-data-grid/), but we liked the lightweightness and styling of react-table better.
+* [react-table](https://react-table.js.org) is a small and extensible component for displaying data (in our case, all of the Squawk). It was selected because it's popular and had all the features we need. A potential alternative that was considered was [react-data-grid](http://adazzle.github.io/react-data-grid/), but we liked the lightweightness and styling of react-table better.
 * [react-contextmenu](https://vkbansal.me/react-contextmenu/) is a simple popup context menu used to display options to edit and delete sources. We actually started by using [react-contextify](https://github.com/galkinrost/react-contextify), but switched to react-contextmenu as it was more popular and appeared to be more actively developed.
 * [react-modal](https://github.com/reactjs/react-modal) is a simple modal component used to display the "Add" and "Edit" modals. A couple of modal components were considered, but react-modal seemed to be the least opinionated and did not come bundled as part of a larger library, such as [react-bootstrap](https://react-bootstrap.github.io).
 
@@ -43,12 +41,12 @@ Below is a non-exhaustive list of some of the more major technologies used by So
 
 ## Services Used
 
-In addition to the technologies used about, Sources has a few services integrated with the repository to make maintenance and development easier. They are:
+In addition to the technologies used about, Squawk has a few services integrated with the repository to make maintenance and development easier. They are:
 
-* [Travis CI](https://travis-ci.org/daily-bruin/sources) for continuous integration.
-* [CodeCov](https://codecov.io/gh/daily-bruin/sources) for code coverage visualization.
-* [dependencies.io](https://app.dependencies.io/projects/github/daily-bruin/sources) for dependency management and automatic updates.
-* [Code Climate](https://codeclimate.com/github/daily-bruin/sources) for code analysis.
+* [Travis CI](https://travis-ci.org/daily-bruin/squawk) for continuous integration.
+* [CodeCov](https://codecov.io/gh/daily-bruin/squawk) for code coverage visualization.
+* Renovate
+* CodeFactor
 
 ## Structure
 
@@ -59,13 +57,6 @@ In addition to the technologies used about, Sources has a few services integrate
 │   └── www                     # The file the actually runs the node server.
 ├── coverage/                   # Folder generated by Jest for use with CodeCov.
 ├── dependencies.yml            # File used by dependencies.io.
-├── designs/                    # Design documents and mockups
-│   ├── flowcharts
-│   ├── flowcharts.sketch
-│   ├── mockups
-│   ├── mockups.sketch
-│   ├── site-flow.png
-│   └── spec.md
 ├── dist/                       # Autogenerated folder where compiled TypeScript (i.e., JavaScript) code is.
 ├── package.json                # Project and Dependency metadata
 ├── readme.md                   # This readme!
@@ -85,7 +76,7 @@ In addition to the technologies used about, Sources has a few services integrate
 └── yarn.lock                   # Autogenerated file by Yarn.
 ```
 
-Sources follows an [MVC](https://en.wikipedia.org/wiki/Model–view–controller)
+Squawk follows an [MVC](https://en.wikipedia.org/wiki/Model–view–controller)
 pattern.
 
 The models are defined through Sequelize and stored in the `models` folder,
@@ -100,32 +91,32 @@ Frontend files are stored in the `views` folder. This includes both the login an
 
 Note that test files are put in the same directory as the respective file they test and have the extension `.test.ts`.
 
-## Contributing to Sources
+## Contributing to Squawk
 
 ### Prerequisites
 
-There are a couple of programs and files Sources depends on that you'll need to
+There are a couple of programs and files Squawk depends on that you'll need to
 have installed to run it locally.
 
-1. Node – You can install this with a simple `brew install node` on macOS.
-2. [Yarn](https://yarnpkg.com/lang/en/docs/install/) – Yarn is a JavaScript
-   package manager, and an alternative to npm. We prefer it to npm because it
-   has a couple of nice features such as caching, lockfiles, and faster
-   downloads.
-3. [Visual Studio Code](https://code.visualstudio.com) – VS Code is an open
-   source text editor built by Microsoft and has amazing tooling support for
-   TypeScript projects (as well as a lot of other awesome features!). You can
-   use any text editor you want, but VS Code will give you a nice experience :).
-4. PostgreSQL – Postgres is the database we use. Installing it locally can be a
-   little daunting, so check out our guide below if you're unfamiliar with it!
-5. A `.env` file – It's [good practice](https://12factor.net/config) to store
-   things like API keys and database information with environment variables so
-   that they can easily be changed for different environments without code
-   changes. This is cool, but when you have a lot of configuration variables it
-   can become hard to manage, so we use a package called
-   [dotenv](https://www.npmjs.com/package/dotenv) that reads configuration data
-   from a file called `.env` and puts them into `process.env`. Check out our
-   guide below for an example `.env`.
+1.  Node – You can install this with a simple `brew install node` on macOS.
+2.  [Yarn](https://yarnpkg.com/lang/en/docs/install/) – Yarn is a JavaScript
+    package manager, and an alternative to npm. We prefer it to npm because it
+    has a couple of nice features such as caching, lockfiles, and faster
+    downloads.
+3.  [Visual Studio Code](https://code.visualstudio.com) – VS Code is an open
+    source text editor built by Microsoft and has amazing tooling support for
+    TypeScript projects (as well as a lot of other awesome features!). You can
+    use any text editor you want, but VS Code will give you a nice experience :).
+4.  PostgreSQL – Postgres is the database we use. Installing it locally can be a
+    little daunting, so check out our guide below if you're unfamiliar with it!
+5.  A `.env` file – It's [good practice](https://12factor.net/config) to store
+    things like API keys and database information with environment variables so
+    that they can easily be changed for different environments without code
+    changes. This is cool, but when you have a lot of configuration variables it
+    can become hard to manage, so we use a package called
+    [dotenv](https://www.npmjs.com/package/dotenv) that reads configuration data
+    from a file called `.env` and puts them into `process.env`. Check out our
+    guide below for an example `.env`.
 
 #### Installing PostgreSQL
 
@@ -143,16 +134,16 @@ Then start Postgres with the command:
 brew services start postgresql
 ```
 
-Awesome! For reference, you can stop postgres at any time with `berw services stop postgresql`. You don't want to do that right now, though! Instead, you'll want to create Sources' database. We call ours `sources`.
+Awesome! For reference, you can stop postgres at any time with `berw services stop postgresql`. You don't want to do that right now, though! Instead, you'll want to create Squawk's database. We call ours `squawk`.
 
 ```shell
-createdb sources
+createdb squawk
 ```
 
-You'll also want to create a dummy database used for testing. It's called `sources-test`.
+You'll also want to create a dummy database used for testing. It's called `squawk-test`.
 
 ```shell
-createdb sources
+createdb squawk
 ```
 
 Note that by default, the Postgres user is your computer's username and there is
