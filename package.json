@@ -111,7 +111,7 @@
     "@types/graphql": "0.13.4",
     "@types/jest": "22.2.3",
     "@types/morgan": "1.7.35",
-    "@types/react": "16.4.15",
+    "@types/react": "16.4.16",
     "@types/react-dom": "16.0.8",
     "@types/sequelize": "4.27.27",
     "@types/supertest": "2.0.6",
