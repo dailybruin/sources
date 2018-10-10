@@ -7798,9 +7798,9 @@ react-apollo@2.2.4:
     lodash.isequal "^4.5.0"
     prop-types "^15.6.0"
 
-react-contextmenu@2.9.3:
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/react-contextmenu/-/react-contextmenu-2.9.3.tgz#f6de2e0770445c60ed14f4b37af3419e32866ba1"
+react-contextmenu@2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/react-contextmenu/-/react-contextmenu-2.9.4.tgz#a5df97102dc2169b7300fee1b3ec173e96b6bb8a"
   dependencies:
     classnames "^2.2.5"
     object-assign "^4.1.0"
