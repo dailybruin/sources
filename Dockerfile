@@ -1,5 +1,5 @@
 # Use LTS version of node
-FROM node:carbon@sha256:6945c42812fa1829c1f6fd42351122daec0a566f846615fee30d1be1d56f3be4
+FROM node:carbon@sha256:6b2c3d78f4e77fb1ef1e3058affdd1d3ba0b319b5eaf479167672914e555e346
 
 ENV NODE_ENV production
 
