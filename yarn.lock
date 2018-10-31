@@ -782,9 +782,9 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/sequelize@4.27.29":
-  version "4.27.29"
-  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.29.tgz#3af1d13448d7647cf9a5829e113598cb414b9450"
+"@types/sequelize@4.27.30":
+  version "4.27.30"
+  resolved "https://registry.yarnpkg.com/@types/sequelize/-/sequelize-4.27.30.tgz#ff4a154c24ba733ec7c344cfa318446b13217306"
   dependencies:
     "@types/bluebird" "*"
     "@types/continuation-local-storage" "*"
