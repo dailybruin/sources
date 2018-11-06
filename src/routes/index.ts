@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express'
-// import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
 import * as bodyParser from 'body-parser'
 import * as passport from 'passport'
 
@@ -28,21 +28,21 @@ router.get(
 )
 
 /** GraphQL */
-// router.use(
-//   '/graphql',
-//   isAuthenticated,
-//   bodyParser.json(),
-//   graphqlExpress({ schema })
-// )
+router.use(
+  '/graphql',
+  isAuthenticated,
+  bodyParser.json(),
+  graphqlExpress({ schema })
+)
 
-// if (process.env.NODE_ENV !== 'production') {
-//   router.use(
-//     '/graphiql',
-//     graphiqlExpress({
-//       endpointURL: '/graphql',
-//     })
-//   )
-// }
+if (process.env.NODE_ENV !== 'production') {
+  router.use(
+    '/graphiql',
+    graphiqlExpress({
+      endpointURL: '/graphql',
+    })
+  )
+}
 
 /** Main Pages */
 // Login Page
