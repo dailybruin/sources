@@ -28,7 +28,10 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       // Using the _json property isn't the nicest, but it seems to be the only way to get a user's domain
-      if (profile._json.domain === 'media.ucla.edu') {
+      if (
+        profile._json.domain === 'media.ucla.edu' ||
+        process.env.NODE_ENV === 'staging'
+      ) {
         let [user] = await knex('Users').where('id', profile.id)
         if (!user) {
           user = await knex('Users').insert({
