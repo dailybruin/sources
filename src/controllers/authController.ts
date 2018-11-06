@@ -1,23 +1,23 @@
-import * as passport from 'passport';
-import { OAuth2Strategy } from 'passport-google-oauth';
-import { Request, Response, NextFunction } from 'express';
-
-import { User } from '../models';
+import * as passport from 'passport'
+import { OAuth2Strategy } from 'passport-google-oauth'
+import knex from '../models'
 
 const callbackURL =
   process.env.NODE_ENV === 'production'
     ? 'http://sources.dailybruin.com/auth/google/callback'
-    : 'http://localhost:3000/auth/google/callback';
+    : 'http://localhost:3000/auth/google/callback'
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+  done(null, user.id)
+})
 
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
-});
+passport.deserializeUser(async (id, done) => {
+  const [user] = await knex
+    .table('Users')
+    .returning(['id', 'name'])
+    .where('id', id)
+  done(null, user)
+})
 
 passport.use(
   new OAuth2Strategy(
@@ -29,25 +29,28 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       // Using the _json property isn't the nicest, but it seems to be the only way to get a user's domain
       if (profile._json.domain === 'media.ucla.edu') {
-        const [user] = await User.findOrCreate({
-          where: { id: profile.id },
-        });
-        user.name = profile.displayName;
-        await user.save();
-        return done(null, user);
+        let [user] = await knex('Users').where('id', profile.id)
+        if (!user) {
+          user = await knex('Users').insert({
+            name: profile.displayName,
+            id: profile.id,
+          })
+          user = user[0]
+        }
+        return done(null, user)
       } else {
-        done(new Error('Invalid host domain.'));
+        done(new Error('Invalid host domain.'))
       }
     }
   )
-);
+)
 
 /**
  * Login Required middleware.
  */
 export function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return next();
+    return next()
   }
-  res.redirect('/login');
+  res.redirect('/login')
 }

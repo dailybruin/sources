@@ -1,30 +1,37 @@
-import * as Sequelize from 'sequelize';
+import * as connection from 'knex'
 
-// Configure connection to database.
-const databaseName =
-  process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources';
-
-const sequelize = new Sequelize(
-  databaseName,
-  process.env.DATABASE_USER!,
-  process.env.DATABASE_PASSWORD!,
-  {
+const knex = connection({
+  client: 'pg',
+  connection: {
     host: process.env.DATABASE_HOST,
-    dialect: 'postgres',
-    logging: false,
-    operatorsAliases: false,
-  }
-);
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources',
+  },
+})
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+export const sourceTable = 'Sources'
+export const userTable = 'Users'
 
-export { sequelize };
-export { default as Source } from './Source';
-export { default as User } from './User';
+export const sourceKeys = [
+  'id',
+  'name',
+  'organization',
+  'phones',
+  'emails',
+  'notes',
+]
+
+export interface SourceAttributes {
+  name?: string
+  organization?: string
+  phones?: string
+  emails?: string
+  notes?: string
+}
+
+export interface SourceInstance extends SourceAttributes {
+  id: number
+}
+
+export default knex

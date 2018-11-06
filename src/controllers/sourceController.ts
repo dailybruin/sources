@@ -1,5 +1,9 @@
-import { Source } from '../models';
-import { SourceAttributes, SourceInstance } from '../models/Source';
+import knex, {
+  sourceTable,
+  sourceKeys,
+  SourceAttributes,
+  SourceInstance,
+} from '../models'
 
 /**
  * Creates a new source from the specified parameters given. Returns that source instance.
@@ -7,10 +11,14 @@ import { SourceAttributes, SourceInstance } from '../models/Source';
  * @param {SourceAttributes} attributes An object of attributes for the source.
  */
 export async function createSource(
-  attributes: SourceAttributes
+  source: SourceAttributes
 ): Promise<SourceInstance> {
-  const newSource: SourceInstance = await Source.create(attributes);
-  return newSource;
+  const newSource: SourceInstance[] = await knex
+    .table(sourceTable)
+    .returning(sourceKeys)
+    .insert(source)
+
+  return newSource[0]
 }
 
 /**
@@ -19,16 +27,22 @@ export async function createSource(
  * @param {number} id The id of the desired source.
  */
 export async function getSource(id: number): Promise<SourceInstance | null> {
-  const source: SourceInstance | null = await Source.findById(id);
-  return source;
+  const source: SourceInstance[] = await knex
+    .table(sourceTable)
+    .returning(sourceKeys)
+    .where('id', id)
+
+  return source.length === 1 ? source[0] : null
 }
 
 /**
  * Returns an array of all source instances in the database.
  */
 export async function getAllSources(): Promise<SourceInstance[]> {
-  const sources: SourceInstance[] = await Source.all();
-  return sources;
+  const sources: SourceInstance[] = await knex
+    .table(sourceTable)
+    .returning(sourceKeys)
+  return sources
 }
 
 /**
@@ -41,22 +55,20 @@ export async function updateSource(
   id: number,
   attributes: SourceAttributes
 ): Promise<SourceInstance | null> {
-  const [numberOfUpdatedSources, updatedSources] = await Source.update(
-    attributes,
-    {
-      where: { id },
-      returning: true,
-    }
-  );
+  const updatedSources = await knex
+    .table(sourceTable)
+    .where('id', '=', id)
+    .update(attributes)
+    .returning(sourceKeys)
 
-  if (numberOfUpdatedSources === 1) {
-    return updatedSources[0];
-  } else if (numberOfUpdatedSources !== 0) {
+  if (updatedSources.length === 1) {
+    return updatedSources[0]
+  } else if (updatedSources.length !== 0) {
     throw new Error(
       'More than 1 rows updated from single id in `updateSource`! This is bad!'
-    );
+    )
   }
-  return null;
+  return null
 }
 
 /**
@@ -65,14 +77,15 @@ export async function updateSource(
  * @param id
  */
 export async function deleteSource(id: number): Promise<boolean> {
-  const numberOfDeletedSources = await Source.destroy({
-    where: { id },
-  });
+  const numberOfDeletedSources = await knex
+    .table(sourceTable)
+    .where('id', '=', id)
+    .del()
 
   if (numberOfDeletedSources === 1) {
-    return true;
+    return true
   } else if (numberOfDeletedSources !== 0) {
-    throw new Error('More than 1 rows deleted from single id! This is bad!');
+    throw new Error('More than 1 rows deleted from single id! This is bad!')
   }
-  return false;
+  return false
 }
