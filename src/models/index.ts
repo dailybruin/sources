@@ -1,29 +1,37 @@
-import { createConnection } from 'typeorm';
+import * as connection from 'knex'
 
-async function initializeDatabase() {
-  // Configure connection to database.
-  const databaseName =
-    process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources';
-
-  const connection = await createConnection({
-    type: 'postgres',
+const knex = connection({
+  client: 'pg',
+  connection: {
     host: process.env.DATABASE_HOST,
-    port: 3306,
-    username: process.env.DATABASE_USER,
+    user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: databaseName,
-  });
+    database: process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources',
+  },
+})
+
+export const sourceTable = 'Sources'
+export const userTable = 'Users'
+
+export const sourceKeys = [
+  'id',
+  'name',
+  'organization',
+  'phones',
+  'emails',
+  'notes',
+]
+
+export interface SourceAttributes {
+  name?: string
+  organization?: string
+  phones?: string
+  emails?: string
+  notes?: string
 }
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+export interface SourceInstance extends SourceAttributes {
+  id: number
+}
 
-export { sequelize };
-export { default as Source } from './Source';
-export { default as User } from './User';
+export default knex
