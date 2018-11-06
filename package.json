@@ -9,7 +9,7 @@
     "prestart": "tsc && yarn static-files && parcel build src/views/index.html --out-dir ./dist/views/static",
     "start": "node ./bin/www",
     "dev": "concurrently 'nodemon' 'parcel watch src/views/index.html --no-autoinstall --out-dir ./dist/views/static' 'yarn static-files:watch' --names '💻,⚛️,📦' --prefix name",
-    "test": "NODE_ENV='test' jest",
+    "test": "NODE_ENV='test' jest --forceExit",
     "create-data": "ts-node ./scripts/create-data.ts",
     "static-files": "ts-node ./scripts/copy-static-files.ts",
     "static-files:watch": "ts-node ./scripts/copy-static-files.ts watch"
@@ -41,28 +41,6 @@
           "semi": false
         }
       }
-    ]
-  },
-  "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
-      }
-    },
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ],
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "testMatch": [
-      "**/src/**/*.test.(js|ts)"
-    ],
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json"
     ]
   },
   "dependencies": {
