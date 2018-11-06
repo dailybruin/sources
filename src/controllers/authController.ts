@@ -2,10 +2,12 @@ import * as passport from 'passport'
 import { OAuth2Strategy } from 'passport-google-oauth'
 import knex from '../models'
 
-const callbackURL =
+const callbackDomain =
   process.env.NODE_ENV === 'production'
-    ? 'http://sources.dailybruin.com/auth/google/callback'
-    : 'http://localhost:3000/auth/google/callback'
+    ? 'https://sources.dailybruin.com'
+    : process.env.NODE_ENV === 'staging'
+      ? 'https://db-sources-staging.herokuapp.com'
+      : 'http://localhost:3000'
 
 passport.serializeUser((user, done) => {
   done(null, user.id)
@@ -24,7 +26,7 @@ passport.use(
     {
       clientID: process.env.G_CLIENT_ID,
       clientSecret: process.env.G_CLIENT_SECRET,
-      callbackURL,
+      callbackURL: `${callbackDomain}/auth/google/callback`,
     },
     async (accessToken, refreshToken, profile, done) => {
       // Using the _json property isn't the nicest, but it seems to be the only way to get a user's domain
