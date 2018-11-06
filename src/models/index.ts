@@ -1,20 +1,19 @@
-import * as Sequelize from 'sequelize';
+import { createConnection } from 'typeorm';
 
-// Configure connection to database.
-const databaseName =
-  process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources';
+async function initializeDatabase() {
+  // Configure connection to database.
+  const databaseName =
+    process.env.NODE_ENV === 'test' ? 'sources-test' : 'sources';
 
-const sequelize = new Sequelize(
-  databaseName,
-  process.env.DATABASE_USER!,
-  process.env.DATABASE_PASSWORD!,
-  {
+  const connection = await createConnection({
+    type: 'postgres',
     host: process.env.DATABASE_HOST,
-    dialect: 'postgres',
-    logging: false,
-    operatorsAliases: false,
-  }
-);
+    port: 3306,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: databaseName,
+  });
+}
 
 sequelize
   .authenticate()

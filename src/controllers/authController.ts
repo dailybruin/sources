@@ -1,6 +1,5 @@
 import * as passport from 'passport';
 import { OAuth2Strategy } from 'passport-google-oauth';
-import { Request, Response, NextFunction } from 'express';
 
 import { User } from '../models';
 
