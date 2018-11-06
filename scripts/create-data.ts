@@ -25,6 +25,10 @@ async function main() {
     table.string('emails')
     table.string('notes')
   })
+  await knex.schema.createTable('Users', table => {
+    table.string('id').primary()
+    table.string('name')
+  })
   await createSources(100)
   await knex
     .table('Sources')

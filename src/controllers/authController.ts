@@ -12,7 +12,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser(async (id, done) => {
-  const user = await knex
+  const [user] = await knex
     .table('Users')
     .returning(['id', 'name'])
     .where('id', id)
@@ -29,12 +29,13 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       // Using the _json property isn't the nicest, but it seems to be the only way to get a user's domain
       if (profile._json.domain === 'media.ucla.edu') {
-        let user = await knex('Users').where('id', profile.id)
+        let [user] = await knex('Users').where('id', profile.id)
         if (!user) {
           user = await knex('Users').insert({
             name: profile.displayName,
             id: profile.id,
           })
+          user = user[0]
         }
         return done(null, user)
       } else {
