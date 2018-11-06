@@ -1,4 +1,7 @@
 import * as connection from 'knex'
+import * as pg from 'pg'
+
+pg.defaults.ssl = true
 
 const knex = connection({
   client: 'pg',
