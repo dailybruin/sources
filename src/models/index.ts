@@ -1,7 +1,12 @@
 import * as connection from 'knex'
 import * as pg from 'pg'
 
-pg.defaults.ssl = true
+// console.log(process.env.NODE_ENV, process.env.NODE_ENV === 'development')
+// if (process.env.NODE_ENV === 'development') {
+//   pg.defaults.ssl = true
+// } else {
+//   pg.defaults.ssl = false
+// }
 
 const knex = connection({
   client: 'pg',

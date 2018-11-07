@@ -1,15 +1,12 @@
 import * as express from 'express'
 import * as logger from 'morgan'
 import * as session from 'express-session'
-import * as connectSessionKnex from 'connect-session-knex'
 import * as cookieParser from 'cookie-parser'
 import * as bodyParser from 'body-parser'
 import * as passport from 'passport'
 import * as dotenv from 'dotenv'
 import * as path from 'path'
 import * as favicon from 'serve-favicon'
-
-const KnexSessionStore = connectSessionKnex(session)
 
 dotenv.config()
 
@@ -19,11 +16,6 @@ import { notFoundHandler, errorHandler } from './errorHandling'
 
 /** Create Express server */
 const app = express()
-
-const store = new KnexSessionStore({
-  knex,
-  tablename: 'sessions', // optional. Defaults to 'sessions'
-})
 
 /** Logging */
 app.use(logger('dev'))
@@ -42,7 +34,6 @@ app.use(favicon(path.join(__dirname, 'views', 'favicon.ico')))
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    store,
     resave: true,
     saveUninitialized: true,
   })

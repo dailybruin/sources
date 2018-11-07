@@ -14,11 +14,15 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser(async (id, done) => {
-  const [user] = await knex
-    .table('Users')
-    .returning(['id', 'name'])
-    .where('id', id)
-  done(null, user)
+  try {
+    const [user] = await knex
+      .table('Users')
+      .returning(['id', 'name'])
+      .where('id', id)
+    done(null, user)
+  } catch (e) {
+    done(e, null)
+  }
 })
 
 passport.use(
@@ -34,15 +38,21 @@ passport.use(
         profile._json.domain === 'media.ucla.edu' ||
         process.env.NODE_ENV === 'staging'
       ) {
-        let [user] = await knex('Users').where('id', profile.id)
-        if (!user) {
-          user = await knex('Users').insert({
-            name: profile.displayName,
-            id: profile.id,
-          })
-          user = user[0]
+        let user
+        try {
+          user = await knex('Users')
+            .where('id', profile.id)
+            .first()
+          if (!user) {
+            await knex('Users').insert({
+              name: profile.displayName,
+              id: profile.id,
+            })
+          }
+        } catch (e) {
+          return done(e, null)
         }
-        return done(null, user)
+        return done(null, profile)
       } else {
         done(new Error('Invalid host domain.'))
       }
@@ -54,6 +64,7 @@ passport.use(
  * Login Required middleware.
  */
 export function isAuthenticated(req, res, next) {
+  console.log('authenticate')
   if (req.isAuthenticated()) {
     return next()
   }
