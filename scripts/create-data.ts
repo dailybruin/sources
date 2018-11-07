@@ -17,6 +17,7 @@ async function createSources(n) {
 
 async function main() {
   await knex.schema.dropTableIfExists('Sources')
+  await knex.schema.dropTableIfExists('Users')
   await knex.schema.createTable('Sources', table => {
     table.increments('id')
     table.string('name')
@@ -24,6 +25,10 @@ async function main() {
     table.string('phones')
     table.string('emails')
     table.string('notes')
+  })
+  await knex.schema.createTable('Users', table => {
+    table.string('id').primary()
+    table.string('name')
   })
   await createSources(100)
   process.exit()
