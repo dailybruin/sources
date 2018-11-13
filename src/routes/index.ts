@@ -13,7 +13,7 @@ router.get(
   '/auth/google',
   passport.authenticate('google', {
     scope: ['profile', 'email'],
-    hd: 'media.ucla.edu',
+    hd: process.env.NODE_ENV === 'staging' ? undefined : 'media.ucla.edu',
   })
 )
 
