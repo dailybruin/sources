@@ -6,8 +6,8 @@ const callbackDomain =
   process.env.NODE_ENV === 'production'
     ? 'https://sources.dailybruin.com'
     : process.env.NODE_ENV === 'staging'
-      ? 'https://db-sources-staging.herokuapp.com'
-      : 'http://localhost:3000'
+    ? 'https://db-sources-staging.herokuapp.com'
+    : 'http://localhost:3000'
 
 passport.serializeUser((user, done) => {
   done(null, user.id)
@@ -64,7 +64,6 @@ passport.use(
  * Login Required middleware.
  */
 export function isAuthenticated(req, res, next) {
-  console.log('authenticate')
   if (req.isAuthenticated()) {
     return next()
   }
