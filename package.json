@@ -91,7 +91,7 @@
     "@types/jest": "23.3.9",
     "@types/morgan": "1.7.35",
     "@types/react": "16.7.4",
-    "@types/react-dom": "16.0.9",
+    "@types/react-dom": "16.0.10",
     "@types/supertest": "2.0.6",
     "babel-core": "6.26.3",
     "babel-preset-env": "1.7.0",
