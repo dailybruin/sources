@@ -51,4 +51,10 @@ app.use(express.static('dist/views/static'))
 app.use(notFoundHandler)
 app.use(errorHandler)
 
-module.exports = app
+app.listen(process.env.PORT || 3000, () => {
+  console.log(
+    `App is running at http://localhost:${process.env.PORT ||
+      3000} in ${app.get('env')} mode.`
+  )
+  console.log('Press CTRL-C to stop.\n')
+})
