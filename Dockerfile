@@ -7,15 +7,18 @@ ENV NODE_ENV production
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn --production=false
+#RUN yarn --production=false
 # If you are building your code for production
-# RUN npm install --only=production
+RUN npm install --only=production
+RUN npm install -g typescript
+RUN npm install -g ts-node
+RUN npm install -g parcel-bundler
 
 # Bundle app source
 COPY . .
 
 EXPOSE 3000
 
-CMD yarn start
+CMD npm start

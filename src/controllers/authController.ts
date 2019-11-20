@@ -34,11 +34,8 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       // Using the _json property isn't the nicest, but it seems to be the only way to get a user's domain
-      if (
-        profile._json.domain === 'media.ucla.edu' ||
-        process.env.NODE_ENV === 'staging'
-      ) {
-        let user
+      //we dont' need to check domain bc google oauth does that in the backend.
+        let user = null;
         try {
           user = await knex('Users')
             .where('id', profile.id)
@@ -47,15 +44,15 @@ passport.use(
             await knex('Users').insert({
               name: profile.displayName,
               id: profile.id,
+              createdAt: new Date(),
+              updatedAt: new Date()
             })
           }
         } catch (e) {
           return done(e, null)
         }
         return done(null, profile)
-      } else {
-        done(new Error('Invalid host domain.'))
-      }
+
     }
   )
 )

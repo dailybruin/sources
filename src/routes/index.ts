@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express'
-import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
+//import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
+const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 import * as bodyParser from 'body-parser'
 import * as passport from 'passport'
 

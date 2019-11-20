@@ -187,3 +187,25 @@ DATABASE_PASSWORD=
 G_CLIENT_ID=
 G_CLIENT_SECRET=
 ```
+
+
+# Update
+Recently sources stopped working on production and locally. This is probably because
+one of the javascript packages it is no longer working somehow. Tbh, I still don't really
+know how that can happen but yeah.
+
+## How to run sources now.
+
+0. Put .env file in the root directory of your project.
+1. Compile the typescript into javascript
+```
+tsc && npm run static-files && parcel build src/views/index.html --out-dir ./dist/views/static
+```
+2. Build the web and the database containers
+```
+docker-compose build
+```
+3. Run and it will be on `localhost:3000`
+```
+docker-compose up
+```
