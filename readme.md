@@ -12,7 +12,7 @@ A website the Daily Bruin uses to keep track of all of our sources.
 It's powered by an Express server with a PostgreSQL backend and a GraphQL
 endpoint, and uses React on the frontend.
 
-The production version is only available to Daily Bruin members, but a live demo with test data is viewable [here](https://db-sources-staging.herokuapp.com).
+The production version is only available to Daily Bruin members.
 
 ## Technologies Used
 
