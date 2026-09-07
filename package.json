@@ -59,7 +59,7 @@
     "dotenv": "6.1.0",
     "express": "4.16.4",
     "express-session": "1.15.6",
-    "faker": "4.1.0",
+    "@faker-js/faker": "4.1.0",
     "glamor": "2.20.40",
     "glamorous": "4.13.1",
     "global": "4.3.2",
